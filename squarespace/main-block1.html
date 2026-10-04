@@ -4,13 +4,14 @@
 .unit-site .u-tw{font-family:'American Typewriter','Courier Prime','Courier New',serif}
 .unit-site .u-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border-radius:999px;font-family:'American Typewriter','Courier Prime',serif;font-weight:700;font-size:16px;text-transform:uppercase;letter-spacing:.5px;text-decoration:none;box-sizing:border-box;white-space:nowrap;border:2.5px solid #2D2926}
 .unit-site .u-reel-strip{scrollbar-width:thin;scrollbar-color:#F99814 #3D3834}.unit-site .u-reel-strip:focus-visible{outline:3px solid #FCE053;outline-offset:4px;border-radius:12px}
+.m-orderbar{display:none}
 .unit-site .u-ph{display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;box-sizing:border-box;border:2.5px dashed #2D2926;background:#FCE053;color:#2D2926;font-weight:700;font-size:14px;line-height:1.4}
 </style>
 <div class="unit-site"><div class="u-tw" style="color: #2D2926; background: #FFFAF0; width: 100%; line-height: 1.55; font-size: 17px; overflow-x: hidden">
 <div style="background: #2D2926; color: #FFFAF0; font-size: 14px; padding: 10px 24px; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 28px; text-align: center; font-weight: 700; text-transform: uppercase; letter-spacing: .5px">
 <a href="#mac-ting" style="color: #F087D0; text-decoration: none">✦ NEW: The Mac Ting is here →</a>
 <span><span style="color: #FCE053">✦ Fresh burgers</span>, made to order</span>
-<span>Open 7 days · Headford St till 11pm · Centertainment till 10pm (11pm Fri &amp; Sat)</span>
+<span class="m-hide">Open 7 days · Headford St till 11pm · Centertainment till 10pm (11pm Fri &amp; Sat)</span>
 </div>
 <header style="position: sticky; top: 0; z-index: 10; background: #FFFAF0; border-bottom: 2.5px solid #2D2926">
 <div style="max-width: 1280px; margin: 0 auto; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px">
@@ -29,8 +30,8 @@
 <a href="#faq" style="text-decoration: none; padding: 12px 0">FAQ</a>
 </nav>
 <div style="display: flex; flex-wrap: wrap; gap: 10px">
-<a class="u-btn" href="#locations" style="background: #F99814; color: #2D2926">Book a table</a>
-<a class="u-btn" href="#delivery" style="background: transparent; color: #2D2926">Delivery</a>
+<a class="u-btn" href="#order" style="background: #F99814; color: #2D2926">Order now</a>
+<a class="u-btn m-hide" href="#locations" style="background: transparent; color: #2D2926">Book a table</a>
 </div>
 </div>
 </header>
@@ -40,8 +41,9 @@
 <h1 class="u-disp" style="margin: 0; font-size: clamp(44px, 6.2vw, 84px); line-height: 1; color: #9E6950; letter-spacing: -0.5px">Burgers &amp; American comfort food in <span style="color: #D1555A">Sheffield</span></h1>
 <p style="margin: 0; font-size: 19px; max-width: 560px">Fresh beef from our local butcher, buffalo wings, Philly cheesesteaks, chicken n' waffles and concrete shakes. Casual fast food with an urban edge, served in our street-art diners on Headford Street and at Valley Centertainment.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 12px">
-<a class="u-btn" href="#locations" style="background: #F99814; color: #2D2926; min-height: 56px; font-size: 17px">Find your nearest Unit</a>
-<a class="u-btn" href="#menu" style="background: #2D2926; color: #FFFAF0; min-height: 56px; font-size: 17px">See the menu</a>
+<a class="u-btn" href="#order" style="background: #F99814; color: #2D2926; min-height: 56px; font-size: 17px">Order for collection</a>
+<a class="u-btn" href="#locations" style="background: #2D2926; color: #FFFAF0; min-height: 56px; font-size: 17px">Find your nearest Unit</a>
+<a class="u-btn" href="#menu" style="background: transparent; color: #2D2926; min-height: 56px; font-size: 17px">See the menu</a>
 </div>
 <ul style="list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px">
 <li style="background: #FCE053; border: 2px solid #2D2926; border-radius: 999px; padding: 6px 14px; font-weight: 700; font-size: 14px">✦ Made fresh to order</li>
@@ -70,7 +72,7 @@
 <p style="margin: 0; font-size: 17px; font-weight: 700"><span style="color: #F99814">£13.50</span> · Available now</p>
 <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px">
 <a class="u-btn" href="#locations" style="background: #F99814; color: #2D2926; border-color: #F99814; min-height: 56px; font-size: 17px">Come try it</a>
-<a class="u-btn" href="#delivery" style="background: transparent; color: #FFFAF0; border-color: #FFFAF0; min-height: 56px; font-size: 17px">Order on Uber Eats</a>
+<a class="u-btn" href="#order" style="background: transparent; color: #FFFAF0; border-color: #FFFAF0; min-height: 56px; font-size: 17px">Order now</a>
 </div>
 </div>
 <div style="flex: 1 1 420px; min-width: 0; position: relative; display: flex; justify-content: center; align-items: flex-end; gap: 0; padding: 12px 0 24px">
@@ -105,6 +107,7 @@
 <dt style="font-weight: 700">Parking</dt><dd style="margin: 0">Pay &amp; display outside, free after 8:30pm</dd>
 </dl>
 <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 8px">
+<a class="u-btn" href="https://mylightspeed.app/PFMZNWAL/C-ordering" style="background: #F99814; color: #2D2926; flex: 1 1 100%; min-height: 56px">Order for collection · Headford St</a>
 <a class="u-btn" href="https://eatapp.co/reserve/unit-sheffield-88-headford-street" style="background: #2D2926; color: #FFFAF0; flex-grow: 1">Book a table</a>
 <a class="u-btn" href="https://goo.gl/maps/56KwSS7zjN8HCxwV9" style="background: transparent; color: #2D2926; flex-grow: 1">Directions</a>
 </div>
@@ -125,18 +128,29 @@
 <dt style="font-weight: 700">Parking</dt><dd style="margin: 0">Free on-site parking</dd>
 </dl>
 <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 8px">
-<a class="u-btn" href="[CENTERTAINMENT BOOKING LINK]" style="background: #2D2926; color: #FFFAF0; flex-grow: 1">Book a table</a>
+<a class="u-btn" href="https://mylightspeed.app/BBMBFHTY/C-ordering" style="background: #F99814; color: #2D2926; flex: 1 1 100%; min-height: 56px">Order for collection · Centertainment</a>
+<a class="u-btn" href="https://eatapp.co/reserve/unit-centertainment-d100b7" style="background: #2D2926; color: #FFFAF0; flex-grow: 1">Book a table</a>
 <a class="u-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Unit+Valley+Centertainment+Sheffield" style="background: transparent; color: #2D2926; flex-grow: 1">Directions</a>
 </div>
 </div>
 </article>
 </div>
-<div id="delivery" style="background: #2D2926; color: #FFFAF0; border-radius: 20px; padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
-<p style="margin: 0; font-size: 17px"><strong style="color: #FCE053">Staying in?</strong> Order ahead for collection, or get Unit delivered across Sheffield on Uber Eats.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 10px">
-<a class="u-btn" href="https://mylightspeed.app/PFMZNWAL/C-ordering/menu" style="background: #FCE053; color: #2D2926; border-color: #FCE053">Order for collection</a>
-<a class="u-btn" href="https://www.ubereats.com/gb/store/unit/3MyUD_WrT1OoSXERvsMkPw" style="background: transparent; color: #FFFAF0; border-color: #FFFAF0">Uber Eats: Headford St</a>
-<a class="u-btn" href="https://www.ubereats.com/store/unit-centertainment/iycV959-UCeHRwQ8Tp2CUQ" style="background: transparent; color: #FFFAF0; border-color: #FFFAF0">Uber Eats: Centertainment</a>
+<div id="order" style="background: #2D2926; color: #FFFAF0; border-radius: 24px; padding: clamp(22px, 3vw, 32px); display: flex; flex-direction: column; gap: 20px; scroll-margin-top: 110px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h3 class="u-disp" style="margin: 0; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.05">Order ahead. <span style="color: #FCE053">Pick your diner.</span></h3>
+<p style="margin: 0; font-size: 17px">Order online and collect it hot from your nearest Unit, or get it delivered across Sheffield on Uber Eats.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px">
+<div style="border: 2.5px solid #FFFAF0; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px"><strong class="u-disp" style="font-size: 26px; color: #FCE053">Headford Street</strong><span style="font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px">S3 · City centre</span></p>
+<a class="u-btn" href="https://mylightspeed.app/PFMZNWAL/C-ordering" style="background: #FCE053; color: #2D2926; border-color: #FCE053; min-height: 56px; font-size: 17px">Order for collection</a>
+<a class="u-btn" href="https://www.ubereats.com/gb/store/unit/3MyUD_WrT1OoSXERvsMkPw" style="background: transparent; color: #FFFAF0; border-color: #FFFAF0">Delivery on Uber Eats</a>
+</div>
+<div style="border: 2.5px solid #FFFAF0; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px"><strong class="u-disp" style="font-size: 26px; color: #FCE053">Valley Centertainment</strong><span style="font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px">S9 · By the cinema &amp; bowling</span></p>
+<a class="u-btn" href="https://mylightspeed.app/BBMBFHTY/C-ordering" style="background: #FCE053; color: #2D2926; border-color: #FCE053; min-height: 56px; font-size: 17px">Order for collection</a>
+<a class="u-btn" href="https://www.ubereats.com/store/unit-centertainment/iycV959-UCeHRwQ8Tp2CUQ" style="background: transparent; color: #FFFAF0; border-color: #FFFAF0">Delivery on Uber Eats</a>
+</div>
 </div>
 </div>
 </div>
@@ -446,7 +460,7 @@
 <div style="padding: 40px; display: flex; flex-direction: column; gap: 16px; justify-content: center">
 <h2 class="u-disp" style="margin: 0; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.05; color: #9E6950">Take Unit home</h2>
 <p style="margin: 0; font-size: 18px">Our house sauces, Nash seasoning and merch, made in Sheffield. Grab them in store or online.</p>
-<a class="u-btn" href="[SHOP PAGE]" style="align-self: flex-start; background: #F99814; color: #2D2926">Shop sauces &amp; merch</a>
+<a class="u-btn" href="https://www.unitfood.co/shop" style="align-self: flex-start; background: #F99814; color: #2D2926">Shop sauces &amp; merch</a>
 </div>
 </div>
 </section>
@@ -459,7 +473,7 @@
 <div style="border-top: 2.5px solid #2D2926; padding: 22px 0"><h3 class="u-disp" style="margin: 0 0 6px; font-size: 22px">Do you have vegan and vegetarian options?</h3><p style="margin: 0">Yes: vegan cauliflower wings in your choice of flavour, the Moving Mountains vegan beef burger and our homemade falafel burger. Vegetarians can also go for the halloumi burger, halloumi fries or our homemade mac n cheese.</p></div>
 <div style="border-top: 2.5px solid #2D2926; padding: 22px 0"><h3 class="u-disp" style="margin: 0 0 6px; font-size: 22px">Do you have gluten-free food?</h3><p style="margin: 0">Most burgers can be made without the bun; just ask. We can't guarantee no cross-contamination, so we don't recommend it for coeliacs.</p></div>
 <div style="border-top: 2.5px solid #2D2926; padding: 22px 0"><h3 class="u-disp" style="margin: 0 0 6px; font-size: 22px">Is there parking?</h3><p style="margin: 0">At Headford Street there's pay and display right outside, free after 8:30pm. Valley Centertainment has free parking.</p></div>
-<div style="border-top: 2.5px solid #2D2926; padding: 22px 0"><h3 class="u-disp" style="margin: 0 0 6px; font-size: 22px">Do you deliver?</h3><p style="margin: 0">Yes, from both diners via <a href="#delivery">Uber Eats</a>.</p></div>
+<div style="border-top: 2.5px solid #2D2926; padding: 22px 0"><h3 class="u-disp" style="margin: 0 0 6px; font-size: 22px">Do you deliver?</h3><p style="margin: 0">Yes, from both diners via <a href="#order">Uber Eats</a>.</p></div>
 <div style="border-top: 2.5px solid #2D2926; padding: 22px 0"><h3 class="u-disp" style="margin: 0 0 6px; font-size: 22px">Can you take large group bookings in Sheffield?</h3><p style="margin: 0">Yes. We seat big groups together, take pre-orders so the food arrives at once, and sort dietary needs in advance. Valley Centertainment is our biggest dining room. <a href="/new-business#groups">Book a group</a>.</p></div>
 <div style="border-top: 2.5px solid #2D2926; padding: 22px 0"><h3 class="u-disp" style="margin: 0 0 6px; font-size: 22px">Do you do working lunches and office orders?</h3><p style="margin: 0">Yes, with packages for 5, 10, 20 and 50+ people. With 24 hours' notice, we can deliver large orders up to 4 miles (delivery charges apply beyond 1 mile). See <a href="/new-business">Unit for Business</a>.</p></div>
 <div style="border-top: 2.5px solid #2D2926; padding: 22px 0"><h3 class="u-disp" style="margin: 0 0 6px; font-size: 22px">Is Unit good for kids and families?</h3><p style="margin: 0">Yes. We have a kids menu, and our Centertainment diner sits right by the cinema and bowling.</p></div>
@@ -513,6 +527,7 @@
 </div>
 </div>
 </footer>
+<div class="m-orderbar" role="region" aria-label="Order for collection"><span>Collect from</span><a href="https://mylightspeed.app/PFMZNWAL/C-ordering">Headford St</a><a href="https://mylightspeed.app/BBMBFHTY/C-ordering">Centertainment</a></div>
 </div></div>
 <script>
 (function(){
