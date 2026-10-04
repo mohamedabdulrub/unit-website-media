@@ -528,7 +528,7 @@
     if(webkitOnly){img.src=img.getAttribute('data-webp');return;}
     var v=document.createElement('video');
     v.src=img.getAttribute('data-webm');v.autoplay=true;v.loop=true;v.playsInline=true;v.muted=true;
-    v.setAttribute('playsinline','');v.setAttribute('muted','');v.setAttribute('aria-hidden','true');
+    v.setAttribute('playsinline','');v.setAttribute('muted','');v.setAttribute('aria-hidden','true');v.className='u-anim-v';
     v.poster=img.src;v.style.cssText=img.style.cssText+';object-fit:contain';
     img.parentNode.replaceChild(v,img);play(v);
   });
@@ -542,5 +542,9 @@
       if(e.isIntersecting){v.preload='auto';play(v);}else if(!v.paused){v.pause();}});},{threshold:0.4});
     lazy.forEach(function(v){io.observe(v);});
   } else lazy.forEach(function(v){v.preload='auto';play(v);});
+  // Restart autoplay loops if the page was opened in a background tab
+  function resume(){ if(reduce||document.visibilityState!=='visible')return;
+    root.querySelectorAll('video.u-auto, video.u-anim-v').forEach(function(v){ if(v.paused) play(v); }); }
+  document.addEventListener('visibilitychange',resume); window.addEventListener('pageshow',resume); setTimeout(resume,1500);
 })();
 </script>
