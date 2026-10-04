@@ -1,0 +1,250 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Corben:wght@400;700&family=Courier+Prime:wght@400;700&display=swap">
+<style>
+/* Unit redesign: hide the template header/footer on this page and let code sections run edge to edge */
+#header, header.header, .header-announcement-bar-wrapper, #footer-sections, footer.sections{display:none!important}
+body{background:#FFFAF0}
+#siteWrapper, #page, .content-wrapper{padding-top:0!important}
+.page-section:has(.unit-site){padding:0!important;min-height:0!important}
+.page-section:has(.unit-site) .section-background{display:none!important}
+.page-section:has(.unit-site) .content-wrapper{padding:0!important;max-width:none!important;width:100%!important}
+.page-section:has(.unit-site) .content{width:100%!important}
+.page-section:has(.unit-site) .fluid-engine{display:block!important}
+.page-section:has(.unit-site) .fe-block{width:100%!important;height:auto!important;grid-area:auto!important;position:static!important}
+.page-section:has(.unit-site) .sqs-block{padding:0!important}
+.page-section:has(.unit-site) .sqs-block-content{width:100%!important}
+.page-section:has(.unit-site) .sqs-row{margin-left:0!important;margin-right:0!important}
+.page-section:has(.unit-site) .sqs-col-12, .page-section:has(.unit-site) [class*=sqs-col-]{padding-left:0!important;padding-right:0!important}
+.page-section:has(.unit-site) .sqs-block-html:not(:has(.unit-site)){display:none!important}
+/* Native Squarespace form placed between the two code blocks */
+.page-section:has(.unit-site) .sqs-block-form{background:#F99814!important;padding:8px 24px 80px!important;border-bottom:3px solid #2D2926;font-family:'American Typewriter','Courier Prime',serif;color:#2D2926}
+.page-section:has(.unit-site) .sqs-block-form .sqs-block-content{max-width:860px!important;margin:0 auto!important;background:#FFFAF0;border:3px solid #2D2926;border-radius:24px;padding:clamp(20px,3vw,36px)!important;box-sizing:border-box}
+.page-section:has(.unit-site) .sqs-block-form .form-title{font-family:'Motter Corpus ITC TT','Motter Corpus',Corben,Georgia,serif;font-weight:700;font-size:28px;color:#9E6950}
+.page-section:has(.unit-site) .sqs-block-form label, .page-section:has(.unit-site) .sqs-block-form legend, .page-section:has(.unit-site) .sqs-block-form .title{font-family:'American Typewriter','Courier Prime',serif!important;font-weight:700!important;font-size:14px!important;text-transform:uppercase;letter-spacing:.5px;color:#2D2926!important}
+.page-section:has(.unit-site) .sqs-block-form input:not([type=checkbox]):not([type=radio]), .page-section:has(.unit-site) .sqs-block-form textarea, .page-section:has(.unit-site) .sqs-block-form select{font-family:'American Typewriter','Courier Prime',serif!important;font-size:16px!important;color:#2D2926!important;background:#FFFAF0!important;border:2.5px solid #2D2926!important;border-radius:14px!important;padding:12px 14px!important;min-height:48px}
+.page-section:has(.unit-site) .sqs-block-form button[type=submit], .page-section:has(.unit-site) .sqs-block-form .form-submit-button, .page-section:has(.unit-site) .sqs-block-form input[type=submit]{font-family:'American Typewriter','Courier Prime',serif!important;background:#2D2926!important;color:#FFFAF0!important;border:2.5px solid #2D2926!important;border-radius:999px!important;min-height:56px;padding:0 32px!important;text-transform:uppercase;font-weight:700!important;letter-spacing:.5px}
+.page-section:has(.unit-site) .sqs-block-form .form-submission-text{font-family:'American Typewriter','Courier Prime',serif;font-size:18px;color:#2D2926}
+html, body{overflow-x:hidden}
+/* Native form section styling to match the design */
+.page-section.unit-form-section, .page-section:has(.sqs-block-form):not(:has(.unit-site)){background:#F99814!important;border-bottom:3px solid #2D2926}
+.page-section:has(.sqs-block-form):not(:has(.unit-site)) .content-wrapper{max-width:760px!important;margin:0 auto!important;padding-top:0!important;padding-bottom:72px!important}
+.page-section:has(.sqs-block-form):not(:has(.unit-site)) .sqs-block-form .form-wrapper{background:#FFFAF0;border:3px solid #2D2926;border-radius:24px;padding:28px}
+.page-section:has(.sqs-block-form):not(:has(.unit-site)) input, .page-section:has(.sqs-block-form):not(:has(.unit-site)) textarea, .page-section:has(.sqs-block-form):not(:has(.unit-site)) select{border:2.5px solid #2D2926!important;border-radius:14px!important;background:#FFFAF0!important;min-height:48px}
+.page-section:has(.sqs-block-form):not(:has(.unit-site)) button[type=submit], .page-section:has(.sqs-block-form):not(:has(.unit-site)) .form-submit-button{background:#2D2926!important;color:#FFFAF0!important;border-radius:999px!important;min-height:56px;padding:0 28px!important;text-transform:uppercase;font-weight:700}
+/* Phones */
+@media (max-width: 767px){
+.unit-site .m-hide{display:none!important}
+.unit-site .u-tw > div:first-child:not(header){font-size:12px!important;padding:8px 14px!important;gap:2px 14px!important;letter-spacing:.3px!important}
+.unit-site header{position:static!important}
+.unit-site header > div{padding:14px 16px 0!important;gap:10px 12px!important;align-items:center!important}
+.unit-site header > div > a:first-child{gap:8px!important}
+.unit-site header > div > a:first-child > div{width:132px!important;flex:0 0 auto}
+.unit-site header > div > a:first-child > img{height:42px!important;width:auto!important}
+.unit-site header > div > a:first-child > span{font-size:11px!important;letter-spacing:.5px!important}
+.unit-site header > div > a:first-child > span{display:none!important}
+.unit-site header nav{order:3;flex:0 0 calc(100% + 32px);flex-wrap:nowrap!important;overflow-x:auto;gap:0 20px!important;margin:0 -16px;padding:0 16px;font-size:13px!important;border-top:1.5px solid #2D2926;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.unit-site header nav::-webkit-scrollbar{display:none}
+.unit-site header nav a{padding:11px 0!important;white-space:nowrap;flex:0 0 auto}
+.unit-site header [class~=u-btn]{min-height:40px!important;padding:0 12px!important;font-size:12px!important;letter-spacing:.3px!important}
+.unit-site header > div > a:first-child{flex:0 1 auto;min-width:0}
+.unit-site a[href^="mailto:"]{overflow-wrap:anywhere}
+.unit-site #quote > div > div, .unit-site #enquire > div > div{min-width:0!important;flex-basis:100%!important}
+.unit-site header > div > div{gap:8px!important}
+.unit-site [class~=u-btn]{white-space:normal!important;text-align:center;line-height:1.15}
+.unit-site section[style*=" 24px"]{padding-left:16px!important;padding-right:16px!important}
+.unit-site section[style*="padding: 80px 24px"], .unit-site section[style*="padding: 72px 24px"]{padding-top:52px!important;padding-bottom:52px!important}
+.unit-site section[style*="padding: 80px 24px 0"], .unit-site section[style*="padding: 72px 24px 0"]{padding-bottom:0!important}
+.unit-site section[style*="padding: 56px 24px 64px"]{padding-top:32px!important;padding-bottom:44px!important;gap:32px!important}
+.unit-site section[style*="padding: 0 24px 80px"]{padding-bottom:52px!important}
+.unit-site section[style*="padding: 56px 24px;"]{padding-top:40px!important;padding-bottom:40px!important}
+.unit-site #top > div:first-child{gap:18px!important}
+.unit-site #top [class~=u-btn]{flex:1 1 100%}
+.unit-site #top > div:last-child{padding:0 0 28px 20px!important}
+.unit-site #mac-ting > div{gap:32px!important}
+.unit-site #mac-ting [class~=u-btn]{flex:1 1 100%}
+.unit-site #locations article > img{height:180px!important}
+.unit-site #locations article > div{padding:18px!important}
+.unit-site #menu > div:first-child [class~=u-btn]{width:100%}
+.unit-site #menu div[style*="minmax(min(100%, 270px)"]{grid-template-columns:1fr 1fr!important;gap:12px!important}
+.unit-site #menu article{border-radius:18px!important;border-width:2.5px!important}
+.unit-site #menu article > div:first-child{border-bottom-width:2.5px!important}
+.unit-site #menu article > div:first-child > img, .unit-site #menu article > div:first-child > video{height:150px!important}
+.unit-site #menu article > div:first-child > div{width:54px!important;right:4px!important;bottom:-14px!important}
+.unit-site #menu article > div:first-child > span{font-size:10px!important;padding:2px 7px!important;top:8px!important;left:8px!important}
+.unit-site #menu article > div:last-child{padding:12px 12px 14px!important;gap:5px!important}
+.unit-site #menu article h3{font-size:18px!important;line-height:1.1!important;padding-right:34px!important}
+.unit-site #menu article p{font-size:13px!important;line-height:1.4!important}
+.unit-site #inside div[style*="flex-wrap: wrap; gap: 16px"]{display:grid!important;grid-template-columns:1fr 1fr;gap:10px!important}
+.unit-site #inside div[style*="flex-wrap: wrap; gap: 16px"] > img{height:190px!important;border-radius:16px!important;border-width:2.5px!important;width:100%!important}
+.unit-site #inside div[style*="flex-wrap: wrap; gap: 16px"] > img:first-child:nth-last-child(2n+1){grid-column:1 / -1;height:220px!important}
+.unit-site #reviews > figure{padding:20px!important}
+.unit-site footer{padding:44px 16px 28px!important}
+.unit-site footer div[style*="minmax(min(100%, 220px)"]{grid-template-columns:1fr 1fr!important;gap:28px 16px!important}
+.unit-site footer div[style*="minmax(min(100%, 220px)"] > div:first-child{grid-column:1 / -1}
+.unit-site:has(.m-orderbar) footer{padding-bottom:112px!important}
+.unit-site .m-orderbar{display:flex!important;position:fixed;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom));z-index:9999;align-items:center;gap:8px;padding:8px;background:#2D2926;border:2px solid #FFFAF0;border-radius:20px;box-shadow:0 8px 24px rgba(0,0,0,.28);font-family:'American Typewriter','Courier Prime',serif}
+.unit-site .m-orderbar span{flex:0 0 58px;color:#FCE053;font-size:11px;font-weight:700;line-height:1.15;text-transform:uppercase;letter-spacing:.5px;padding-left:4px}
+.unit-site .m-orderbar a{flex:1 1 0;min-height:48px;display:flex;align-items:center;justify-content:center;text-align:center;background:#F99814;color:#2D2926!important;border:2px solid #2D2926;border-radius:999px;font-size:13px;font-weight:700;line-height:1.1;text-transform:uppercase;letter-spacing:.3px;text-decoration:none;padding:0 8px}
+}
+</style>
+<style>.unit-site{all:initial;display:block;width:100%}.unit-site *,.unit-site *::before,.unit-site *::after{box-sizing:border-box}.unit-site h1,.unit-site h2,.unit-site h3,.unit-site p,.unit-site ul,.unit-site ol,.unit-site figure,.unit-site blockquote,.unit-site dl,.unit-site dd{letter-spacing:normal}.unit-site img,.unit-site video{max-width:100%}.unit-site h1,.unit-site h2,.unit-site h3{text-transform:none;white-space:normal}
+.unit-site a{color:#2D2926}.unit-site a:hover{color:#9E6950}
+.unit-site .u-disp{font-family:'Motter Corpus ITC TT','Motter Corpus',Corben,Georgia,serif;font-weight:700}
+.unit-site .u-tw{font-family:'American Typewriter','Courier Prime','Courier New',serif}
+.unit-site .u-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border-radius:999px;font-family:'American Typewriter','Courier Prime',serif;font-weight:700;font-size:16px;text-transform:uppercase;letter-spacing:.5px;text-decoration:none;box-sizing:border-box;white-space:nowrap;border:2.5px solid #2D2926}
+.unit-site .u-reel-strip{scrollbar-width:thin;scrollbar-color:#F99814 #3D3834}.unit-site .u-reel-strip:focus-visible{outline:3px solid #FCE053;outline-offset:4px;border-radius:12px}
+.m-orderbar{display:none}
+.unit-site .u-ph{display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;box-sizing:border-box;border:2.5px dashed #2D2926;background:#FCE053;color:#2D2926;font-weight:700;font-size:14px;line-height:1.4}
+</style>
+<style>
+@media (max-width: 767px){
+.unit-site .u-shop-grid{grid-template-columns:1fr 1fr!important;gap:12px!important}
+.unit-site .u-shop-card{border-radius:18px!important;border-width:2.5px!important}
+.unit-site .u-shop-card > div:first-child{border-bottom-width:2.5px!important}
+.unit-site .u-shop-card > div:last-child{padding:10px 11px 12px!important;gap:4px!important}
+.unit-site .u-shop-card h3{font-size:17px!important}
+.unit-site .u-shop-card p{font-size:12px!important;line-height:1.35!important}
+.unit-site .u-shop-card p + p{display:none}
+.unit-site .u-shop-card .u-price{font-size:15px!important}
+.unit-site .u-shop-card .u-cta{font-size:11px!important}
+.unit-site .u-shop-card span{font-size:10px!important}
+.unit-site #top > div:first-child > div a{font-size:13px!important;padding:6px 12px!important}
+.unit-site section[style*="padding: 48px 24px 8px"]{padding-top:28px!important}
+.unit-site section[id][style*="padding: 56px 24px 0"]{padding-top:40px!important}
+}
+.unit-site .u-shop-card{transition:transform .15s ease, box-shadow .15s ease}
+.unit-site .u-shop-card:hover{transform:translateY(-3px);box-shadow:0 6px 0 #2D2926}
+.unit-site .u-shop-card:focus-visible{outline:3px solid #F99814;outline-offset:3px}
+</style>
+<style>
+/* Unit redesign: product pages */
+body{background:#FFFAF0!important}
+.product-detail-section, .product-reviews-section, .related-products-section{background:#FFFAF0!important}
+.product-detail-section .section-background, .product-reviews-section .section-background, .related-products-section .section-background{background:#FFFAF0!important}
+.related-products-section{display:none!important}
+.product-detail-section .content-wrapper{max-width:1280px!important;margin:0 auto!important;padding:36px 24px 56px!important}
+.product-detail .pdp-gallery-images, .product-detail .pdp-gallery-slides, .product-detail .pdp-gallery img{border-radius:22px}
+.product-detail .pdp-gallery-images{border:3px solid #2D2926;overflow:hidden;background:#FFFFFF}
+.product-detail .pdp-gallery-thumbnails img, .product-detail [class*=thumbnail] img{border:2.5px solid #2D2926;border-radius:12px}
+.product-detail .pdp-carousel-controls button{background:#FFFAF0!important;border:2.5px solid #2D2926!important;border-radius:999px!important;color:#2D2926!important}
+.product-detail .pdp-gallery-slide-indicator{font-family:'American Typewriter','Courier Prime',serif;color:#2D2926;background:#FFFAF0;border:2px solid #2D2926;border-radius:999px;padding:2px 10px}
+.product-detail, .product-detail p, .product-detail div, .product-detail span, .product-detail label, .product-detail legend{font-family:'American Typewriter','Courier Prime','Courier New',serif;color:#2D2926;letter-spacing:normal}
+.product-detail .product-nav{font-size:13px!important;font-weight:700;text-transform:uppercase;letter-spacing:.5px!important;margin-bottom:14px}
+.product-detail .product-nav a{color:#9E6950!important;font-family:'American Typewriter','Courier Prime',serif!important;text-decoration:none;border-bottom:2px solid transparent}
+.product-detail .product-nav a:hover{border-bottom-color:#9E6950}
+.product-detail .product-nav span{color:#9E6950!important}
+.product-detail .product-title{font-family:'Motter Corpus ITC TT','Motter Corpus',MOTTCI,Corben,Georgia,serif!important;font-weight:700!important;color:#9E6950!important;font-size:clamp(36px,4.6vw,60px)!important;line-height:1.02!important;text-transform:none!important;letter-spacing:normal!important;margin:0 0 10px!important;white-space:normal!important}
+.product-detail .product-price, .product-detail .product-price-value{font-size:24px!important;font-weight:700!important;color:#2D2926!important}
+.product-detail .product-price{margin:4px 0 12px!important}
+.product-detail .product-description, .product-detail .product-description p{font-size:18px!important;line-height:1.55!important}
+.product-detail .product-description{margin:0 0 18px!important}
+.product-detail .variant-option-title{font-size:13px!important;font-weight:700!important;text-transform:uppercase;letter-spacing:.5px!important;margin-bottom:6px}
+.product-detail .variant-select{font-family:'American Typewriter','Courier Prime',serif!important;font-size:16px!important;color:#2D2926!important;background:#FFFFFF!important;border:2.5px solid #2D2926!important;border-radius:14px!important;min-height:50px;padding:0 44px 0 16px!important}
+.product-detail .variant-select-wrapper .form-input-effects{display:none!important}
+.product-detail .variant-select-icon, .product-detail .variant-select-icon svg{color:#2D2926!important;fill:#2D2926!important;stroke:#2D2926!important}
+.product-detail .product-quantity-input{background:#FFFFFF!important;border:2.5px solid #2D2926!important;border-radius:999px!important;min-height:52px;overflow:hidden}
+.product-detail .product-quantity-input input{font-family:'American Typewriter','Courier Prime',serif!important;font-size:17px!important;font-weight:700;color:#2D2926!important;background:transparent!important}
+.product-detail .product-quantity-input button span{background-color:#2D2926!important;border-color:#2D2926!important}
+.product-detail .product-quantity-input-wrapper .form-input-effects{display:none!important}
+.product-detail .sqs-add-to-cart-button{background:#F99814!important;color:#2D2926!important;border:2.5px solid #2D2926!important;border-radius:999px!important;min-height:52px!important;font-family:'American Typewriter','Courier Prime',serif!important;font-weight:700!important;font-size:16px!important;text-transform:uppercase!important;letter-spacing:.5px!important;box-shadow:0 4px 0 #2D2926;transition:transform .12s ease, box-shadow .12s ease, background .12s ease}
+.product-detail .sqs-add-to-cart-button *{color:inherit!important;font-family:inherit!important}
+.product-detail .sqs-add-to-cart-button:hover{background:#FCE053!important;transform:translateY(-2px);box-shadow:0 6px 0 #2D2926}
+.product-detail .sqs-add-to-cart-button:active{transform:translateY(2px);box-shadow:0 2px 0 #2D2926}
+.product-detail .sqs-add-to-cart-button[disabled], .product-detail .sqs-add-to-cart-button.cart-sold-out{background:#E8E1D5!important;box-shadow:none!important;cursor:not-allowed}
+.product-detail .product-mark{font-family:'American Typewriter','Courier Prime',serif;background:#D1555A!important;color:#FFFAF0!important;border:2px solid #2D2926;border-radius:999px;padding:3px 10px}
+/* injected extras */
+.u-pdp-tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.u-pdp-tags span{background:#2D2926;color:#FFFAF0!important;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.u-pdp-sub{margin:0 0 6px!important;font-size:14px!important;font-weight:700;text-transform:uppercase;letter-spacing:.5px!important;color:#9E6950!important}
+.u-pdp-info{margin-top:24px;border:3px solid #2D2926;border-radius:22px;background:#FFFFFF;padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.u-pdp-info h2{margin:0;font-family:'Motter Corpus ITC TT','Motter Corpus',MOTTCI,Corben,Georgia,serif;font-weight:700;font-size:20px;color:#2D2926;text-transform:none;letter-spacing:normal}
+.u-pdp-info p{margin:0!important;font-size:15px!important;line-height:1.45!important}
+.u-pdp-info .u-row{display:flex;flex-wrap:wrap;gap:8px}
+.u-pdp-info a{display:inline-flex;align-items:center;min-height:42px;padding:0 16px;border-radius:999px;border:2.5px solid #2D2926;font-family:'American Typewriter','Courier Prime',serif;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.5px;text-decoration:none;color:#2D2926!important;background:#FFFAF0}
+.u-pdp-info a.u-hot{background:#F99814}
+.u-pdp-info a:hover{background:#FCE053}
+.u-added{display:none;margin-top:12px;font-weight:700}
+.u-added a{color:#2D2926!important;border-bottom:2px solid #2D2926;text-decoration:none}
+@media (max-width: 767px){
+.product-detail-section .content-wrapper{padding:20px 16px 40px!important}
+.product-detail .product-title{font-size:36px!important}
+.product-detail .product-description, .product-detail .product-description p{font-size:16px!important}
+}
+</style>
+<script>
+(function(){
+  var path=location.pathname.replace(/\/+$/,'');
+  if(path==='/shop'){location.replace('/merch'+location.hash);return;}
+  var D={"/shop/p/all-the-sauce":{"id":"62a98a992bf64c78d1fe1311","n":"All the sauce!","s":"4 × 250ml bottles","b":"All four in one go: Buff Ting, BBQ, Korean and Sweet Heat.","t":["Bundle"],"c":"sauces","i":"https://images.squarespace-cdn.com/content/v1/629f4b136b4f01431150caab/1666863635611-PK5LFGTBMWEYVIYKQIPB/DSCF2313.jpg","p":20,"m":false,"o":false},"/shop/p/buff-ting-sauce-250ml-glass":{"id":"62a8da431b613f1cd1d5f37c","n":"Buff Ting sauce","s":"250ml glass bottle","b":"Our famous buffalo sauce. Tangy, buttery heat.","t":["Vegan"],"c":"sauces","i":"https://images.squarespace-cdn.com/content/v1/629f4b136b4f01431150caab/1666863668090-4154ZGUUIIXMCXT3YVWC/DSCF2288.jpg","p":6,"m":false,"o":false},"/shop/p/korean-sauce-250ml":{"id":"62a8daf51b613f1cd1d5f3e4","n":"Korean sauce","s":"250ml glass bottle","b":"Sweet and spicy, made for wings and fried chicken.","t":["Vegan"],"c":"sauces","i":"https://images.squarespace-cdn.com/content/v1/629f4b136b4f01431150caab/1666863579330-IJQYPNOSVMN5CEHEZTVF/korean-suace.jpg","p":6,"m":false,"o":false},"/shop/p/9766farvt56rodnwfxhgy3xwp4f9wu":{"id":"62a8d831187fc259cb26d050","n":"BBQ sauce","s":"250ml glass bottle","b":"Our smoky house BBQ sauce.","t":[],"c":"sauces","i":"https://images.squarespace-cdn.com/content/v1/629f4b136b4f01431150caab/1666863696807-6NNU73HYZXI5HZ2BCRFI/DSCF2295.jpg","p":6,"m":false,"o":false},"/shop/p/9766farvt56rodnwfxhgy3xwp4f9wu-wcfpm":{"id":"635a51366939111971696f6e","n":"Sweet Heat sauce","s":"250ml glass bottle","b":"Unit's take on sweet chilli.","t":[],"c":"sauces","i":"https://images.squarespace-cdn.com/content/v1/629f4b136b4f01431150caab/1666863490239-A8Q1993BHFR6OR65FC9H/DSCF2303.jpg","p":6,"m":false,"o":false},"/shop/p/nash-seasoning":{"id":"656dac89bd20522e5fc59f47","n":"Nash seasoning","s":"Shaker","b":"Nashville heat: smoky paprika, garlic and fiery cayenne.","t":[],"c":"seasonings","i":"https://images.squarespace-cdn.com/content/v1/629f4b136b4f01431150caab/1711615759369-2XW1ZGG5FUL6RIY9DO5B/DSCF9286+copy.jpg","p":3.95,"m":false,"o":false},"/shop/p/lemon-pepper-seasoning":{"id":"656dad8c86f859321413bfca","n":"Lemon Pepper seasoning","s":"Shaker","b":"Tangy lemon zest and cracked black pepper.","t":[],"c":"seasonings","i":"https://images.squarespace-cdn.com/content/v1/629f4b136b4f01431150caab/1711615759160-OHGCK9QMQACT96EKJ6F8/DSCF9304+copy.jpg","p":3.95,"m":false,"o":false},"/shop/p/unit-cajun-seasoning":{"id":"656ce2a6263fd234be04b258","n":"Unit Cajun seasoning","s":"Shaker","b":"Paprika, garlic, onion, cayenne and herbs.","t":[],"c":"seasonings","i":"https://images.squarespace-cdn.com/content/v1/629f4b136b4f01431150caab/1711615759241-FK8TKXDD4A5837AIMJBE/DSCF9300+copy.jpg","p":3.95,"m":false,"o":false},"/shop/p/unit-fried-chicken-seasoning":{"id":"656daf2386f859321413c12d","n":"Unit Fried Chicken seasoning","s":"Shaker","b":"Smoky paprika, garlic and onion for crispy fried chicken.","t":[],"c":"seasonings","i":"https://images.squarespace-cdn.com/content/v1/629f4b136b4f01431150caab/1711615759106-7XAZ1RGKJOQ40DE0T4MT/DSCF9295+copy.jpg","p":3.95,"m":false,"o":false},"/shop/p/wisl-cola":{"id":"67444922b9528f56d3de682d","n":"WISL Cola","s":"Glass bottle","b":"Our own UK-made cola. Serve ice cold.","t":["UK made"],"c":"drinks","i":"https://images.squarespace-cdn.com/content/v1/629f4b136b4f01431150caab/5124d923-73ac-47ea-bdaa-ccf6a01e9b46/wisl+drink.jpg","p":2.75,"m":false,"o":false},"/shop/p/unit-t-shirt-5xmdr":{"id":"658820f0f48be01f827000a3","n":"Unit TaDo T-shirt","s":"Sizes S to XXL","b":"Designed by TaDo, printed by HUNK Print Sheffield.","t":["TaDo"],"c":"clothing","i":"https://static1.squarespace.com/static/629f4b136b4f01431150caab/62a1420d94069207816f4dfd/658820f0f48be01f827000a3/1787867080029/","p":27.5,"m":false,"o":false},"/shop/p/unit-t-shirt-5xmdr-dtz4c":{"id":"66c04da89f9b4134c6041065","n":"Kids Unit TaDo T-shirt","s":"6 months to 13 years","b":"The TaDo tee, sized for little Unit fans.","t":["TaDo"],"c":"clothing","i":"https://images.squarespace-cdn.com/content/v1/629f4b136b4f01431150caab/11a64bf2-73e2-4cd5-a372-1bf7ed0906d3/Screenshot+2024-08-17+at+08.14.58.png","p":16.5,"m":false,"o":false},"/shop/p/unit-hoodie":{"id":"62b20196e3b7012db5f0ff05","n":"Unit hoodie","s":"Sizes S to XL","b":"Quarter-zip, zipped pockets, thumbholes and an embroidered Unit logo.","t":[],"c":"clothing","i":"https://images.squarespace-cdn.com/content/v1/629f4b136b4f01431150caab/1667816796940-6U45EAAAU5D4NPFIL81L/unit-hoodie.jpg","p":35,"m":false,"o":false},"/shop/p/burger-socks-by-unit":{"id":"62b2c7a3b501951c70862f19","n":"Burger socks","s":"One size, UK 5+","b":"TaDo burger illustrations and the Kid Acne logo.","t":["TaDo"],"c":"clothing","i":"https://images.squarespace-cdn.com/content/v1/629f4b136b4f01431150caab/1668161546794-SOA27QT3QKBFDCKG7IZ4/DSCF2859.jpg","p":8,"m":false,"o":false},"/shop/p/burger-socks-by-unit-mygdg":{"id":"636823c87686f25e851bc2c4","n":"Unit logo beanie","s":"One size","b":"Embroidered Kid Acne Unit logo.","t":[],"c":"clothing","i":"https://images.squarespace-cdn.com/content/v1/629f4b136b4f01431150caab/1667769503010-TC9PR2I9FJBN8PU3YUF7/DSCF2806.jpg","p":13,"m":false,"o":true},"/shop/p/unit-t-shirt":{"id":"62a8dc00187fc259cb26d050","n":"Unit T-shirt","s":"Sizes M to XXL","b":"Screen printed front and back.","t":[],"c":"clothing","i":"https://images.squarespace-cdn.com/content/v1/629f4b136b4f01431150caab/1668597466514-LSUURMPMLGNJVCZER1I2/T-shirt-unit-mock-up.jpg","p":20,"m":false,"o":true},"/shop/p/lil-unit-burger-figurine":{"id":"6672b05d49eb5143d05a7eef","n":"Lil Unit burger figurine","s":"Collectable figure","b":"Our cheeky burger mascot, as a figurine.","t":[],"c":"collectables","i":"https://images.squarespace-cdn.com/content/v1/629f4b136b4f01431150caab/1718794472469-5EF428JWD9AGJDQ777JC/Unit%2Bfig%2B2.jpg","p":9,"m":false,"o":false},"/shop/p/unit-burger-enamel-pin":{"id":"62a8d72c1b613f1cd1d5f207","n":"Unit burger enamel pin","s":"Enamel pin","b":"The burger mascot by TaDo, logo by Kid Acne.","t":["TaDo"],"c":"collectables","i":"https://static1.squarespace.com/static/629f4b136b4f01431150caab/62a1420d94069207816f4dfd/62a8d72c1b613f1cd1d5f207/1787807734741/","p":4.5,"m":false,"o":false},"/shop/p/bruger-unit-enamel-pin":{"id":"656cdc25263fd234be04ae2c","n":"Burger enamel pin","s":"Enamel pin","b":"A detailed Unit burger pin for your jacket or bag.","t":[],"c":"collectables","i":"https://images.squarespace-cdn.com/content/v1/629f4b136b4f01431150caab/1701633309427-FGOWB2FAU7CUK1372L1T/DSCF2894.jpg","p":5,"m":false,"o":false},"/shop/p/unit-sticker":{"id":"656cde11190c5e2711ce4ea5","n":"Unit stickers","s":"10 designs","b":"TaDo designs, from Drippy to the 3 Fire Wings.","t":["TaDo"],"c":"collectables","i":"https://images.squarespace-cdn.com/content/v1/629f4b136b4f01431150caab/1701633766042-YMPJS7KMHP55LY76HYYR/DSCF2928.jpg","p":0.5,"m":false,"o":false},"/shop/p/burger-air-freshener":{"id":"66c0639d78b0596da8493805","n":"Burger air freshener","s":"For the car","b":"Make your car smell like Unit (sort of).","t":[],"c":"collectables","i":"https://images.squarespace-cdn.com/content/v1/629f4b136b4f01431150caab/d6e9f45a-61aa-49d5-92df-9fe2900d213f/air+freshner+1.jpg","p":2,"m":false,"o":false},"/shop/p/bamboo-burger-pins-skewers-50-pcs":{"id":"66741e6151c1ee4ca46f7f76","n":"Bamboo burger skewers","s":"Pack of 50","b":"Branded bamboo pins for stacking burgers at home.","t":[],"c":"collectables","i":"https://images.squarespace-cdn.com/content/v1/629f4b136b4f01431150caab/1718886839117-LNVM4OVHPXKJ0HC77QRX/unit+pins.png","p":5,"m":false,"o":false}}, CATN={"sauces": "House sauces", "seasonings": "Seasonings", "drinks": "Drinks", "clothing": "Clothing", "collectables": "Pins & collectables"}, HEADER="<header style=\"position: sticky; top: 0; z-index: 10; background: #FFFAF0; border-bottom: 2.5px solid #2D2926\">\n<div style=\"max-width: 1280px; margin: 0 auto; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px\">\n<a href=\"/\" aria-label=\"Unit Sheffield home\" style=\"display: flex; align-items: center; gap: 12px; text-decoration: none\">\n<div style=\"width: 132px\"><img class=\"u-anim\" src=\"https://images.squarespace-cdn.com/content/629f4b136b4f01431150caab/2069fce3-0972-403f-8fd8-95d4c3179a3a/unit-logo-still.png\" data-webm=\"https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@9be4f41/anim/unit-logo.webm\" data-webp=\"https://images.squarespace-cdn.com/content/629f4b136b4f01431150caab/92f7e9bb-ba8d-420d-8f73-d4c565f10c7b/unit-logo-ios.webp\" alt=\"UNIT, Food You Crave\" loading=\"lazy\" style=\"display: block; width: 100%; height: auto; aspect-ratio: 640 / 300\"><\/div>\n<span style=\"font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px\">The<br>shop<\/span>\n<\/a>\n<nav aria-label=\"Shop\" style=\"display: flex; flex-wrap: wrap; gap: 0 22px; font-weight: 700; font-size: 15px; text-transform: uppercase; letter-spacing: .5px\">\n<a href=\"/merch#sauces\" style=\"text-decoration: none; padding: 12px 0\">Sauces<\/a>\n<a href=\"/merch#seasonings\" style=\"text-decoration: none; padding: 12px 0\">Seasonings<\/a>\n<a href=\"/merch#drinks\" style=\"text-decoration: none; padding: 12px 0\">Drinks<\/a>\n<a href=\"/merch#clothing\" style=\"text-decoration: none; padding: 12px 0\">Clothing<\/a>\n<a href=\"/merch#collectables\" style=\"text-decoration: none; padding: 12px 0\">Collectables<\/a>\n<a href=\"/\" style=\"text-decoration: none; padding: 12px 0\">← Main site<\/a>\n<\/nav>\n<a class=\"u-btn\" href=\"/cart\" style=\"background: #F99814; color: #2D2926\">Basket<\/a>\n<\/div>\n<\/header>", FOOTER="<footer style=\"background: #2D2926; color: #FFFAF0; padding: 64px 24px 32px\">\n<div style=\"max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px\">\n<div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 32px\">\n<div style=\"display: flex; flex-direction: column; gap: 12px\">\n<div style=\"width: 230px; background: #FFFAF0; border-radius: 16px; padding: 12px 16px; box-sizing: border-box\"><img class=\"u-anim\" src=\"https://images.squarespace-cdn.com/content/629f4b136b4f01431150caab/2069fce3-0972-403f-8fd8-95d4c3179a3a/unit-logo-still.png\" data-webm=\"https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@9be4f41/anim/unit-logo.webm\" data-webp=\"https://images.squarespace-cdn.com/content/629f4b136b4f01431150caab/92f7e9bb-ba8d-420d-8f73-d4c565f10c7b/unit-logo-ios.webp\" alt=\"UNIT, Food You Crave\" loading=\"lazy\" style=\"display: block; width: 100%; height: auto; aspect-ratio: 640 / 300\"><\/div>\n<p class=\"u-disp\" style=\"margin: 0; font-size: 22px; color: #FCE053\">Food you crave.<\/p>\n<p style=\"margin: 0; font-size: 15px\">Burgers, wings, shakes and American comfort food in Sheffield.<\/p>\n<\/div>\n<div style=\"display: flex; flex-direction: column; gap: 6px; font-size: 15px\">\n<h3 style=\"margin: 0 0 4px; color: #F99814; font-size: 15px; text-transform: uppercase; letter-spacing: 1px\">Headford Street<\/h3>\n<span>88 Headford Street, Sheffield S3 7WB<\/span>\n<a href=\"tel:+441144381532\" style=\"color: #FFFAF0\">0114 438 1532<\/a>\n<span>Daily 11am–11pm<\/span>\n<\/div>\n<div style=\"display: flex; flex-direction: column; gap: 6px; font-size: 15px\">\n<h3 style=\"margin: 0 0 4px; color: #F99814; font-size: 15px; text-transform: uppercase; letter-spacing: 1px\">Valley Centertainment<\/h3>\n<span>Unit 4, Valley Centertainment, Sheffield S9 2EP<\/span>\n<a href=\"tel:+441143992513\" style=\"color: #FFFAF0\">0114 399 2513<\/a>\n<span>Sun–Thu 10am–10pm · Fri–Sat till 11pm<\/span>\n<\/div>\n<div style=\"display: flex; flex-direction: column; gap: 6px; font-size: 15px\">\n<h3 style=\"margin: 0 0 4px; color: #F99814; font-size: 15px; text-transform: uppercase; letter-spacing: 1px\">Follow @unitsheffield<\/h3>\n<a href=\"https://www.instagram.com/unit_sheffield/\" style=\"color: #FFFAF0\">Instagram<\/a>\n<a href=\"https://www.tiktok.com/@unitsheffield\" style=\"color: #FFFAF0\">TikTok<\/a>\n<a href=\"https://www.facebook.com/unitsheff\" style=\"color: #FFFAF0\">Facebook<\/a>\n<a href=\"https://twitter.com/unitsheffield\" style=\"color: #FFFAF0\">X / Twitter<\/a>\n<a href=\"https://www.linkedin.com/company/70735379\" style=\"color: #FFFAF0\">LinkedIn<\/a>\n<\/div>\n<\/div>\n<div style=\"border-top: 1.5px solid #6B625B; padding-top: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14px\">\n<span>© 2026 Unit, Sheffield · unitfood.co<\/span>\n<span>Menu · Locations · <a href=\"/business\" style=\"color: #FFFAF0\">Unit for Business<\/a> · Shop · <a href=\"/franchising\" style=\"color: #FFFAF0\">Franchising<\/a> · Contact<\/span>\n<\/div>\n<\/div>\n<\/footer>", HS='https://mylightspeed.app/PFMZNWAL/C-ordering', CT='https://mylightspeed.app/BBMBFHTY/C-ordering';
+  function money(v){return v>=1?'£'+v.toFixed(2):Math.round(v*100)+'p';}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function wrap(inner){var d=document.createElement('div');d.className='unit-site';d.innerHTML='<div class="u-tw" style="color: #2D2926; background: #FFFAF0; width: 100%; line-height: 1.55; font-size: 17px; overflow-x: hidden">'+inner+'<\/div>';return d;}
+  function card(u,p){
+    var tags=p.t.map(function(t){return '<span style="background: #2D2926; color: #FFFAF0; border-radius: 999px; padding: 2px 9px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px">'+esc(t)+'<\/span>';}).join('');
+    var img=p.i+(p.i.indexOf('?')>-1?'&':'?')+'format=600w';
+    return '<a class="u-shop-card" data-id="'+p.id+'" href="'+u+'" style="text-decoration: none; color: #2D2926; background: #FFFAF0; border: 3px solid #2D2926; border-radius: 22px; overflow: hidden; display: flex; flex-direction: column">'+
+      '<div style="position: relative; aspect-ratio: 1 / 1; background: #FFFFFF; border-bottom: 3px solid #2D2926"><img src="'+img+'" alt="'+esc(p.n)+'" loading="lazy" style="display: block; width: 100%; height: 100%; object-fit: cover">'+
+      '<span class="u-sold" style="position: absolute; left: 10px; top: 10px; background: #D1555A; color: #FFFAF0; border: 2px solid #2D2926; border-radius: 999px; padding: 3px 10px; font-size: 12px; font-weight: 700; text-transform: uppercase;'+(p.o?'':' display: none')+'">Sold out<\/span><\/div>'+
+      '<div style="padding: 16px 16px 18px; display: flex; flex-direction: column; gap: 6px; flex-grow: 1"><div style="display: flex; flex-wrap: wrap; gap: 6px">'+tags+'<\/div>'+
+      '<h3 class="u-disp" style="margin: 0; font-size: 22px; line-height: 1.1">'+esc(p.n)+'<\/h3>'+
+      '<p style="margin: 0; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: #9E6950">'+esc(p.s)+'<\/p>'+
+      '<p style="margin: 0; font-size: 15px; line-height: 1.45">'+esc(p.b)+'<\/p>'+
+      '<div style="margin-top: auto; padding-top: 8px; display: flex; align-items: center; justify-content: space-between; gap: 8px"><strong class="u-price" style="font-size: 18px">'+(p.m?'From ':'')+money(p.p)+'<\/strong>'+
+      '<span class="u-cta" style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; border-bottom: 2px solid #2D2926">'+(p.o?'View':'Buy now')+' →<\/span><\/div><\/div><\/a>';
+  }
+  function run(){
+    if(document.documentElement.__unitPdp)return; document.documentElement.__unitPdp=true;
+    var site=document.getElementById('siteWrapper')||document.body, page=document.getElementById('page');
+    var h=wrap(HEADER); site.insertBefore(h,site.firstChild);
+    var p=D[path], detail=document.querySelector('.product-detail');
+    // breadcrumb back to the new shop page
+    document.querySelectorAll('.product-nav-breadcrumb-link').forEach(function(a,i){ if(i===0){a.href='/merch'+(p?'#'+p.c:'');a.textContent='Shop';} });
+    if(p&&detail){
+      var meta=detail.querySelector('.product-meta'), title=meta&&meta.querySelector('.product-title');
+      if(title){
+        var tg=document.createElement('div');tg.className='u-pdp-tags';tg.innerHTML=p.t.map(function(t){return '<span>'+esc(t)+'<\/span>';}).join('');
+        if(p.t.length)title.parentNode.insertBefore(tg,title);
+        var sub=document.createElement('p');sub.className='u-pdp-sub';sub.textContent=CATN[p.c]+' · '+p.s;title.parentNode.insertBefore(sub,title);
+      }
+      detail.querySelectorAll('.product-description').forEach(function(d){
+        var txt=(d.textContent||'').replace(/\s+/g,' ').trim();
+        // replace blank or placeholder descriptions with our copy; keep longer hand-written ones underneath
+        d.innerHTML='<p class="u-pdp-lead" style="margin: 0 0 10px">'+esc(p.b)+'<\/p>';
+        d.style.opacity='1';
+      });
+    }
+    var atc=detail&&detail.querySelector('.product-add-to-cart');
+    if(atc){
+      var added=document.createElement('p');added.className='u-added';added.innerHTML='Added to your basket. <a href="/cart">View basket →<\/a>';
+      atc.appendChild(added);
+      var btn=atc.querySelector('.sqs-add-to-cart-button');
+      if(btn)btn.addEventListener('click',function(){setTimeout(function(){added.style.display='block';},900);});
+      var info=document.createElement('div');info.className='u-pdp-info';
+      info.innerHTML='<h2>Hungry now?<\/h2><p>Order food online and collect it from your nearest Unit.<\/p><div class="u-row"><a class="u-hot" href="'+HS+'">Collect from Headford St<\/a><a class="u-hot" href="'+CT+'">Collect from Centertainment<\/a><\/div>';
+      atc.parentNode.insertBefore(info,atc.nextSibling);
+    }
+    // more from the shop
+    var others=Object.keys(D).filter(function(u){return u!==path;});
+    var same=others.filter(function(u){return p&&D[u].c===p.c;}), rest=others.filter(function(u){return !p||D[u].c!==p.c;});
+    var pickU=same.concat(rest).filter(function(u){return !D[u].o;}).slice(0,4);
+    var more='<section style="max-width: 1280px; margin: 0 auto; padding: 8px 24px 64px; display: flex; flex-direction: column; gap: 22px">'+
+      '<div style="display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px"><h2 class="u-disp" style="margin: 0; font-size: clamp(30px, 4vw, 46px); line-height: 1.02; color: #9E6950">More from the shop<\/h2>'+
+      '<a class="u-btn" href="/merch" style="background: #FFFAF0; color: #2D2926">See everything<\/a><\/div>'+
+      '<div class="u-shop-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 20px">'+pickU.map(function(u){return card(u,D[u]);}).join('')+'<\/div><\/section>';
+    var m=wrap(more+FOOTER);
+    if(page&&page.parentNode)page.parentNode.insertBefore(m,page.nextSibling);else site.appendChild(m);
+    // live prices / stock for the cards
+    fetch('/shop?format=json',{credentials:'same-origin'}).then(function(r){return r.json();}).then(function(j){
+      (j.items||[]).forEach(function(it){
+        var c=m.querySelector('.u-shop-card[data-id="'+it.id+'"]'); if(!c)return;
+        var vs=(it.structuredContent&&it.structuredContent.variants)||[]; if(!vs.length)return;
+        var pr=vs.map(function(v){return v.onSale?(v.salePriceMoney?+v.salePriceMoney.value:v.salePrice/100):(v.priceMoney?+v.priceMoney.value:v.price/100);});
+        var mn=Math.min.apply(null,pr), multi=pr.some(function(x){return x!==pr[0];}), stock=vs.some(function(v){return v.unlimited||v.qtyInStock>0;});
+        var pe=c.querySelector('.u-price'); if(pe)pe.textContent=(multi?'From ':'')+money(mn);
+        var so=c.querySelector('.u-sold'); if(so)so.style.display=stock?'none':'';
+      });
+    }).catch(function(){});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
+})();
+</script>
