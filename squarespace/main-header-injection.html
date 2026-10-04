@@ -16,7 +16,15 @@ body{background:#FFFAF0}
 .page-section:has(.unit-site) .sqs-block-content{width:100%!important}
 .page-section:has(.unit-site) .sqs-row{margin-left:0!important;margin-right:0!important}
 .page-section:has(.unit-site) .sqs-col-12, .page-section:has(.unit-site) [class*=sqs-col-]{padding-left:0!important;padding-right:0!important}
-.page-section:has(.unit-site) .sqs-block:not(:has(.unit-site)){display:none!important}
+.page-section:has(.unit-site) .sqs-block-html:not(:has(.unit-site)){display:none!important}
+/* Native Squarespace form placed between the two code blocks */
+.page-section:has(.unit-site) .sqs-block-form{background:#F99814!important;padding:8px 24px 80px!important;border-bottom:3px solid #2D2926;font-family:'American Typewriter','Courier Prime',serif;color:#2D2926}
+.page-section:has(.unit-site) .sqs-block-form .sqs-block-content{max-width:860px!important;margin:0 auto!important;background:#FFFAF0;border:3px solid #2D2926;border-radius:24px;padding:clamp(20px,3vw,36px)!important;box-sizing:border-box}
+.page-section:has(.unit-site) .sqs-block-form .form-title{font-family:'Motter Corpus ITC TT','Motter Corpus',Corben,Georgia,serif;font-weight:700;font-size:28px;color:#9E6950}
+.page-section:has(.unit-site) .sqs-block-form label, .page-section:has(.unit-site) .sqs-block-form legend, .page-section:has(.unit-site) .sqs-block-form .title{font-family:'American Typewriter','Courier Prime',serif!important;font-weight:700!important;font-size:14px!important;text-transform:uppercase;letter-spacing:.5px;color:#2D2926!important}
+.page-section:has(.unit-site) .sqs-block-form input:not([type=checkbox]):not([type=radio]), .page-section:has(.unit-site) .sqs-block-form textarea, .page-section:has(.unit-site) .sqs-block-form select{font-family:'American Typewriter','Courier Prime',serif!important;font-size:16px!important;color:#2D2926!important;background:#FFFAF0!important;border:2.5px solid #2D2926!important;border-radius:14px!important;padding:12px 14px!important;min-height:48px}
+.page-section:has(.unit-site) .sqs-block-form button[type=submit], .page-section:has(.unit-site) .sqs-block-form .form-submit-button, .page-section:has(.unit-site) .sqs-block-form input[type=submit]{font-family:'American Typewriter','Courier Prime',serif!important;background:#2D2926!important;color:#FFFAF0!important;border:2.5px solid #2D2926!important;border-radius:999px!important;min-height:56px;padding:0 32px!important;text-transform:uppercase;font-weight:700!important;letter-spacing:.5px}
+.page-section:has(.unit-site) .sqs-block-form .form-submission-text{font-family:'American Typewriter','Courier Prime',serif;font-size:18px;color:#2D2926}
 html, body{overflow-x:hidden}
 /* Native form section styling to match the design */
 .page-section.unit-form-section, .page-section:has(.sqs-block-form):not(:has(.unit-site)){background:#F99814!important;border-bottom:3px solid #2D2926}
