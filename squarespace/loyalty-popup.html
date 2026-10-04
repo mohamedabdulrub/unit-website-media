@@ -1,0 +1,73 @@
+<!-- Unit Rewards: free sundae popup. Paste into Settings > Developer tools > Code injection > Footer -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Corben:wght@400;700&family=Courier+Prime:wght@400;700&display=swap">
+<style>
+#u-loy, #u-loy *{box-sizing:border-box}
+#u-loy{position:fixed;inset:0;z-index:99998;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(45,41,38,.55)}
+#u-loy.u-open{display:flex;animation:uLoyFade .25s ease}
+#u-loy .u-card{position:relative;width:100%;max-width:440px;background:#FFFAF0;color:#2D2926;border:3px solid #2D2926;border-radius:26px;box-shadow:0 8px 0 #2D2926;overflow:hidden;font-family:'American Typewriter','Courier Prime','Courier New',serif;text-align:center;animation:uLoyPop .3s cubic-bezier(.2,1.4,.4,1)}
+#u-loy .u-top{background:#F99814;border-bottom:3px solid #2D2926;padding:22px 20px 14px}
+#u-loy .u-top svg{display:block;margin:0 auto;width:96px;height:96px}
+#u-loy .u-body{padding:20px 24px 24px}
+#u-loy .u-kick{margin:0 0 6px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#9E6950}
+#u-loy h2{margin:0 0 10px;font-family:'Motter Corpus ITC TT','Motter Corpus',MOTTCI,Corben,Georgia,serif;font-weight:700;font-size:34px;line-height:1.02;text-transform:uppercase;color:#9E6950;letter-spacing:normal}
+#u-loy p{margin:0 0 18px;font-size:16px;line-height:1.5;color:#2D2926}
+#u-loy .u-go{display:flex;align-items:center;justify-content:center;width:100%;min-height:54px;padding:0 20px;background:#F99814;color:#2D2926!important;border:2.5px solid #2D2926;border-radius:999px;box-shadow:0 4px 0 #2D2926;font-family:inherit;font-weight:700;font-size:16px;text-transform:uppercase;letter-spacing:.5px;text-decoration:none!important;transition:transform .12s ease,box-shadow .12s ease,background .12s ease}
+#u-loy .u-go:hover{background:#FCE053;transform:translateY(-2px);box-shadow:0 6px 0 #2D2926}
+#u-loy .u-no{margin-top:12px;background:none;border:0;padding:6px;font-family:inherit;font-size:14px;color:#2D2926;text-decoration:underline;cursor:pointer}
+#u-loy .u-x{position:absolute;top:10px;right:10px;width:40px;height:40px;border-radius:999px;border:2.5px solid #2D2926;background:#FFFAF0;color:#2D2926;font-size:22px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
+#u-loy .u-fine{margin:12px 0 0;font-size:12px;line-height:1.4;opacity:.75}
+#u-loy-pill{position:fixed;left:16px;bottom:16px;z-index:99997;display:none;align-items:center;gap:8px;min-height:46px;padding:0 16px 0 10px;background:#FCE053;color:#2D2926;border:2.5px solid #2D2926;border-radius:999px;box-shadow:0 4px 0 #2D2926;font-family:'American Typewriter','Courier Prime','Courier New',serif;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.4px;cursor:pointer}
+#u-loy-pill svg{width:28px;height:28px}
+#u-loy-pill:hover{background:#F99814}
+#u-loy-pill.u-show{display:inline-flex}
+@media (max-width:767px){
+  #u-loy h2{font-size:30px}
+  #u-loy-pill{left:12px;bottom:84px;min-height:42px;font-size:13px}
+}
+@keyframes uLoyFade{from{opacity:0}to{opacity:1}}
+@keyframes uLoyPop{from{transform:translateY(20px) scale(.96);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){#u-loy.u-open,#u-loy .u-card{animation:none}}
+</style>
+<script>
+(function(){
+  var JOIN='https://joinpass.co/join/k57bzxd6jn7f0x7m453zzghbcx81z9jh';
+  var KEY='unitLoyalty', DAYS=7, DELAY=12000;
+  try{ if(window.top!==window.self) return; }catch(e){ return; }
+  var p=location.pathname;
+  if(/^\/(cart|checkout|commerce|account|config)/.test(p)) return;
+  function get(){ try{ return JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){ return {}; } }
+  function set(o){ try{ localStorage.setItem(KEY, JSON.stringify(o)); }catch(e){} }
+  var ICON='<svg viewBox="0 0 96 96" aria-hidden="true"><path d="M30 44c-6 0-9-5-7-10 2-4 7-5 10-3 1-7 7-11 15-11s14 4 15 11c3-2 8-1 10 3 2 5-1 10-7 10z" fill="#FFFAF0" stroke="#2D2926" stroke-width="3" stroke-linejoin="round"/><path d="M33 31c3 4 3 9 0 13M50 26c-2 6 1 12 6 18" fill="none" stroke="#9E6950" stroke-width="4" stroke-linecap="round"/><circle cx="48" cy="17" r="6" fill="#D1555A" stroke="#2D2926" stroke-width="3"/><path d="M48 11c2-5 6-7 10-7" fill="none" stroke="#2D2926" stroke-width="3" stroke-linecap="round"/><path d="M18 44h60l-8 18H26z" fill="#FCE053" stroke="#2D2926" stroke-width="3" stroke-linejoin="round"/><path d="M40 62h16l-3 16H43z" fill="#FFFAF0" stroke="#2D2926" stroke-width="3" stroke-linejoin="round"/><path d="M32 86h32" stroke="#2D2926" stroke-width="5" stroke-linecap="round"/></svg>';
+  function build(){
+    if(document.getElementById('u-loy')) return;
+    var m=document.createElement('div'); m.id='u-loy'; m.setAttribute('role','dialog'); m.setAttribute('aria-modal','true'); m.setAttribute('aria-labelledby','u-loy-t');
+    m.innerHTML='<div class="u-card"><button class="u-x" type="button" aria-label="Close">&times;</button>'+
+      '<div class="u-top">'+ICON+'</div><div class="u-body">'+
+      '<p class="u-kick">Unit Rewards</p><h2 id="u-loy-t">Free sundae on us</h2>'+
+      '<p>Join our free loyalty club and get a sundae on the house, plus rewards every time you eat at Headford Street or Valley Centertainment.</p>'+
+      '<a class="u-go" href="'+JOIN+'" target="_blank" rel="noopener">Join free &amp; claim my sundae</a>'+
+      '<button class="u-no" type="button">Maybe later</button>'+
+      '<p class="u-fine">Takes 30 seconds. Adds a card to your phone wallet.</p></div></div>';
+    document.body.appendChild(m);
+    var pill=document.createElement('button'); pill.id='u-loy-pill'; pill.type='button'; pill.setAttribute('aria-label','Join Unit Rewards for a free sundae');
+    pill.innerHTML=ICON+'<span>Free sundae</span>';
+    document.body.appendChild(pill);
+    function close(){ m.classList.remove('u-open'); var s=get(); s.dismissed=Date.now(); set(s); if(!s.joined) pill.classList.add('u-show'); }
+    m.querySelector('.u-x').onclick=close; m.querySelector('.u-no').onclick=close;
+    m.addEventListener('click',function(e){ if(e.target===m) close(); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&m.classList.contains('u-open')) close(); });
+    m.querySelector('.u-go').addEventListener('click',function(){ var s=get(); s.joined=Date.now(); set(s); m.classList.remove('u-open'); pill.classList.remove('u-show'); });
+    pill.onclick=function(){ m.classList.add('u-open'); m.querySelector('.u-go').focus(); };
+    var s=get();
+    if(s.joined) return;
+    var recent=s.dismissed && (Date.now()-s.dismissed) < DAYS*864e5;
+    if(recent){ pill.classList.add('u-show'); return; }
+    var shown=false;
+    function show(){ if(shown) return; shown=true; m.classList.add('u-open'); window.removeEventListener('scroll',onScroll); }
+    function onScroll(){ var h=document.documentElement; if((h.scrollTop||document.body.scrollTop)/Math.max(1,h.scrollHeight-h.clientHeight)>0.35) show(); }
+    setTimeout(show, DELAY);
+    window.addEventListener('scroll',onScroll,{passive:true});
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',build); else build();
+})();
+</script>
