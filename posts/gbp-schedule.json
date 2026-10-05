@@ -34,7 +34,7 @@
    "button": "Order online",
    "button_url": "https://mylightspeed.app/PFMZNWAL/C-ordering",
    "image": "https://images.squarespace-cdn.com/content/629f4b136b4f01431150caab/24f22691-bf33-4cb4-8ac1-1a9391d58c16/unit-menu-beef.jpg",
-   "text": "Lunch sorted in Sheffield city centre. Order your smashed beef burger online, skip the queue and collect from Unit Headford Street. Made fresh to order with meat from our local butcher, served with our signature fries. Open 11am to 11pm, 7 days.",
+   "text": "Lunch sorted in Sheffield city centre. Our £10 lunch deal runs Monday to Friday, 10am to 4pm. Order online, skip the queue and collect from Unit Headford Street, or come in and eat. Smashed burgers made fresh with meat from our local butcher.",
    "day": "Mon"
   },
   {
@@ -46,7 +46,7 @@
    "button": "Order online",
    "button_url": "https://mylightspeed.app/BBMBFHTY/C-ordering",
    "image": "https://images.squarespace-cdn.com/content/629f4b136b4f01431150caab/c417ccc6-c9d9-41fe-9f97-28e3fcd4e904/unit-ci-burger.jpg",
-   "text": "Shopping at Meadowhall or IKEA? Order a smashed burger online and collect from Unit Valley Centertainment, just minutes away. Free parking right outside.",
+   "text": "Shopping at Meadowhall or IKEA? Our £10 lunch deal runs Monday to Friday, 10am to 4pm at Unit Valley Centertainment, just minutes away with free parking. Order online for collection or come in and eat.",
    "day": "Mon"
   },
   {
@@ -418,7 +418,7 @@
    "button": "Order online",
    "button_url": "https://mylightspeed.app/PFMZNWAL/C-ordering",
    "image": "https://images.squarespace-cdn.com/content/629f4b136b4f01431150caab/dccf3b00-cd2e-47b4-891f-0589c722561b/unit-menu-chicken.jpg",
-   "text": "Midweek lunch, sorted. Order a chicken burger online and collect from Unit Headford Street in minutes.",
+   "text": "Midweek lunch, sorted. The £10 lunch deal runs Monday to Friday, 10am to 4pm at Unit Headford Street. Order online and collect in minutes, or grab a booth.",
    "day": "Mon"
   },
   {
@@ -466,7 +466,7 @@
    "button": "Order online",
    "button_url": "https://mylightspeed.app/PFMZNWAL/C-ordering",
    "image": "https://images.squarespace-cdn.com/content/629f4b136b4f01431150caab/406819db-d4b4-49ee-84a1-d6c6fa15aadc/unit-menu-wings.jpg",
-   "text": "Wing night? Every day is wing day at Unit. Order online for collection from Headford Street.",
+   "text": "Wing Wednesdays at Unit: buy one, get one free on wings at Headford Street. Buffalo, BBQ, Korean, lemon pepper and more. Order online for collection or come in this Wednesday.",
    "day": "Mon"
   },
   {
@@ -478,7 +478,7 @@
    "button": "Order online",
    "button_url": "https://mylightspeed.app/BBMBFHTY/C-ordering",
    "image": "https://images.squarespace-cdn.com/content/629f4b136b4f01431150caab/406819db-d4b4-49ee-84a1-d6c6fa15aadc/unit-menu-wings.jpg",
-   "text": "Every day is wing day. Order wings online for collection from Unit Valley Centertainment.",
+   "text": "Wing Wednesdays at Unit: buy one, get one free on wings at Valley Centertainment. Order online for collection or come in this Wednesday, with free parking right outside.",
    "day": "Mon"
   },
   {
