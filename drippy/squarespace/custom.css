@@ -319,6 +319,15 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 .md-points--light .md-point{background:var(--paper);border:var(--b);box-shadow:var(--sh-sm)}
 .md-points--light .md-point p{opacity:1}
 
+/* keep grids inside phone screens */
+.md-split{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.md-near{grid-template-columns:repeat(4,minmax(0,1fr))}
+.md-facts{grid-template-columns:repeat(3,minmax(0,1fr))}
+.md-near li,.md-fact{min-width:0;overflow-wrap:anywhere}
+@media (max-width:900px){.md-split,.md-facts{grid-template-columns:minmax(0,1fr)!important}.md-near{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Squarespace's own scroll animations nudge blocks sideways; switch them off inside the redesign */
+.md-site .preSlide,.md-site .preFade,.md-site .preScale,.md-site .preClip{transform:none!important;opacity:1!important;clip-path:none!important}
+
 /* ---------- Motion safety ---------- */
 @media (prefers-reduced-motion:reduce){
   .md-marquee__track,.md-hero__mascot{animation:none}
