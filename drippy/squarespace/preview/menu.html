@@ -1,0 +1,359 @@
+<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Menu | Miss Drippy &amp; Co. Sheffield</title><style>body{margin:0;background:#FFF4E8}/* =====================================================================
+   MISS DRIPPY & CO. — site redesign
+   Paste ALL of this into: Website > Pages > Design (Website Tools) > Custom CSS
+   Works on the Basic plan: no JavaScript or code injection needed.
+   Every page is one Code Block wrapped in <div class="md-site">.
+   ===================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=Space+Mono:wght@400;700&display=swap');
+
+/* ---------- Squarespace chrome: hide template header/footer on redesigned pages ---------- */
+body:has(.md-site) #header,
+body:has(.md-site) header.header,
+body:has(.md-site) .header-announcement-bar-wrapper,
+body:has(.md-site) #footer-sections,
+body:has(.md-site) footer.sections{display:none!important}
+body:has(.md-site){background:#FFF4E8!important}
+body:has(.md-site) #siteWrapper,
+body:has(.md-site) #page,
+body:has(.md-site) .content-wrapper{padding-top:0!important}
+.page-section:has(.md-site){padding:0!important;min-height:0!important}
+.page-section:has(.md-site) .section-background{display:none!important}
+.page-section:has(.md-site) .content-wrapper{padding:0!important;max-width:none!important;width:100%!important}
+.page-section:has(.md-site) .content{width:100%!important}
+.page-section:has(.md-site) .fluid-engine{display:block!important}
+.page-section:has(.md-site) .fe-block{width:100%!important;height:auto!important;grid-area:auto!important;position:static!important}
+.page-section:has(.md-site) .sqs-block{padding:0!important}
+.page-section:has(.md-site) .sqs-block-content{width:100%!important}
+.page-section:has(.md-site) .sqs-row{margin-left:0!important;margin-right:0!important}
+.page-section:has(.md-site) [class*=sqs-col-]{padding-left:0!important;padding-right:0!important}
+.page-section:has(.md-site) .sqs-block-html:not(:has(.md-site)),
+.page-section:has(.md-site) .sqs-block-image:not(:has(.md-site)),
+.page-section:has(.md-site) .sqs-block-button:not(:has(.md-site)){display:none!important}
+/* Keep the theme from hiding line breaks on phones */
+.md-site br{display:inline!important}
+
+/* ---------- Tokens ---------- */
+.md-site{
+  --ink:#1A1714; --cream:#FFF4E8; --paper:#FFFFFF;
+  --pink:#FF9ACB; --pink-soft:#FFD4E8; --hot:#FF3E8E;
+  --orange:#FF7A1F; --mustard:#F2B04E; --choc:#5A3322; --sky:#7FD3FF; --sky-soft:#D6F1FF;
+  --r:22px; --b:3px solid var(--ink); --sh:6px 6px 0 var(--ink); --sh-sm:4px 4px 0 var(--ink);
+  --display:'Bagel Fat One','Cooper Black',Georgia,serif;
+  --body:'DM Sans',system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:'Space Mono',ui-monospace,Menlo,monospace;
+  font-family:var(--body); color:var(--ink); background:var(--cream);
+  font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased;
+  overflow-x:clip; width:100%;
+}
+.md-site *,.md-site *::before,.md-site *::after{box-sizing:border-box}
+.md-site img,.md-site video{display:block;max-width:100%}
+.md-site a{color:inherit}
+.md-site h1,.md-site h2,.md-site h3,.md-site h4{font-family:var(--display);font-weight:400;line-height:.98;letter-spacing:-.01em;margin:0;color:var(--ink);text-transform:none}
+.md-site p{margin:0 0 1em}
+.md-site ul{margin:0;padding:0;list-style:none}
+.md-wrap{width:min(1240px,100% - 32px);margin-inline:auto}
+.md-kicker{font-family:var(--mono);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.md-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.md-site :focus-visible{outline:3px solid var(--hot);outline-offset:3px;border-radius:8px}
+
+/* ---------- Buttons & stickers ---------- */
+.md-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 22px;border:var(--b);border-radius:999px;background:var(--paper);box-shadow:var(--sh-sm);font-family:var(--body);font-weight:800;font-size:16px;line-height:1.1;text-decoration:none!important;color:var(--ink)!important;transition:transform .15s ease,box-shadow .15s ease;white-space:nowrap}
+.md-btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.md-btn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
+.md-btn--uber{background:#06C167}
+.md-btn--roo{background:#00CCBC}
+.md-btn--ink{background:var(--ink);color:var(--cream)!important;box-shadow:4px 4px 0 var(--hot)}
+.md-btn--pink{background:var(--pink)}
+.md-btn--orange{background:var(--orange)}
+.md-btn--sm{min-height:44px;padding:9px 16px;font-size:14px}
+.md-btn small{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;opacity:.85}
+.md-sticker{display:inline-block;font-family:var(--mono);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;background:var(--mustard);border:var(--b);border-radius:999px;padding:7px 14px;box-shadow:var(--sh-sm);transform:rotate(-3deg)}
+.md-star{display:inline-block;color:var(--orange);-webkit-text-stroke:1.5px var(--ink);font-size:1.1em;line-height:1}
+
+/* ---------- Nav ---------- */
+.md-nav{position:sticky;top:0;z-index:50;background:var(--cream);border-bottom:var(--b)}
+.md-nav__in{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
+.md-nav__logo img{height:56px;width:auto}
+.md-nav__links{display:flex;align-items:center;gap:6px}
+.md-nav__links a{font-weight:800;font-size:15px;text-decoration:none;padding:10px 14px;border-radius:999px;border:2px solid transparent}
+.md-nav__links a:hover,.md-nav__links a[aria-current=page]{border-color:var(--ink);background:var(--pink-soft)}
+.md-nav__links .md-btn{margin-left:6px}
+@media (max-width:860px){
+  .md-nav__links a:not(.md-btn){display:none}
+  .md-nav__in{min-height:64px}
+  .md-nav__logo img{height:38px}
+}
+
+/* ---------- Hero ---------- */
+.md-hero{position:relative;background:var(--pink);border-bottom:var(--b);overflow:hidden;
+  background-image:radial-gradient(circle at 12% 18%,rgba(127,211,255,.75) 0 120px,transparent 260px),radial-gradient(circle at 88% 82%,rgba(255,62,142,.45) 0 140px,transparent 320px),radial-gradient(rgba(26,23,20,.13) 1.2px,transparent 1.6px);
+  background-size:auto,auto,14px 14px}
+.md-hero__in{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:64px 0 88px}
+.md-hero h1{font-size:clamp(56px,8.4vw,124px);margin:18px 0 22px}
+.md-hero h1 em{font-style:normal;color:var(--paper);-webkit-text-stroke:3px var(--ink);paint-order:stroke fill;text-shadow:5px 5px 0 var(--ink)}
+.md-hero__lede{font-size:clamp(18px,1.6vw,21px);max-width:34em;font-weight:500}
+.md-hero__ctas{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 18px}
+.md-hero__where{font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.04em}
+.md-hero__where a{text-decoration-thickness:2px;text-underline-offset:3px}
+.md-hero__media{position:relative;justify-self:center;width:min(420px,100%)}
+.md-hero__frame{position:relative;border:var(--b);border-radius:32px;overflow:hidden;box-shadow:10px 10px 0 var(--ink);transform:rotate(2deg);background:var(--choc);aspect-ratio:9/16}
+.md-hero__frame video,.md-hero__frame img{width:100%;height:100%;object-fit:cover}
+.md-hero__tag{position:absolute;left:-26px;bottom:56px;z-index:2;transform:rotate(-8deg);background:var(--paper);font-size:14px}
+.md-hero__mascot{position:absolute;right:-34px;top:-30px;width:132px;z-index:2;transform:rotate(10deg);filter:drop-shadow(4px 4px 0 var(--ink));animation:md-bob 3.2s ease-in-out infinite}
+@keyframes md-bob{0%,100%{transform:rotate(10deg) translateY(0)}50%{transform:rotate(4deg) translateY(-10px)}}
+@media (max-width:900px){
+  .md-hero__in{grid-template-columns:1fr;gap:36px;padding:40px 0 72px}
+  .md-hero__media{width:min(330px,82%)}
+  .md-hero__mascot{width:96px;right:-22px;top:-22px}
+  .md-hero__tag{left:-14px}
+}
+
+/* ---------- Drip edge ---------- */
+.md-drip{display:block;width:100%;height:46px;margin-top:-1px}
+.md-drip path{fill:var(--choc)}
+
+/* ---------- Marquee ---------- */
+.md-marquee{background:var(--ink);color:var(--cream);overflow:hidden;border-bottom:var(--b);padding:14px 0}
+.md-marquee__track{display:flex;width:max-content;animation:md-scroll 28s linear infinite}
+.md-marquee span{font-family:var(--display);font-size:clamp(24px,3vw,38px);white-space:nowrap;padding-right:28px}
+.md-marquee span b{color:var(--pink);font-weight:400;padding-left:28px}
+@keyframes md-scroll{to{transform:translateX(-50%)}}
+
+/* ---------- Sections ---------- */
+.md-sec{padding:96px 0;border-bottom:var(--b)}
+.md-sec--choc{background:var(--choc);color:var(--cream)}
+.md-sec--choc h2,.md-sec--choc h3{color:var(--cream)}
+.md-sec--sky{background:var(--sky-soft)}
+.md-sec--pink{background:var(--pink-soft)}
+.md-sec--cream{background:var(--cream)}
+.md-sec--ink{background:var(--ink);color:var(--cream)}
+.md-sec--ink h2,.md-sec--ink h3{color:var(--cream)}
+.md-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:44px}
+.md-head h2{font-size:clamp(44px,6vw,84px)}
+.md-head p{max-width:30em;margin:0;font-size:18px}
+@media (max-width:700px){.md-sec{padding:68px 0}.md-head{margin-bottom:30px}}
+
+/* ---------- Fan fave cards ---------- */
+.md-faves{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.md-card{position:relative;display:flex;flex-direction:column;background:var(--paper);border:var(--b);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;color:var(--ink);transition:transform .2s ease}
+.md-card:nth-child(4n+1){transform:rotate(-1.2deg)}
+.md-card:nth-child(4n+2){transform:rotate(.8deg)}
+.md-card:nth-child(4n+3){transform:rotate(-.6deg)}
+.md-card:nth-child(4n+4){transform:rotate(1.1deg)}
+.md-card:hover{transform:rotate(0) translateY(-6px)}
+.md-card__img{aspect-ratio:4/5;overflow:hidden;border-bottom:var(--b);background:var(--pink-soft)}
+.md-card__img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.md-card:hover .md-card__img img{transform:scale(1.05)}
+.md-card__body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.md-card h3{font-size:26px;color:var(--ink)}
+.md-card p{font-size:15px;margin:0;color:#3d3530}
+.md-card__price{position:absolute;top:14px;right:14px;z-index:2;font-family:var(--mono);font-weight:700;font-size:15px;background:var(--mustard);border:var(--b);border-radius:999px;padding:5px 12px;box-shadow:var(--sh-sm);transform:rotate(6deg)}
+.md-card__badge{position:absolute;top:14px;left:14px;z-index:2;font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;background:var(--paper);border:2px solid var(--ink);border-radius:999px;padding:5px 10px}
+@media (max-width:1000px){.md-faves{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){
+  .md-faves{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:78%;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 16px 22px;margin-inline:-16px;scrollbar-width:none}
+  .md-faves::-webkit-scrollbar{display:none}
+  .md-card{scroll-snap-align:center}
+}
+
+/* ---------- Different / features ---------- */
+.md-diff{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.md-diff__photo{position:relative}
+.md-diff__photo img{border:var(--b);border-radius:28px;box-shadow:10px 10px 0 var(--pink);transform:rotate(-2deg);width:100%;aspect-ratio:4/5;object-fit:cover}
+.md-diff__photo .md-sticker{position:absolute;right:-10px;bottom:26px;transform:rotate(6deg);background:var(--sky)}
+.md-diff h2{font-size:clamp(44px,5.6vw,80px);margin-bottom:28px}
+.md-points{display:grid;gap:16px}
+.md-point{display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;background:rgba(255,244,232,.08);border:2px solid rgba(255,244,232,.35);border-radius:18px;padding:16px 18px}
+.md-point__ico{width:56px;height:56px;border-radius:50%;background:var(--pink);border:var(--b);display:grid;place-items:center;font-family:var(--display);font-size:26px;color:var(--ink)}
+.md-point:nth-child(2) .md-point__ico{background:var(--mustard)}
+.md-point:nth-child(3) .md-point__ico{background:var(--sky)}
+.md-point h3{font-size:24px;margin-bottom:4px}
+.md-point p{margin:0;font-size:16px;opacity:.92}
+@media (max-width:900px){.md-diff{grid-template-columns:1fr;gap:40px}.md-diff__photo{max-width:440px}}
+
+/* ---------- Menu teaser chips ---------- */
+.md-cats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.md-cat{display:flex;align-items:center;gap:16px;background:var(--paper);border:var(--b);border-radius:20px;box-shadow:var(--sh-sm);padding:12px 18px 12px 12px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease}
+.md-cat:hover{transform:translate(-2px,-2px);box-shadow:var(--sh)}
+.md-cat img{width:76px;height:76px;border-radius:14px;border:2px solid var(--ink);object-fit:cover;flex:none}
+.md-cat b{display:block;font-family:var(--display);font-weight:400;font-size:24px;line-height:1}
+.md-cat span{font-family:var(--mono);font-size:13px;font-weight:700}
+.md-cat i{margin-left:auto;font-style:normal;font-size:22px;font-weight:800}
+@media (max-width:900px){.md-cats{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.md-cats{grid-template-columns:1fr}}
+
+/* ---------- Locations / order ---------- */
+.md-locs{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.md-loc{background:var(--paper);border:var(--b);border-radius:28px;box-shadow:var(--sh);overflow:hidden;display:flex;flex-direction:column}
+.md-loc__top{padding:26px 26px 20px;background:var(--pink);border-bottom:var(--b)}
+.md-loc:nth-child(2) .md-loc__top{background:var(--sky)}
+.md-loc__top .md-kicker{display:inline-block;background:var(--paper);border:2px solid var(--ink);border-radius:999px;padding:4px 10px;margin-bottom:12px}
+.md-loc h3{font-size:clamp(34px,3.6vw,48px)}
+.md-loc__body{padding:22px 26px 26px;display:flex;flex-direction:column;gap:16px;flex:1}
+.md-loc__meta{display:grid;gap:8px;font-size:16px}
+.md-loc__meta div{display:grid;grid-template-columns:92px 1fr;gap:10px}
+.md-loc__meta dt{font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding-top:3px}
+.md-loc__meta dd{margin:0}
+.md-loc__btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+.md-loc__btns .md-btn{flex:1 1 180px}
+.md-loc__btns--col{flex-direction:column;align-items:stretch}.md-loc__btns--col .md-btn{flex:none}
+.md-loc__links{display:flex;flex-wrap:wrap;gap:8px 18px;font-weight:800;font-size:15px}
+.md-loc__links a{text-decoration-thickness:2px;text-underline-offset:4px}
+@media (max-width:860px){.md-locs{grid-template-columns:1fr}}
+
+/* ---------- Insta strip ---------- */
+.md-insta{display:grid;grid-template-columns:1.1fr 2fr;gap:40px;align-items:center}
+.md-insta h2{font-size:clamp(44px,5.4vw,76px);margin-bottom:18px}
+.md-insta__mascot{width:150px;aspect-ratio:1;border-radius:50%;border:var(--b);box-shadow:var(--sh-sm);overflow:hidden;background:#fff;margin-bottom:22px}
+.md-insta__mascot video,.md-insta__mascot img{width:100%;height:100%;object-fit:cover;transform:scale(1.22)}
+.md-insta__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.md-insta__grid a{display:block;border:var(--b);border-radius:18px;overflow:hidden;aspect-ratio:1;box-shadow:var(--sh-sm)}
+.md-insta__grid a:nth-child(odd){transform:rotate(-1.5deg)}
+.md-insta__grid a:nth-child(even){transform:rotate(1.5deg)}
+.md-insta__grid img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.md-insta__grid a:hover img{transform:scale(1.07)}
+@media (max-width:860px){.md-insta{grid-template-columns:1fr}.md-insta__grid{grid-template-columns:repeat(3,1fr);gap:10px}}
+
+/* ---------- FAQ ---------- */
+.md-faq{display:grid;gap:14px;max-width:880px}
+.md-faq details{background:var(--paper);border:var(--b);border-radius:18px;box-shadow:var(--sh-sm)}
+.md-faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:18px 22px;font-weight:800;font-size:18px}
+.md-faq summary::-webkit-details-marker{display:none}
+.md-faq summary::after{content:'+';font-family:var(--display);font-size:30px;line-height:1;transition:transform .2s ease}
+.md-faq details[open] summary::after{transform:rotate(45deg)}
+.md-faq details>div{padding:0 22px 18px;font-size:16px}
+.md-faq details>div p:last-child{margin:0}
+
+/* ---------- Footer ---------- */
+.md-foot{background:var(--ink);color:var(--cream);padding:64px 0 120px}
+.md-foot__in{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:32px}
+.md-foot img{height:110px;width:auto;margin-bottom:16px}
+.md-foot h4{font-family:var(--mono);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--pink);margin-bottom:12px}
+.md-foot li{margin-bottom:8px}
+.md-foot a{text-decoration:none;font-weight:500}
+.md-foot a:hover{text-decoration:underline}
+.md-foot__fine{margin-top:44px;padding-top:20px;border-top:1px solid rgba(255,244,232,.2);font-size:13px;opacity:.75;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+@media (max-width:860px){.md-foot__in{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.md-foot__in{grid-template-columns:1fr}}
+
+/* ---------- Sticky order bar (phones) ---------- */
+.md-bar{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:none;background:var(--ink);color:var(--cream);border:var(--b);border-radius:20px;box-shadow:0 8px 24px rgba(0,0,0,.25);padding:10px}
+.md-bar p{margin:0 0 8px;text-align:center;font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--pink)}
+.md-bar__btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.md-bar .md-btn{min-height:46px;padding:8px 10px;font-size:14px;box-shadow:none;border-width:2px;flex-direction:column;gap:0}
+@media (max-width:760px){.md-bar{display:block}}
+
+/* ---------- Inner page hero ---------- */
+.md-phero{background:var(--mustard);border-bottom:var(--b);padding:56px 0 64px;background-image:radial-gradient(rgba(26,23,20,.14) 1.2px,transparent 1.6px);background-size:14px 14px}
+.md-phero--pink{background-color:var(--pink)}
+.md-phero--sky{background-color:var(--sky)}
+.md-phero__in{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.md-phero h1{font-size:clamp(48px,7vw,104px);margin:14px 0 18px}
+.md-phero p{font-size:19px;max-width:36em;font-weight:500}
+.md-phero__img{border:var(--b);border-radius:28px;box-shadow:10px 10px 0 var(--ink);transform:rotate(2deg);overflow:hidden;aspect-ratio:4/5;max-width:400px;justify-self:center;width:100%}
+.md-phero__img img{width:100%;height:100%;object-fit:cover}
+.md-crumbs{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.md-crumbs a{text-decoration:none}
+.md-crumbs a:hover{text-decoration:underline}
+@media (max-width:860px){.md-phero__in{grid-template-columns:1fr}.md-phero__img{max-width:300px}}
+
+/* ---------- Menu page ---------- */
+.md-chips{position:sticky;top:72px;z-index:40;background:var(--cream);border-bottom:var(--b)}
+.md-chips__in{display:flex;gap:8px;overflow-x:auto;padding:12px 0;scrollbar-width:none}
+.md-chips__in::-webkit-scrollbar{display:none}
+.md-chips a{flex:none;font-weight:800;font-size:14px;text-decoration:none;border:2px solid var(--ink);border-radius:999px;padding:8px 14px;background:var(--paper)}
+.md-chips a:hover{background:var(--pink)}
+@media (max-width:860px){.md-chips{top:64px}}
+.md-msec{scroll-margin-top:150px;padding:72px 0;border-bottom:var(--b)}
+.md-msec:nth-of-type(odd){background:var(--paper)}
+.md-msec__in{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+.md-msec__side{position:sticky;top:160px}
+.md-msec__side h2{font-size:clamp(44px,5vw,72px);margin-bottom:10px}
+.md-msec__price{display:inline-block;font-family:var(--mono);font-weight:700;font-size:16px;background:var(--mustard);border:var(--b);border-radius:999px;padding:6px 14px;box-shadow:var(--sh-sm);transform:rotate(-3deg);margin-bottom:22px}
+.md-msec__img{border:var(--b);border-radius:24px;box-shadow:var(--sh);overflow:hidden;aspect-ratio:4/5;max-width:360px}
+.md-msec__img img{width:100%;height:100%;object-fit:cover}
+.md-items{display:grid;gap:0;border-top:2px dashed var(--ink)}
+.md-item{display:grid;grid-template-columns:1fr auto;gap:4px 18px;padding:18px 0;border-bottom:2px dashed var(--ink)}
+.md-item h3{font-family:var(--body);font-weight:800;font-size:20px;line-height:1.2;letter-spacing:0}
+.md-item__p{font-family:var(--mono);font-weight:700;font-size:16px;white-space:nowrap}
+.md-item p{grid-column:1/-1;margin:0;font-size:15px;color:#4a403a}
+.md-item .md-star{margin-left:6px}
+.md-msec__order{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.md-note{font-size:14px;font-family:var(--mono);margin-top:18px;opacity:.8}
+@media (max-width:860px){.md-msec__in{grid-template-columns:1fr;gap:28px}.md-msec__side{position:static}.md-msec__img{max-width:none;aspect-ratio:16/10}}
+
+/* ---------- Location page bits ---------- */
+.md-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.md-fact{background:var(--paper);border:var(--b);border-radius:20px;box-shadow:var(--sh-sm);padding:22px}
+.md-fact h3{font-size:26px;margin-bottom:10px}
+.md-fact p,.md-fact li{font-size:16px;margin:0 0 6px}
+.md-map{border:var(--b);border-radius:24px;box-shadow:var(--sh);overflow:hidden;aspect-ratio:16/9;background:var(--sky-soft)}
+.md-map iframe{width:100%;height:100%;border:0;display:block}
+.md-near{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.md-near li{background:var(--paper);border:2px solid var(--ink);border-radius:16px;padding:16px}
+.md-near b{display:block;font-family:var(--display);font-weight:400;font-size:21px;line-height:1.05;margin-bottom:4px}
+.md-near span{font-size:14px}
+.md-split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+@media (max-width:900px){.md-facts{grid-template-columns:1fr}.md-near{grid-template-columns:1fr 1fr}.md-split{grid-template-columns:1fr}}
+
+/* ---------- Motion safety ---------- */
+@media (prefers-reduced-motion:reduce){
+  .md-marquee__track,.md-hero__mascot{animation:none}
+  .md-site *{transition:none!important}
+}
+</style></head><body><div class="md-site">
+<header class="md-nav"><div class="md-wrap md-nav__in">
+<a class="md-nav__logo" href="index.html" aria-label="Miss Drippy &amp; Co. home"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/logo-wordmark.webp" alt="Miss Drippy &amp; Co." width="687" height="339"></a>
+<nav class="md-nav__links" aria-label="Main"><a href="menu.html" aria-current="page">Menu</a><a href="headford-street.html">Headford St</a><a href="centertainment.html">Centertainment</a><a class="md-btn md-btn--ink md-btn--sm" href="index.html#order">Order now</a></nav>
+</div></header>
+<section class="md-phero md-phero--pink"><div class="md-wrap md-phero__in">
+<div><p class="md-crumbs"><a href="index.html">Home</a> / Menu</p>
+<h1>The menu</h1>
+<p>48 desserts and drinks, from waffle bowls to Matilda cake. Look for the <span class="md-star">✦</span> for fan faves.</p>
+<div class="md-hero__ctas"><a class="md-btn md-btn--ink" href="index.html#order">Order now</a></div></div>
+<div class="md-phero__img"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/ferrero-bowl-close-sm.webp" srcset="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/ferrero-bowl-close-sm.webp 640w, https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/ferrero-bowl-close.webp 1400w" sizes="(max-width:700px) 80vw, 33vw" alt="Close up of a Ferrero waffle bowl with chocolate drizzle" width="640" height="800"></div>
+</div></section>
+<nav class="md-chips" aria-label="Menu sections"><div class="md-wrap md-chips__in"><a href="#waffle-bowls">Waffle Bowls</a><a href="#shakes">Shakes</a><a href="#waffles">Waffles</a><a href="#cookie-dough">Cookie Dough</a><a href="#sundaes">Sundaes</a><a href="#cakes">Cakes & Churros</a><a href="#hot-drinks">Hot Drinks</a></div></nav>
+<div itemscope itemtype="https://schema.org/Menu"><meta itemprop="name" content="Miss Drippy dessert menu"><meta itemprop="inLanguage" content="en-GB">
+<section class="md-msec" id="waffle-bowls" itemprop="hasMenuSection" itemscope itemtype="https://schema.org/MenuSection"><div class="md-wrap md-msec__in">
+<div class="md-msec__side"><h2 itemprop="name">Waffle Bowls</h2><span class="md-msec__price">£8</span><p>A crispy waffle bowl stacked with ice cream, sauce and toppings. You eat the bowl too.</p><div class="md-msec__img"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/brownie-bowl-sm.webp" srcset="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/brownie-bowl-sm.webp 640w, https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/brownie-bowl.webp 1400w" sizes="(max-width:700px) 80vw, 33vw" alt="Brownie waffle bowl with ice cream, brownie chunks, chocolate drizzle and a cherry" width="640" height="800" loading="lazy" decoding="async"></div></div>
+<div><ul class="md-items"><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Brownie Bowl<span class="md-star" title="Fan favourite" aria-label="fan favourite">✦</span></h3><span class="md-item__p">£8</span><p itemprop=description>Brownie chunks, chocolate and peanut drizzle, cherry on top.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Ferrero Bowl</h3><span class="md-item__p">£8</span><p itemprop=description>Ferrero Rocher, chocolate and white drizzle, cherry on top.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Reese&#x27;s Bowl</h3><span class="md-item__p">£8</span><p itemprop=description>Reese&#x27;s chocolate and pieces with a peanut drizzle.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Churros Bowl</h3><span class="md-item__p">£8</span><p itemprop=description>Churros, chocolate and caramel drizzle, cherry on top.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Salted Bowl</h3><span class="md-item__p">£8</span><p itemprop=description>Salted caramel all the way down.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Pistachio Bowl</h3><span class="md-item__p">£8</span><p itemprop=description>Pistachio sauce, ice cream, crunch.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8"><meta itemprop="priceCurrency" content="GBP"></span></li></ul>
+<div class="md-msec__order"><a class="md-btn md-btn--uber md-btn--sm" href="https://www.ubereats.com/gb/store/miss-drippy-desserts/J7Tpqdj2QfKeslBOl2nibg" target="_blank" rel="noopener">Uber Eats · S3</a><a class="md-btn md-btn--roo md-btn--sm" href="https://deliveroo.co.uk/menu/sheffield/sheffield-centre/miss-drippy-unit-headford" target="_blank" rel="noopener">Deliveroo · S3</a><a class="md-btn md-btn--uber md-btn--sm" href="https://www.ubereats.com/gb/store/miss-drippy-desserts-centertainment/oKgKSRmmXWGwNJozDxAnAg" target="_blank" rel="noopener">Uber Eats · S9</a></div>
+</div></div></section><section class="md-msec" id="shakes" itemprop="hasMenuSection" itemscope itemtype="https://schema.org/MenuSection"><div class="md-wrap md-msec__in">
+<div class="md-msec__side"><h2 itemprop="name">Shakes</h2><span class="md-msec__price">£6.20</span><p>Thick shakes, sauce down the cup and toppings piled on.</p><div class="md-msec__img"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/shakes-trio-sm.webp" srcset="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/shakes-trio-sm.webp 640w, https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/shakes-trio.webp 1400w" sizes="(max-width:700px) 80vw, 33vw" alt="Three Miss Drippy milkshakes topped with whipped cream and Oreo" width="640" height="800" loading="lazy" decoding="async"></div></div>
+<div><ul class="md-items"><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Oreo Shake<span class="md-star" title="Fan favourite" aria-label="fan favourite">✦</span></h3><span class="md-item__p">£6.20</span><p itemprop=description>Oreos blended in, chocolate sauce down the cup, Oreo dust on top.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="6.20"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Pistachio<span class="md-star" title="Fan favourite" aria-label="fan favourite">✦</span></h3><span class="md-item__p">£6.20</span><p itemprop=description>Pistachio sauce in the shake, round the cup and on top.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="6.20"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Kinder Want<span class="md-star" title="Fan favourite" aria-label="fan favourite">✦</span></h3><span class="md-item__p">£6.20</span><p itemprop=description>One for the Kinder fans.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="6.20"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Cheeseshake<span class="md-star" title="Fan favourite" aria-label="fan favourite">✦</span></h3><span class="md-item__p">£6.20</span><p itemprop=description>Strawberry cheesecake vibes: strawberry and Lotus sauce, Lotus crumb.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="6.20"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Lustful Lotus</h3><span class="md-item__p">£6.20</span><p itemprop=description>Lotus Biscoff blended in, Lotus sauce round the cup, Lotus crumb on top.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="6.20"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Salted Caramel</h3><span class="md-item__p">£6.20</span><p itemprop=description>Salted caramel blended in and drizzled on top.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="6.20"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Nutella</h3><span class="md-item__p">£6.20</span><p itemprop=description>Nutella in the shake and down the cup.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="6.20"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Reese&#x27;s</h3><span class="md-item__p">£6.20</span><p itemprop=description>Peanut butter meets chocolate.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="6.20"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Ferrero</h3><span class="md-item__p">£6.20</span><p itemprop=description>Chocolate and hazelnut.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="6.20"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Strawberry</h3><span class="md-item__p">£6.20</span><p itemprop=description>Strawberry sauce in, around and on top.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="6.20"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Miss Drippy</h3><span class="md-item__p">£6.20</span><p itemprop=description>The house shake.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="6.20"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Crunch</h3><span class="md-item__p">£6.20</span><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="6.20"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Frappe</h3><span class="md-item__p">£6.20</span><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="6.20"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Vanilla</h3><span class="md-item__p">£6.20</span><p itemprop=description>Classic vanilla ice cream, done properly.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="6.20"><meta itemprop="priceCurrency" content="GBP"></span></li></ul>
+<div class="md-msec__order"><a class="md-btn md-btn--uber md-btn--sm" href="https://www.ubereats.com/gb/store/miss-drippy-desserts/J7Tpqdj2QfKeslBOl2nibg" target="_blank" rel="noopener">Uber Eats · S3</a><a class="md-btn md-btn--roo md-btn--sm" href="https://deliveroo.co.uk/menu/sheffield/sheffield-centre/miss-drippy-unit-headford" target="_blank" rel="noopener">Deliveroo · S3</a><a class="md-btn md-btn--uber md-btn--sm" href="https://www.ubereats.com/gb/store/miss-drippy-desserts-centertainment/oKgKSRmmXWGwNJozDxAnAg" target="_blank" rel="noopener">Uber Eats · S9</a></div>
+</div></div></section><section class="md-msec" id="waffles" itemprop="hasMenuSection" itemscope itemtype="https://schema.org/MenuSection"><div class="md-wrap md-msec__in">
+<div class="md-msec__side"><h2 itemprop="name">Waffles</h2><span class="md-msec__price">£8.50</span><p>Our waffles come stamped with the Miss Drippy logo. Then we load them up.</p><div class="md-msec__img"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/ferrero-waffle-sm.webp" srcset="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/ferrero-waffle-sm.webp 640w, https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/ferrero-waffle.webp 1400w" sizes="(max-width:700px) 80vw, 33vw" alt="Waffle loaded with ice cream, Ferrero Rocher and chocolate sauce" width="640" height="800" loading="lazy" decoding="async"></div></div>
+<div><ul class="md-items"><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Michele Ferrero</h3><span class="md-item__p">£8.50</span><p itemprop=description>Ferrero Rocher, chocolate sauce and ice cream.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8.50"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Frownie Berrero</h3><span class="md-item__p">£8.50</span><p itemprop=description>Brownie meets Ferrero.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8.50"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">S&#x27;moreos</h3><span class="md-item__p">£8.50</span><p itemprop=description>S&#x27;mores meets Oreo.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8.50"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Lo-Tus</h3><span class="md-item__p">£8.50</span><p itemprop=description>Lotus Biscoff sauce and crumb.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8.50"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Reese&#x27;s Peanut</h3><span class="md-item__p">£8.50</span><p itemprop=description>Peanut butter and chocolate.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8.50"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Pistachio</h3><span class="md-item__p">£8.50</span><p itemprop=description>Pistachio sauce and crunch.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8.50"><meta itemprop="priceCurrency" content="GBP"></span></li></ul>
+<div class="md-msec__order"><a class="md-btn md-btn--uber md-btn--sm" href="https://www.ubereats.com/gb/store/miss-drippy-desserts/J7Tpqdj2QfKeslBOl2nibg" target="_blank" rel="noopener">Uber Eats · S3</a><a class="md-btn md-btn--roo md-btn--sm" href="https://deliveroo.co.uk/menu/sheffield/sheffield-centre/miss-drippy-unit-headford" target="_blank" rel="noopener">Deliveroo · S3</a><a class="md-btn md-btn--uber md-btn--sm" href="https://www.ubereats.com/gb/store/miss-drippy-desserts-centertainment/oKgKSRmmXWGwNJozDxAnAg" target="_blank" rel="noopener">Uber Eats · S9</a></div>
+</div></div></section><section class="md-msec" id="cookie-dough" itemprop="hasMenuSection" itemscope itemtype="https://schema.org/MenuSection"><div class="md-wrap md-msec__in">
+<div class="md-msec__side"><h2 itemprop="name">Cookie Dough</h2><span class="md-msec__price">£8.50</span><p>Cookie dough served in a skillet with all the extras.</p><div class="md-msec__img"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/smores-cookie-dough-sm.webp" srcset="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/smores-cookie-dough-sm.webp 640w, https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/smores-cookie-dough.webp 1400w" sizes="(max-width:700px) 80vw, 33vw" alt="S&#x27;mores cookie dough in a skillet with marshmallows and chocolate" width="640" height="800" loading="lazy" decoding="async"></div></div>
+<div><ul class="md-items"><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Kinder Nice<span class="md-star" title="Fan favourite" aria-label="fan favourite">✦</span></h3><span class="md-item__p">£8.50</span><p itemprop=description>Kinder chocolate on cookie dough.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8.50"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Gimmeh S’mores</h3><span class="md-item__p">£8.50</span><p itemprop=description>Marshmallows, chocolate and biscuit.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8.50"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Get Lo-Tus</h3><span class="md-item__p">£8.50</span><p itemprop=description>Lotus Biscoff sauce and crumb.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8.50"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Reese&#x27;s Peanut</h3><span class="md-item__p">£8.50</span><p itemprop=description>Peanut butter and chocolate.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8.50"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Chocolate Chip</h3><span class="md-item__p">£8.50</span><p itemprop=description>The classic.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8.50"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Pistachio</h3><span class="md-item__p">£8.50</span><p itemprop=description>Pistachio sauce.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8.50"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Ferrero</h3><span class="md-item__p">£8.50</span><p itemprop=description>Chocolate and hazelnut.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8.50"><meta itemprop="priceCurrency" content="GBP"></span></li></ul>
+<div class="md-msec__order"><a class="md-btn md-btn--uber md-btn--sm" href="https://www.ubereats.com/gb/store/miss-drippy-desserts/J7Tpqdj2QfKeslBOl2nibg" target="_blank" rel="noopener">Uber Eats · S3</a><a class="md-btn md-btn--roo md-btn--sm" href="https://deliveroo.co.uk/menu/sheffield/sheffield-centre/miss-drippy-unit-headford" target="_blank" rel="noopener">Deliveroo · S3</a><a class="md-btn md-btn--uber md-btn--sm" href="https://www.ubereats.com/gb/store/miss-drippy-desserts-centertainment/oKgKSRmmXWGwNJozDxAnAg" target="_blank" rel="noopener">Uber Eats · S9</a></div>
+</div></div></section><section class="md-msec" id="sundaes" itemprop="hasMenuSection" itemscope itemtype="https://schema.org/MenuSection"><div class="md-wrap md-msec__in">
+<div class="md-msec__side"><h2 itemprop="name">Sundaes</h2><span class="md-msec__price">£5</span><p>Layered sundaes, sauce between every layer.</p><div class="md-msec__img"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/churros-bowl-2-sm.webp" srcset="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/churros-bowl-2-sm.webp 640w, https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/churros-bowl-2.webp 1400w" sizes="(max-width:700px) 80vw, 33vw" alt="Sundae with churros, ice cream, chocolate and caramel drizzle" width="640" height="800" loading="lazy" decoding="async"></div></div>
+<div><ul class="md-items"><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Reese&#x27;s Salted<span class="md-star" title="Fan favourite" aria-label="fan favourite">✦</span></h3><span class="md-item__p">£5</span><p itemprop=description>Reese&#x27;s and salted caramel.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="5"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Lotus Biscoff</h3><span class="md-item__p">£5</span><p itemprop=description>Lotus sauce, Bueno sauce and Lotus crumb, layered with ice cream.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="5"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Pistachio</h3><span class="md-item__p">£5</span><p itemprop=description>Pistachio sauce, Bueno sauce and Lotus crumb.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="5"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Cookies &amp; Cream</h3><span class="md-item__p">£5</span><p itemprop=description>Chocolate sauce and Oreo crumb, layered.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="5"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">White Raspberry</h3><span class="md-item__p">£5</span><p itemprop=description>Raspberry and Bueno sauce, layered with ice cream.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="5"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Miss Drippy</h3><span class="md-item__p">£5</span><p itemprop=description>The house sundae.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="5"><meta itemprop="priceCurrency" content="GBP"></span></li></ul>
+<div class="md-msec__order"><a class="md-btn md-btn--uber md-btn--sm" href="https://www.ubereats.com/gb/store/miss-drippy-desserts/J7Tpqdj2QfKeslBOl2nibg" target="_blank" rel="noopener">Uber Eats · S3</a><a class="md-btn md-btn--roo md-btn--sm" href="https://deliveroo.co.uk/menu/sheffield/sheffield-centre/miss-drippy-unit-headford" target="_blank" rel="noopener">Deliveroo · S3</a><a class="md-btn md-btn--uber md-btn--sm" href="https://www.ubereats.com/gb/store/miss-drippy-desserts-centertainment/oKgKSRmmXWGwNJozDxAnAg" target="_blank" rel="noopener">Uber Eats · S9</a></div>
+</div></div></section><section class="md-msec" id="cakes" itemprop="hasMenuSection" itemscope itemtype="https://schema.org/MenuSection"><div class="md-wrap md-msec__in">
+<div class="md-msec__side"><h2 itemprop="name">Cakes & Churros</h2><span class="md-msec__price">from £5</span><p>Cake slices and filled churros for when you want something different.</p><div class="md-msec__img"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/waffle-bowl-churros-side-sm.webp" srcset="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/waffle-bowl-churros-side-sm.webp 640w, https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/waffle-bowl-churros-side.webp 1400w" sizes="(max-width:700px) 80vw, 33vw" alt="Filled churros in a Miss Drippy pot next to a waffle bowl" width="640" height="800" loading="lazy" decoding="async"></div></div>
+<div><ul class="md-items"><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Crunch Cake<span class="md-star" title="Fan favourite" aria-label="fan favourite">✦</span></h3><span class="md-item__p">£9</span><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="9"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Matilda Cake<span class="md-star" title="Fan favourite" aria-label="fan favourite">✦</span></h3><span class="md-item__p">£8.50</span><p itemprop=description>Rich chocolate cake.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8.50"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Fudge Cake</h3><span class="md-item__p">£7.50</span><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="7.50"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Caramel Filled Churros</h3><span class="md-item__p">£8</span><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Choco Filled Churros</h3><span class="md-item__p">£8</span><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="8"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">To Embarrass A Friend</h3><span class="md-item__p">£5</span><p itemprop=description>Ask the team. Trust us.</p><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="5"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Birthday Surprise</h3><span class="md-item__p">Ask</span><p itemprop=description>Ask in store.</p></li></ul>
+<div class="md-msec__order"><a class="md-btn md-btn--uber md-btn--sm" href="https://www.ubereats.com/gb/store/miss-drippy-desserts/J7Tpqdj2QfKeslBOl2nibg" target="_blank" rel="noopener">Uber Eats · S3</a><a class="md-btn md-btn--roo md-btn--sm" href="https://deliveroo.co.uk/menu/sheffield/sheffield-centre/miss-drippy-unit-headford" target="_blank" rel="noopener">Deliveroo · S3</a><a class="md-btn md-btn--uber md-btn--sm" href="https://www.ubereats.com/gb/store/miss-drippy-desserts-centertainment/oKgKSRmmXWGwNJozDxAnAg" target="_blank" rel="noopener">Uber Eats · S9</a></div>
+</div></div></section><section class="md-msec" id="hot-drinks" itemprop="hasMenuSection" itemscope itemtype="https://schema.org/MenuSection"><div class="md-wrap md-msec__in">
+<div class="md-msec__side"><h2 itemprop="name">Hot Drinks</h2><span class="md-msec__price">£2.50</span><p>Something warm to go with it.</p></div>
+<div><ul class="md-items"><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Coffee</h3><span class="md-item__p">£2.50</span><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="2.50"><meta itemprop="priceCurrency" content="GBP"></span></li><li class="md-item" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><h3 itemprop="name">Tea</h3><span class="md-item__p">£2.50</span><span itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="price" content="2.50"><meta itemprop="priceCurrency" content="GBP"></span></li></ul>
+<div class="md-msec__order"><a class="md-btn md-btn--uber md-btn--sm" href="https://www.ubereats.com/gb/store/miss-drippy-desserts/J7Tpqdj2QfKeslBOl2nibg" target="_blank" rel="noopener">Uber Eats · S3</a><a class="md-btn md-btn--roo md-btn--sm" href="https://deliveroo.co.uk/menu/sheffield/sheffield-centre/miss-drippy-unit-headford" target="_blank" rel="noopener">Deliveroo · S3</a><a class="md-btn md-btn--uber md-btn--sm" href="https://www.ubereats.com/gb/store/miss-drippy-desserts-centertainment/oKgKSRmmXWGwNJozDxAnAg" target="_blank" rel="noopener">Uber Eats · S9</a></div>
+</div></div></section>
+</div>
+<section class="md-sec md-sec--cream"><div class="md-wrap"><p class="md-note">In-store prices from our June 2026 menu. Prices and items on Uber Eats and Deliveroo can differ. Allergies? Please ask the team before ordering.</p></div></section>
+<footer class="md-foot"><div class="md-wrap">
+<div class="md-foot__in">
+<div><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@fc65ca4/drippy/img/logo-duo.webp" alt="Miss Drippy &amp; Co." width="622" height="779" loading="lazy"><p>Desserts you crave. Waffle bowls, thick shakes, cookie dough and sundaes in Sheffield.</p></div>
+<div><h4>Headford St · S3</h4><ul><li>88 Headford Street, S3 7WB</li><li><a href="tel:+441144381532">0114 438 1532</a></li><li><a href="https://www.ubereats.com/gb/store/miss-drippy-desserts/J7Tpqdj2QfKeslBOl2nibg" target="_blank" rel="noopener">Uber Eats</a> · <a href="https://deliveroo.co.uk/menu/sheffield/sheffield-centre/miss-drippy-unit-headford" target="_blank" rel="noopener">Deliveroo</a></li><li><a href="headford-street.html">Store info</a></li></ul></div>
+<div><h4>Centertainment · S9</h4><ul><li>Valley Centertainment, S9 2EP</li><li><a href="tel:+441143992513">0114 399 2513</a></li><li><a href="https://www.ubereats.com/gb/store/miss-drippy-desserts-centertainment/oKgKSRmmXWGwNJozDxAnAg" target="_blank" rel="noopener">Uber Eats</a></li><li><a href="centertainment.html">Store info</a></li></ul></div>
+<div><h4>More</h4><ul><li><a href="menu.html">Full menu</a></li><li><a href="https://www.instagram.com/missdrippy.uk/" target="_blank" rel="noopener">Instagram @missdrippy.uk</a></li><li><a href="https://www.unitfood.co" target="_blank" rel="noopener">Unit Sheffield</a></li></ul></div>
+</div>
+<div class="md-foot__fine"><span>&copy; 2026 Miss Drippy &amp; Co. Sheffield.</span><span>Allergies? Ask our team before you order. Prices on delivery apps may differ.</span></div>
+</div></footer>
+<div class="md-bar" role="region" aria-label="Order online"><p>Order dessert to your door</p><div class="md-bar__btns"><a class="md-btn md-btn--uber" href="https://www.ubereats.com/gb/store/miss-drippy-desserts/J7Tpqdj2QfKeslBOl2nibg" target="_blank" rel="noopener">Headford St<small>S3 · Uber Eats</small></a><a class="md-btn md-btn--uber" href="https://www.ubereats.com/gb/store/miss-drippy-desserts-centertainment/oKgKSRmmXWGwNJozDxAnAg" target="_blank" rel="noopener">Centertainment<small>S9 · Uber Eats</small></a></div></div>
+</div></body></html>
