@@ -4,7 +4,7 @@
    Works on the Basic plan: no JavaScript or code injection needed.
    Every page is one Code Block wrapped in <div class="md-site">.
    ===================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&family=Rubik+Wet+Paint&family=Fredoka:wght@400;500;600;700&display=swap');
 
 /* ---------- Squarespace chrome: hide template header/footer on redesigned pages ---------- */
 body:has(.md-site) #header,
@@ -38,9 +38,9 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
   --pink:#FF9ACB; --pink-soft:#FFD4E8; --hot:#FF3E8E;
   --orange:#FF7A1F; --mustard:#F2B04E; --choc:#5A3322; --sky:#7FD3FF; --sky-soft:#D6F1FF;
   --r:22px; --b:3px solid var(--ink); --sh:6px 6px 0 var(--ink); --sh-sm:4px 4px 0 var(--ink);
-  --display:'Bagel Fat One','Cooper Black',Georgia,serif;
-  --body:'DM Sans',system-ui,-apple-system,Segoe UI,sans-serif;
-  --mono:'Space Mono',ui-monospace,Menlo,monospace;
+  --display:'Shrikhand','Cooper Black',Georgia,serif; --drip:'Rubik Wet Paint','Shrikhand',Georgia,serif;
+  --body:'Fredoka',system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:'Fredoka',system-ui,sans-serif;
   font-family:var(--body); color:var(--ink); background:var(--cream);
   font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased;
   overflow-x:clip; width:100%;
@@ -48,7 +48,7 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 .md-site *,.md-site *::before,.md-site *::after{box-sizing:border-box}
 .md-site img,.md-site video{display:block;max-width:100%}
 .md-site a{color:inherit}
-.md-site h1,.md-site h2,.md-site h3,.md-site h4{font-family:var(--display);font-weight:400;line-height:.98;letter-spacing:-.01em;margin:0;color:var(--ink);text-transform:none}
+.md-site h1,.md-site h2,.md-site h3,.md-site h4{font-family:var(--display);font-weight:400;line-height:1.04;letter-spacing:0;margin:0;color:var(--ink);text-transform:none}
 .md-site p{margin:0 0 1em}
 .md-site ul{margin:0;padding:0;list-style:none}
 .md-wrap{width:min(1240px,100% - 32px);margin-inline:auto}
@@ -94,8 +94,8 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 .md-hero__logo video,.md-hero__logo img{width:100%;height:100%;object-fit:cover}
 .md-hero__brand .md-sticker{position:absolute;left:58%;bottom:-30px;transform:rotate(4deg);white-space:nowrap}
 @media (max-width:520px){.md-hero__brand .md-sticker{left:42%;font-size:11px;padding:6px 11px}}
-.md-hero h1{font-size:clamp(56px,8.4vw,124px);margin:40px 0 22px}
-.md-hero h1 em{font-style:normal;color:var(--paper);-webkit-text-stroke:3px var(--ink);paint-order:stroke fill;text-shadow:5px 5px 0 var(--ink)}
+.md-hero h1{font-size:clamp(50px,7.4vw,110px);margin:40px 0 22px}
+.md-hero h1 em{font-family:var(--drip);font-style:normal;color:var(--paper);-webkit-text-stroke:2px var(--ink);paint-order:stroke fill;text-shadow:5px 5px 0 var(--ink);letter-spacing:.01em}
 .md-hero__lede{font-size:clamp(18px,1.6vw,21px);max-width:34em;font-weight:500}
 .md-hero__ctas{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 18px}
 .md-hero__where{font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.04em}
@@ -316,18 +316,18 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 }
 </style></head><body><div class="md-site">
 <header class="md-nav"><div class="md-wrap md-nav__in">
-<a class="md-nav__logo" href="index.html" aria-label="Miss Drippy &amp; Co. home"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@e98af62/drippy/img/logo-wordmark.webp" alt="Miss Drippy &amp; Co." width="687" height="339"></a>
+<a class="md-nav__logo" href="index.html" aria-label="Miss Drippy &amp; Co. home"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@d747f4b/drippy/img/logo-wordmark.webp" alt="Miss Drippy &amp; Co." width="687" height="339"></a>
 <nav class="md-nav__links" aria-label="Main"><a href="menu.html">Menu</a><a href="headford-street.html">Headford St</a><a href="centertainment.html">Centertainment</a><a class="md-btn md-btn--ink md-btn--sm" href="index.html#order">Order now</a></nav>
 </div></header>
 <section class="md-phero"><div class="md-wrap md-phero__in">
 <div><p class="md-crumbs"><a href="index.html">Home</a> / Locations</p>
 <h1>Find us in Sheffield</h1>
 <p>Two spots, same drip. Headford Street in the city centre (S3) and Valley Centertainment near Utilita Arena and Meadowhall (S9), which also delivers to Rotherham.</p></div>
-<div class="md-phero__img"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@e98af62/drippy/img/reeses-bowl-sm.webp" srcset="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@e98af62/drippy/img/reeses-bowl-sm.webp 640w, https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@e98af62/drippy/img/reeses-bowl.webp 1400w" sizes="(max-width:700px) 80vw, 33vw" alt="Reese&#x27;s waffle bowl" width="640" height="800"></div>
+<div class="md-phero__img"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@d747f4b/drippy/img/reeses-bowl-sm.webp" srcset="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@d747f4b/drippy/img/reeses-bowl-sm.webp 640w, https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@d747f4b/drippy/img/reeses-bowl.webp 1400w" sizes="(max-width:700px) 80vw, 33vw" alt="Reese&#x27;s waffle bowl" width="640" height="800"></div>
 </div></section>
-<section class="md-sec md-pat" id="order" style="--pat:url(https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@e98af62/drippy/img/pattern-tile.webp)"><div class="md-wrap">
+<section class="md-sec md-pat" id="order" style="--pat:url(https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@d747f4b/drippy/img/pattern-tile.webp)"><div class="md-wrap">
 <div class="md-locs"><article class="md-loc" itemscope itemtype="https://schema.org/IceCreamShop">
-<meta itemprop="name" content="Miss Drippy Headford Street"><meta itemprop="servesCuisine" content="Desserts"><meta itemprop="priceRange" content="£"><link itemprop="url" href="https://www.missdrippy.uk/headford-street"><link itemprop="image" href="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@e98af62/drippy/img/ferrero-bowl.webp"><link itemprop="hasMenu" href="https://www.missdrippy.uk/menu"><meta itemprop="openingHours" content="Mo-Su 11:00-23:00">
+<meta itemprop="name" content="Miss Drippy Headford Street"><meta itemprop="servesCuisine" content="Desserts"><meta itemprop="priceRange" content="£"><link itemprop="url" href="https://www.missdrippy.uk/headford-street"><link itemprop="image" href="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@d747f4b/drippy/img/ferrero-bowl.webp"><link itemprop="hasMenu" href="https://www.missdrippy.uk/menu"><meta itemprop="openingHours" content="Mo-Su 11:00-23:00">
 <div class="md-loc__top"><span class="md-kicker">Sheffield S3</span><h3>Headford Street</h3></div>
 <div class="md-loc__body">
 <p style="margin:0">Inside Unit on Headford Street, minutes from Division Street, West Street and Devonshire Green.</p>
@@ -339,7 +339,7 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 <div class="md-loc__btns"><a class="md-btn md-btn--uber" href="https://www.ubereats.com/gb/store/miss-drippy-desserts/J7Tpqdj2QfKeslBOl2nibg" target="_blank" rel="noopener">Uber Eats</a><a class="md-btn md-btn--roo" href="https://deliveroo.co.uk/menu/sheffield/sheffield-centre/miss-drippy-unit-headford" target="_blank" rel="noopener">Deliveroo</a></div>
 <div class="md-loc__links"><a href="headford-street.html">Store info &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&destination=88+Headford+Street%2C+Sheffield+S3+7WB" target="_blank" rel="noopener">Directions &rarr;</a></div>
 </div></article><article class="md-loc" itemscope itemtype="https://schema.org/IceCreamShop">
-<meta itemprop="name" content="Miss Drippy Centertainment"><meta itemprop="servesCuisine" content="Desserts"><meta itemprop="priceRange" content="£"><link itemprop="url" href="https://www.missdrippy.uk/centertainment"><link itemprop="image" href="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@e98af62/drippy/img/churros-bowl.webp"><link itemprop="hasMenu" href="https://www.missdrippy.uk/menu"><meta itemprop="openingHours" content="Mo-Th 10:00-22:00"><meta itemprop="openingHours" content="Su 10:00-22:00"><meta itemprop="openingHours" content="Fr-Sa 10:00-23:00">
+<meta itemprop="name" content="Miss Drippy Centertainment"><meta itemprop="servesCuisine" content="Desserts"><meta itemprop="priceRange" content="£"><link itemprop="url" href="https://www.missdrippy.uk/centertainment"><link itemprop="image" href="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@d747f4b/drippy/img/churros-bowl.webp"><link itemprop="hasMenu" href="https://www.missdrippy.uk/menu"><meta itemprop="openingHours" content="Mo-Th 10:00-22:00"><meta itemprop="openingHours" content="Su 10:00-22:00"><meta itemprop="openingHours" content="Fr-Sa 10:00-23:00">
 <div class="md-loc__top"><span class="md-kicker">Sheffield S9</span><h3>Centertainment</h3></div>
 <div class="md-loc__body">
 <p style="margin:0">Inside Unit at Valley Centertainment, next to Cineworld and Hollywood Bowl, on the same road as Utilita Arena. Delivering across east Sheffield and Rotherham.</p>
@@ -354,7 +354,7 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 </div></section>
 <footer class="md-foot"><div class="md-wrap">
 <div class="md-foot__in">
-<div><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@e98af62/drippy/img/logo-duo.webp" alt="Miss Drippy &amp; Co." width="622" height="779" loading="lazy"><p>Desserts you crave. Waffle bowls, thick shakes, cookie dough and sundaes in Sheffield.</p></div>
+<div><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@d747f4b/drippy/img/logo-duo.webp" alt="Miss Drippy &amp; Co." width="622" height="779" loading="lazy"><p>Desserts you crave. Waffle bowls, thick shakes, cookie dough and sundaes in Sheffield.</p></div>
 <div><h4>Headford St · S3</h4><ul><li>88 Headford Street, S3 7WB</li><li><a href="tel:+441144381532">0114 438 1532</a></li><li><a href="https://www.ubereats.com/gb/store/miss-drippy-desserts/J7Tpqdj2QfKeslBOl2nibg" target="_blank" rel="noopener">Uber Eats</a> · <a href="https://deliveroo.co.uk/menu/sheffield/sheffield-centre/miss-drippy-unit-headford" target="_blank" rel="noopener">Deliveroo</a></li><li><a href="headford-street.html">Store info</a></li></ul></div>
 <div><h4>Centertainment · S9</h4><ul><li>Valley Centertainment, S9 2EP</li><li><a href="tel:+441143992513">0114 399 2513</a></li><li><a href="https://www.ubereats.com/gb/store/miss-drippy-desserts-centertainment/oKgKSRmmXWGwNJozDxAnAg" target="_blank" rel="noopener">Uber Eats</a> · <a href="https://deliveroo.co.uk/menu/sheffield/rotherham-city-centre/miss-drippy" target="_blank" rel="noopener">Deliveroo</a></li><li><a href="centertainment.html">Store info · Rotherham delivery</a></li></ul></div>
 <div><h4>More</h4><ul><li><a href="menu.html">Full menu</a></li><li><a href="https://www.instagram.com/missdrippy.uk/" target="_blank" rel="noopener">Instagram @missdrippy.uk</a></li><li><a href="https://www.unitfood.co" target="_blank" rel="noopener">Unit Sheffield</a></li></ul></div>
