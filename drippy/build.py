@@ -134,18 +134,6 @@ FAVES = [  # (name, desc, price, img, alt) - img "video:<name>" plays a loop fro
     ('Pistachio Cookie Dough', 'Warm cookie dough, pistachio drizzle and Lotus crumb.', '£8.50', 'pistachio-cookie-dough', 'Pistachio cookie dough skillet with Lotus crumb and a Miss Drippy wafer'),
     ("Reese's Bowl", "Reese's everything with a peanut drizzle.", '£8', 'reeses-bowl', "Reese's waffle bowl with chocolate, Reese's pieces and peanut drizzle"),
 ]
-TOTAL_ITEMS = sum(len(c['items']) for c in MENU)
-
-FAVES = [  # (name, desc, price, img, alt)
-    ('Ferrero Bowl', 'Waffle bowl, ice cream, Ferrero Rocher and a double drizzle.', '£8', 'ferrero-bowl', 'Ferrero waffle bowl with ice cream, Ferrero Rocher, chocolate drizzle and a cherry'),
-    ('Brownie Bowl', 'Brownie chunks, chocolate and peanut drizzle, cherry on top.', '£8', 'brownie-bowl-2', 'Brownie waffle bowl with ice cream, brownie chunks, drizzle and a cherry'),
-    ('Lo-Tus Waffle', 'Lotus Biscoff sauce, Lotus crumb and a tower of ice cream.', '£8.50', 'lotus-waffle', 'Lotus Biscoff waffle with ice cream and caramel drizzle'),
-    ('Ferrero Cookie Dough', 'Warm cookie dough, Ferrero Rocher and a double drizzle.', '£8.50', 'ferrero-cookie-dough-top', 'Ferrero cookie dough skillet seen from above'),
-    ('Michele Ferrero Waffle', 'Loaded with Ferrero, chocolate chunks and ice cream.', '£8.50', 'ferrero-waffle-2', 'Michele Ferrero waffle with chocolate, Ferrero Rocher and ice cream'),
-    ('Pistachio Cookie Dough', 'Warm cookie dough, pistachio drizzle and Lotus crumb.', '£8.50', 'pistachio-cookie-dough', 'Pistachio cookie dough skillet with Lotus crumb and a Miss Drippy wafer'),
-    ("Reese's Bowl", "Reese's everything with a peanut drizzle.", '£8', 'reeses-bowl', "Reese's waffle bowl with chocolate, Reese's pieces and peanut drizzle"),
-    ('Oreo Shake', 'Oreos blended in, Oreo dust on top.', '£6.20', 'shakes-trio', 'Oreo milkshakes with whipped cream'),
-]
 
 DRIP = ('<svg class="md-drip" viewBox="0 0 1440 46" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0h1440v10c-22 0-30 6-34 18-3 9-12 12-17 3-5-10-8-21-30-21-24 0-26 30-38 30s-12-30-40-30c-26 0-40 8-60 8s-24-8-54-8c-26 0-28 34-42 34s-14-34-40-34c-30 0-46 14-74 14s-30-14-64-14c-28 0-30 22-44 22s-16-22-46-22c-28 0-40 6-70 6s-34-6-62-6c-26 0-28 30-42 30s-14-30-42-30c-32 0-44 12-76 12S600 10 568 10c-24 0-26 24-40 24s-16-24-44-24c-30 0-44 8-74 8s-34-8-62-8c-28 0-30 32-44 32s-16-32-46-32c-28 0-40 10-68 10s-34-10-62-10c-24 0-26 20-38 20s-14-20-40-20C24 10 18 18 0 18z"/></svg>')
 
