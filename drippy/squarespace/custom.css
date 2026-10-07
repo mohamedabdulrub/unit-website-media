@@ -112,7 +112,7 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 .md-hero__mascot{position:absolute;right:-34px;top:-30px;width:132px;z-index:2;transform:rotate(10deg);filter:drop-shadow(4px 4px 0 var(--ink));animation:md-bob 3.2s ease-in-out infinite}
 @keyframes md-bob{0%,100%{transform:rotate(10deg) translateY(0)}50%{transform:rotate(4deg) translateY(-10px)}}
 @media (max-width:900px){
-  .md-hero__in{grid-template-columns:1fr;gap:36px;padding:40px 0 72px}
+  .md-hero__in{grid-template-columns:minmax(0,1fr);gap:36px;padding:40px 0 72px}
   .md-hero__media{width:min(330px,82%)}
   .md-hero__mascot{width:96px;right:-22px;top:-22px}
   .md-hero__tag{left:-14px}
@@ -180,7 +180,7 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 .md-point:nth-child(3) .md-point__ico{background:var(--sky)}
 .md-point h3{font-size:24px;margin-bottom:4px}
 .md-point p{margin:0;font-size:16px;opacity:.92}
-@media (max-width:900px){.md-diff{grid-template-columns:1fr;gap:40px}.md-diff__photo{max-width:440px}}
+@media (max-width:900px){.md-diff{grid-template-columns:minmax(0,1fr);gap:40px}.md-diff__photo{max-width:440px}}
 
 /* ---------- Menu teaser chips ---------- */
 .md-cats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -266,7 +266,7 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 .md-crumbs{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
 .md-crumbs a{text-decoration:none}
 .md-crumbs a:hover{text-decoration:underline}
-@media (max-width:860px){.md-phero__in{grid-template-columns:1fr}.md-phero__img{max-width:300px}}
+@media (max-width:860px){.md-phero__in{grid-template-columns:minmax(0,1fr)}.md-phero h1{font-size:clamp(32px,9.6vw,64px)}.md-phero__img{max-width:300px}}
 
 /* ---------- Menu page ---------- */
 .md-chips{position:sticky;top:72px;z-index:40;background:var(--cream);border-bottom:var(--b)}
