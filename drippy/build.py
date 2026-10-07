@@ -396,7 +396,7 @@ def location_page(key):
 <div class="md-hero__ctas">{order_btns(key)}<a class="md-btn" href="{s['maps']}" target="_blank" rel="noopener">Directions</a></div></div>
 <div class="md-phero__img">{img(L['hero'], L['hero_alt'], 640, 800, eager=True)}</div>
 </div></section>
-{marquee(['Waffle bowls', 'Thick shakes', 'Cookie dough', 'Sundaes', f'Sheffield {s["pc"]}'])}
+{marquee(['Waffle bowls', 'Thick shakes', 'Cookie dough', 'Sundaes', f'Sheffield {s["pc"]}'] + (['Rotherham delivery'] if key == 'valley' else []))}
 <section class="md-sec md-sec--cream"><div class="md-wrap md-split" itemscope itemtype="https://schema.org/IceCreamShop">
 <meta itemprop="name" content="Miss Drippy {s['name']}"><meta itemprop="servesCuisine" content="Desserts"><meta itemprop="priceRange" content="£"><link itemprop="url" href="https://www.missdrippy.uk{s['url']}"><link itemprop="image" href="{IMG}/{s['img']}.webp"><link itemprop="hasMenu" href="https://www.missdrippy.uk/menu">{hours_meta}
 <div><h2 style="font-size:clamp(40px,5vw,68px);margin-bottom:18px">{L['intro'][0]}</h2><p style="font-size:18px">{L['intro'][1]}</p>
