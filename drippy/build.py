@@ -250,14 +250,13 @@ def home():
     body = f'''{nav()}
 <section class="md-hero"><div class="md-wrap md-hero__in">
 <div>
-<span class="md-sticker">✦ Sheffield's dessert drop</span>
+<div class="md-hero__brand"><div class="md-hero__logo"><video autoplay muted loop playsinline preload="auto" poster="{VID}/logo-anim-poster.webp" aria-label="Miss Drippy &amp; Co. logo animation"><source src="{VID}/logo-anim.mp4" type="video/mp4"></video></div><span class="md-sticker">✦ Sheffield's dessert drop</span></div>
 <h1>Desserts that <em>drip</em> different.</h1>
 <p class="md-hero__lede">Waffle bowls, thick shakes, cookie dough and sundaes, loaded the way they should be. Get them delivered or come and find us in S3 and S9.</p>
 <div class="md-hero__ctas"><a class="md-btn md-btn--ink" href="#order">Order now &darr;</a><a class="md-btn" href="/menu">See the menu</a></div>
 <p class="md-hero__where">On <a href="#order">Uber Eats</a> &amp; <a href="#order">Deliveroo</a> · <a href="/headford-street">Headford St</a> · <a href="/centertainment">Centertainment</a></p>
 </div>
 <div class="md-hero__media">
-<img class="md-hero__mascot" src="{IMG}/mascot-cup.webp" alt="" width="402" height="437">
 <div class="md-hero__frame"><video autoplay muted loop playsinline preload="metadata" poster="{VID}/choc-pour-poster.webp" aria-label="Chocolate sauce pouring over a Miss Drippy dessert"><source src="{VID}/choc-pour.webm" type="video/webm"><source src="{VID}/choc-pour.mp4" type="video/mp4"></video></div>
 <span class="md-sticker md-hero__tag">watch it drip ✦</span>
 </div>
