@@ -33,6 +33,8 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 .page-section:has(.md-site) .sqs-block-button:not(:has(.md-site)){display:none!important}
 /* Keep the theme from hiding line breaks on phones */
 .md-site br{display:inline!important}
+.md-site h1,.md-site h2,.md-site h3{overflow-wrap:normal!important;word-break:normal!important;hyphens:manual}
+.md-nw{white-space:nowrap}
 
 /* ---------- Tokens ---------- */
 .md-site{
@@ -77,9 +79,10 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 .md-nav__in{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
 .md-nav__logo img{height:56px;width:auto}
 .md-nav__links{display:flex;align-items:center;gap:6px}
-.md-nav__links a{font-weight:800;font-size:15px;text-decoration:none;padding:10px 14px;border-radius:999px;border:2px solid transparent}
+.md-nav__links a{white-space:nowrap;font-weight:800;font-size:15px;text-decoration:none;padding:10px 14px;border-radius:999px;border:2px solid transparent}
 .md-nav__links a:hover,.md-nav__links a[aria-current=page]{border-color:var(--ink);background:var(--pink-soft)}
 .md-nav__links .md-btn{margin-left:6px}
+@media (max-width:1080px){.md-nav__links a[href='/franchise']{display:none}}
 @media (max-width:860px){
   .md-nav__links a:not(.md-btn){display:none}
   .md-nav__in{min-height:64px}
@@ -329,7 +332,7 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 <section class="md-hero"><div class="md-wrap md-hero__in">
 <div>
 <div class="md-hero__brand"><div class="md-hero__logo"><video autoplay muted loop playsinline preload="auto" poster="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@b6b8f66/drippy/video/logo-anim-poster.webp" aria-label="Miss Drippy &amp; Co. logo animation"><source src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@b6b8f66/drippy/video/logo-anim.mp4" type="video/mp4"></video></div><span class="md-sticker">✦ Sheffield's dessert drop</span></div>
-<h1>Desserts that <em>drip</em> different.</h1>
+<h1>Desserts that <em>drip</em> <span class="md-nw">different.</span></h1>
 <p class="md-hero__lede">Waffle bowls, thick shakes, cookie dough and sundaes, loaded the way they should be. Get them delivered or come and find us in S3 and S9.</p>
 <div class="md-hero__ctas"><a class="md-btn md-btn--ink" href="#order">Order now &darr;</a><a class="md-btn" href="menu.html">See the menu</a></div>
 <p class="md-hero__where">On <a href="#order">Uber Eats</a> &amp; <a href="#order">Deliveroo</a> · <a href="headford-street.html">Headford St</a> · <a href="centertainment.html">Centertainment</a></p>

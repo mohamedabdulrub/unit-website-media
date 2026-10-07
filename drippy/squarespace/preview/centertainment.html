@@ -33,6 +33,8 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 .page-section:has(.md-site) .sqs-block-button:not(:has(.md-site)){display:none!important}
 /* Keep the theme from hiding line breaks on phones */
 .md-site br{display:inline!important}
+.md-site h1,.md-site h2,.md-site h3{overflow-wrap:normal!important;word-break:normal!important;hyphens:manual}
+.md-nw{white-space:nowrap}
 
 /* ---------- Tokens ---------- */
 .md-site{
@@ -77,9 +79,10 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 .md-nav__in{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px}
 .md-nav__logo img{height:56px;width:auto}
 .md-nav__links{display:flex;align-items:center;gap:6px}
-.md-nav__links a{font-weight:800;font-size:15px;text-decoration:none;padding:10px 14px;border-radius:999px;border:2px solid transparent}
+.md-nav__links a{white-space:nowrap;font-weight:800;font-size:15px;text-decoration:none;padding:10px 14px;border-radius:999px;border:2px solid transparent}
 .md-nav__links a:hover,.md-nav__links a[aria-current=page]{border-color:var(--ink);background:var(--pink-soft)}
 .md-nav__links .md-btn{margin-left:6px}
+@media (max-width:1080px){.md-nav__links a[href='/franchise']{display:none}}
 @media (max-width:860px){
   .md-nav__links a:not(.md-btn){display:none}
   .md-nav__in{min-height:64px}
