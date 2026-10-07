@@ -106,11 +106,11 @@ MENU = [
                 ('Cookies & Cream', 'Chocolate sauce and Oreo crumb, layered.', False),
                 ('White Raspberry', 'Raspberry and Bueno sauce, layered with ice cream.', False),
                 ('Miss Drippy', 'The house sundae.', False)]),
-    dict(id='cakes', name='Cakes & Churros', price='from £5', img='caramel-brownie-cake',
-         alt='Layered chocolate cake slice covered in caramel sauce with ice cream',
+    dict(id='cakes', name='Cakes & Churros', price='from £5', img='crunch-cake',
+         alt='Crunch cake slice with chocolate topping and crunchy crumb',
          blurb='Cake slices and filled churros for when you want something different.',
-         items=[('Crunch Cake', '', True, '£9'),
-                ('Matilda Cake', 'Rich chocolate cake.', True, '£8.50'),
+         items=[('Crunch Cake', 'Chocolate sponge under a thick chocolate topping and a crunchy crumb.', True, '£9'),
+                ('Matilda Cake', 'Rich chocolate cake, drowned in warm chocolate sauce.', True, '£8.50'),
                 ('Fudge Cake', '', False, '£7.50'),
                 ('Caramel Filled Churros', '', False, '£8'),
                 ('Choco Filled Churros', '', False, '£8'),
@@ -119,6 +119,20 @@ MENU = [
     dict(id='hot-drinks', name='Hot Drinks', price='£2.50', img=None, alt='',
          blurb='Something warm to go with it.',
          items=[('Coffee', '', False), ('Tea', '', False)]),
+]
+TOTAL_ITEMS = sum(len(c['items']) for c in MENU)
+
+FAVES = [  # (name, desc, price, img, alt) - img "video:<name>" plays a loop from /video
+    ('Ferrero Bowl', 'Waffle bowl, ice cream, Ferrero Rocher and a double drizzle.', '£8', 'ferrero-bowl', 'Ferrero waffle bowl with ice cream, Ferrero Rocher, chocolate drizzle and a cherry'),
+    ('Brownie Bowl', 'Brownie chunks, chocolate and peanut drizzle, cherry on top.', '£8', 'brownie-bowl-2', 'Brownie waffle bowl with ice cream, brownie chunks, drizzle and a cherry'),
+    ('Matilda Cake', 'Rich chocolate cake, drowned in warm chocolate sauce.', '£8.50', 'video:choc-pour', 'Warm chocolate sauce being poured over Matilda cake'),
+    ('Lo-Tus Waffle', 'Lotus Biscoff sauce, Lotus crumb and a tower of ice cream.', '£8.50', 'lotus-waffle', 'Lotus Biscoff waffle with ice cream and caramel drizzle'),
+    ('Crunch Cake', 'Chocolate sponge under a thick chocolate topping and a crunchy crumb.', '£9', 'crunch-cake', 'Crunch cake slice with chocolate topping and crumb on a green plate'),
+    ('Ferrero Cookie Dough', 'Warm cookie dough, Ferrero Rocher and a double drizzle.', '£8.50', 'ferrero-cookie-dough-top', 'Ferrero cookie dough skillet seen from above'),
+    ('Michele Ferrero Waffle', 'Loaded with Ferrero, chocolate chunks and ice cream.', '£8.50', 'ferrero-waffle-2', 'Michele Ferrero waffle with chocolate, Ferrero Rocher and ice cream'),
+    ('Thick Shakes', 'Sauce down the cup, thick shake inside. 14 flavours.', '£6.20', 'video:shake-pour', 'Miss Drippy milkshake in a branded cup'),
+    ('Pistachio Cookie Dough', 'Warm cookie dough, pistachio drizzle and Lotus crumb.', '£8.50', 'pistachio-cookie-dough', 'Pistachio cookie dough skillet with Lotus crumb and a Miss Drippy wafer'),
+    ("Reese's Bowl", "Reese's everything with a peanut drizzle.", '£8', 'reeses-bowl', "Reese's waffle bowl with chocolate, Reese's pieces and peanut drizzle"),
 ]
 TOTAL_ITEMS = sum(len(c['items']) for c in MENU)
 
@@ -142,6 +156,13 @@ def img(name, alt, w=640, h=800, sm=True, cls='', eager=False):
     lazy = '' if eager else ' loading="lazy" decoding="async"'
     c = f' class="{cls}"' if cls else ''
     return f'<img{c} src="{src}"{srcset} alt="{e(alt)}" width="{w}" height="{h}"{lazy}>'
+
+
+def media(name, alt, w=640, h=800):
+    if name.startswith('video:'):
+        v = name[6:]
+        return f'<video autoplay muted loop playsinline preload="none" poster="{VID}/{v}-poster.webp" aria-label="{e(alt)}"><source src="{VID}/{v}.mp4" type="video/mp4"></video>'
+    return img(name, alt, w, h)
 
 
 def order_btns(site, size=''):
@@ -237,7 +258,7 @@ def home():
     h, v = SITES['headford'], SITES['valley']
     cards = ''.join(f'''<a class="md-card" href="/menu" style="text-decoration:none">
 <span class="md-card__price">{p}</span>{'<span class="md-card__badge">✦ fan fave</span>' if i < 4 else ''}
-<div class="md-card__img">{img(im, alt)}</div>
+<div class="md-card__img">{media(im, alt)}</div>
 <div class="md-card__body"><h3>{e(n)}</h3><p>{e(d)}</p></div></a>''' for i, (n, d, p, im, alt) in enumerate(FAVES))
     cats = ''.join(f'''<a class="md-cat" href="/menu#{c['id']}">{img(c['img'], c['alt'], 160, 160) if c['img'] else f'<img src="{IMG}/logo-cup.webp" alt="" width="160" height="160" loading="lazy" style="background:#fff;object-fit:contain;padding:6px">'}
 <div><b>{c['name']}</b><span>{len(c['items'])} options · {c['price']}</span></div><i>&rarr;</i></a>''' for c in MENU)
@@ -268,7 +289,7 @@ def home():
 {marquee(['Waffle bowls', 'Thick shakes', 'Cookie dough', 'Sundaes', 'Filled churros', 'Stamped waffles'])}
 <section class="md-sec md-sec--cream" id="faves"><div class="md-wrap">
 <div class="md-head"><h2>Certified<br>bangers</h2><p>The stuff people come back for. Get them delivered on Uber Eats and Deliveroo.</p></div>
-<div class="md-faves">{cards}</div>
+<div class="md-faves md-faves--10">{cards}</div>
 </div></section>
 <section class="md-sec md-sec--choc" style="border-bottom:0"><div class="md-wrap md-diff">
 <div class="md-diff__photo">{img('wafer-sheets', 'Fresh Miss Drippy wafers stamped all over with the Miss Drippy logo', 640, 800)}<span class="md-sticker">yes, that's our name on it</span></div>
@@ -383,7 +404,7 @@ def location_page(key):
     o = SITES[other]
     near = ''.join(f'<li><b>{a}</b><span>{b}</span></li>' for a, b in L['near'])
     faves = ''.join(f'''<a class="md-card" href="/menu" style="text-decoration:none"><span class="md-card__price">{p}</span>
-<div class="md-card__img">{img(im, alt)}</div><div class="md-card__body"><h3>{e(n)}</h3><p>{e(d)}</p></div></a>''' for (n, d, p, im, alt) in FAVES[:4])
+<div class="md-card__img">{media(im, alt)}</div><div class="md-card__body"><h3>{e(n)}</h3><p>{e(d)}</p></div></a>''' for (n, d, p, im, alt) in FAVES[:4])
     hours = ''.join(f'<li><b>{d}</b> {t}</li>' for d, t in s['hours_h'])
     md_hours = s['hours_md'] if isinstance(s['hours_md'], list) else [s['hours_md']]
     hours_meta = ''.join(f'<meta itemprop="openingHours" content="{x}">' for x in md_hours)

@@ -149,7 +149,8 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 .md-card:nth-child(4n+4){transform:rotate(1.1deg)}
 .md-card:hover{transform:rotate(0) translateY(-6px)}
 .md-card__img{aspect-ratio:4/5;overflow:hidden;border-bottom:var(--b);background:var(--pink-soft)}
-.md-card__img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.md-card__img img,.md-card__img video{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+@media (min-width:1200px){.md-faves--10{grid-template-columns:repeat(5,1fr);gap:20px}.md-faves--10 .md-card h3{font-size:22px}}
 .md-card:hover .md-card__img img{transform:scale(1.05)}
 .md-card__body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
 .md-card h3{font-size:26px;color:var(--ink)}
