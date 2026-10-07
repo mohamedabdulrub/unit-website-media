@@ -309,6 +309,10 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 .md-phero.md-pat .md-phero__copy h1{margin-top:8px}
 @media (max-width:700px){.md-pat{background-size:260px!important}.md-pat .md-head{padding:16px 18px}.md-phero.md-pat .md-phero__copy{padding:22px 20px}}
 
+/* light version of numbered points (on pale backgrounds) */
+.md-points--light .md-point{background:var(--paper);border:var(--b);box-shadow:var(--sh-sm)}
+.md-points--light .md-point p{opacity:1}
+
 /* ---------- Motion safety ---------- */
 @media (prefers-reduced-motion:reduce){
   .md-marquee__track,.md-hero__mascot{animation:none}

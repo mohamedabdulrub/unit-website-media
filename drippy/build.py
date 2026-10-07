@@ -158,7 +158,7 @@ def nav(current=''):
         return f'<a href="{href}"{cur}>{label}</a>'
     return f'''<header class="md-nav"><div class="md-wrap md-nav__in">
 <a class="md-nav__logo" href="/" aria-label="Miss Drippy &amp; Co. home"><img src="{IMG}/logo-wordmark.webp" alt="Miss Drippy &amp; Co." width="687" height="339"></a>
-<nav class="md-nav__links" aria-label="Main">{a('/menu','Menu')}{a('/headford-street','Headford St')}{a('/centertainment','Centertainment')}<a class="md-btn md-btn--ink md-btn--sm" href="{'/#order' if current else '#order'}">Order now</a></nav>
+<nav class="md-nav__links" aria-label="Main">{a('/menu','Menu')}{a('/headford-street','Headford St')}{a('/centertainment','Centertainment')}{a('/franchise','Franchise')}<a class="md-btn md-btn--ink md-btn--sm" href="{'/#order' if current else '#order'}">Order now</a></nav>
 </div></header>'''
 
 
@@ -186,7 +186,7 @@ def footer():
 <div><img src="{IMG}/logo-duo.webp" alt="Miss Drippy &amp; Co." width="622" height="779" loading="lazy"><p>Desserts you crave. Waffle bowls, thick shakes, cookie dough and sundaes in Sheffield.</p></div>
 <div><h4>Headford St · S3</h4><ul><li>{h['street']}, {h['postcode']}</li><li><a href="tel:{h['tel']}">{h['tel_h']}</a></li><li><a href="{h['uber']}" target="_blank" rel="noopener">Uber Eats</a> · <a href="{h['roo']}" target="_blank" rel="noopener">Deliveroo</a></li><li><a href="/headford-street">Store info</a></li></ul></div>
 <div><h4>Centertainment · S9</h4><ul><li>Valley Centertainment, {v['postcode']}</li><li><a href="tel:{v['tel']}">{v['tel_h']}</a></li><li><a href="{v['uber']}" target="_blank" rel="noopener">Uber Eats</a> · <a href="{v['roo']}" target="_blank" rel="noopener">Deliveroo</a></li><li><a href="/centertainment">Store info · Rotherham delivery</a></li></ul></div>
-<div><h4>More</h4><ul><li><a href="/menu">Full menu</a></li><li><a href="{INSTA}" target="_blank" rel="noopener">Instagram @missdrippy.uk</a></li><li><a href="https://www.unitfood.co" target="_blank" rel="noopener">Unit Sheffield</a></li></ul></div>
+<div><h4>More</h4><ul><li><a href="/menu">Full menu</a></li><li><a href="/franchise">Franchise with us</a></li><li><a href="{INSTA}" target="_blank" rel="noopener">Instagram @missdrippy.uk</a></li><li><a href="https://www.unitfood.co" target="_blank" rel="noopener">Unit Sheffield</a></li></ul></div>
 </div>
 <div class="md-foot__fine"><span>&copy; 2026 Miss Drippy &amp; Co. Sheffield.</span><span>Allergies? Ask our team before you order. Prices on delivery apps may differ.</span></div>
 </div></footer>'''
@@ -441,9 +441,75 @@ def location_hub():
     return wrap(body)
 
 
+FR_MAIL = 'mailto:info@unitfood.co?subject=Miss%20Drippy%20franchise%20enquiry'
+
+
+def franchise_page():
+    why = [('1', 'A brand people screenshot', 'Two cartoon characters, a swatch pattern, branded cups, boxes and wrap, and wafers stamped with our name. Miss Drippy is built to be posted.'),
+           ('2', 'A menu made for delivery', 'Waffle bowls, cookie dough skillets, shakes and sundaes that travel well. We already trade on Uber Eats and Deliveroo from both Sheffield sites.'),
+           ('3', 'Run by people who run sites', 'Miss Drippy is part of the Unit family in Sheffield, alongside Unit burger diners and WISL Cola. You get operators, not just a logo.')]
+    why_h = ''.join(f'<div class="md-point"><span class="md-point__ico">{n}</span><div><h3>{h}</h3><p>{b}</p></div></div>' for n, h, b in why)
+    formats = [('Dessert shop', 'A standalone Miss Drippy with seating, for high streets, student areas and city centres.', 'pink'),
+               ('Shop-in-shop', 'A Miss Drippy counter inside a restaurant, leisure venue or food court. Like our two Sheffield sites inside Unit.', 'sky'),
+               ('Delivery kitchen', 'A delivery-led setup for Uber Eats and Deliveroo, with branded packaging built for the trip.', 'mustard')]
+    fmt_h = ''.join(f'<div class="md-fact" style="background:var(--{c if c!="mustard" else "mustard"});"><h3>{h}</h3><p>{b}</p></div>' for h, b, c in formats).replace('var(--pink)', 'var(--pink-soft)').replace('var(--sky)', 'var(--sky-soft)')
+    support = [('Training', 'Recipes, builds and service, so every bowl looks like the photo.'),
+               ('Brand & packaging', 'Cups, boxes, wraps, stickers, uniforms and shopfront artwork.'),
+               ('Menu & suppliers', 'The full menu with specs, plus the suppliers we use.'),
+               ('Delivery set-up', 'Getting you live and looking good on Uber Eats and Deliveroo.'),
+               ('Launch marketing', 'Socials, content and noise for your opening.'),
+               ('Ongoing support', 'New menu drops, campaigns and a team on the end of the phone.')]
+    sup_h = ''.join(f'<li><b>{a}</b><span>{b}</span></li>' for a, b in support)
+    steps = [('Enquire', 'Email us with a bit about you and where you\'d like to open.'),
+             ('Chat', 'An intro call to talk formats, locations and what\'s involved.'),
+             ('Visit', 'Come to Sheffield, try the menu and see how we run.'),
+             ('Plan & open', 'Agree the site and the plan, then we help you launch.')]
+    st_h = ''.join(f'<div class="md-point"><span class="md-point__ico">{i+1}</span><div><h3>{a}</h3><p>{b}</p></div></div>' for i, (a, b) in enumerate(steps))
+    faqs = [('How much does a Miss Drippy franchise cost?', 'It depends on the format and the site. Get in touch and we\'ll talk you through the numbers for what you have in mind.'),
+            ('Do I need food or hospitality experience?', 'It helps, but attitude and a real focus on customer service matter most. We train you and your team.'),
+            ('Where can I open?', 'We\'re open to conversations about locations across the UK. Tell us where you\'re thinking.'),
+            ('Is this the same company as Unit?', 'Miss Drippy is part of the Unit family in Sheffield. If you\'re interested in a burger diner too, see the <a href="https://www.unitfood.co/franchising" target="_blank" rel="noopener">Unit franchise page</a>.')]
+    body = f'''{nav('/franchise')}
+<section class="md-phero md-pat"{PAT}><div class="md-wrap md-phero__in">
+<div class="md-phero__copy"><p class="md-crumbs"><a href="/">Home</a> / Franchise</p>
+<span class="md-sticker" style="margin-top:6px">✦ Now taking enquiries</span>
+<h1>Open a Miss Drippy</h1>
+<p>Bring Sheffield's loudest dessert brand to your town. Waffle bowls, thick shakes and cookie dough, with the characters, packaging and playbook to go with them.</p>
+<div class="md-hero__ctas"><a class="md-btn md-btn--ink" href="{FR_MAIL}">Start your enquiry</a><a class="md-btn" href="#formats">See the formats</a></div></div>
+<div class="md-phero__img">{img('ferrero-waffle-2', 'Michele Ferrero waffle with a Miss Drippy wafer and WISL Cola', 640, 800, eager=True)}</div>
+</div></section>
+{marquee(['Franchise with us', 'Waffle bowls', 'Stamped wafers', 'Delivery ready', 'Made in Sheffield'])}
+<section class="md-sec md-sec--choc" style="border-bottom:0"><div class="md-wrap md-diff">
+<div class="md-diff__photo">{img('wafer-sheets', 'Miss Drippy wafers stamped with the Miss Drippy logo', 640, 800)}<span class="md-sticker">our name's on everything</span></div>
+<div><h2>Why Miss Drippy?</h2><div class="md-points">{why_h}</div></div>
+</div></section>
+<div style="background:var(--cream)">{DRIP}</div>
+<section class="md-sec md-sec--cream" id="formats"><div class="md-wrap">
+<div class="md-head"><h2>Formats</h2><p>Three ways to bring Miss Drippy to your area. Investment depends on the format and site, so ask us for the details.</p></div>
+<div class="md-facts">{fmt_h}</div>
+</div></section>
+<section class="md-sec md-pat"{PAT}><div class="md-wrap">
+<div class="md-head"><h2>What you get</h2></div>
+<ul class="md-near">{sup_h}</ul>
+</div></section>
+<section class="md-sec md-sec--sky"><div class="md-wrap md-split">
+<div><h2 style="font-size:clamp(40px,5vw,68px);margin-bottom:18px">Who we're looking for</h2>
+<p style="font-size:18px">People with a can-do attitude, a real focus on customer service, and the drive to build something in their area. Bonus points if you already know what Gen Z wants from a night out.</p>
+<a class="md-btn md-btn--ink" href="{FR_MAIL}">Email info@unitfood.co</a></div>
+<div><h2 style="font-size:clamp(34px,4vw,52px);margin-bottom:18px">How it works</h2><div class="md-points md-points--light">{st_h}</div></div>
+</div></section>
+<section class="md-sec md-sec--pink"><div class="md-wrap">
+<div class="md-head"><h2>Questions</h2></div>
+{faq(faqs)}
+<div class="md-hero__ctas" style="margin-top:30px"><a class="md-btn md-btn--ink" href="{FR_MAIL}">Start your enquiry</a></div>
+</div></section>
+{footer()}'''
+    return wrap(body)
+
+
 PAGES = {
     'home': home(), 'menu': menu_page(), 'headford-street': location_page('headford'),
-    'centertainment': location_page('valley'), 'location': location_hub(),
+    'centertainment': location_page('valley'), 'location': location_hub(), 'franchise': franchise_page(),
 }
 
 css = (OUT / 'custom.css').read_text()
@@ -453,12 +519,13 @@ TITLES = {
     'headford-street': 'Miss Drippy Headford Street | Desserts in Sheffield City Centre S3',
     'centertainment': 'Miss Drippy Centertainment | Dessert Delivery Sheffield S9 & Rotherham',
     'location': 'Locations | Miss Drippy & Co. Sheffield',
+    'franchise': 'Franchise | Open a Miss Drippy Dessert Shop',
 }
 for k, v in PAGES.items():
     (OUT / f'{k}.html').write_text(f'<!-- Miss Drippy: paste into ONE Code Block on the {k} page. Built from build.py @ {COMMIT} -->\n{v}\n')
     # preview: rewrite internal links to preview files
     pv = v
-    for slug in ['menu', 'headford-street', 'centertainment', 'location']:
+    for slug in ['menu', 'headford-street', 'centertainment', 'location', 'franchise']:
         pv = pv.replace(f'href="/{slug}#', f'href="{slug}.html#').replace(f'href="/{slug}"', f'href="{slug}.html"')
     pv = pv.replace('href="/#order"', 'href="index.html#order"').replace('href="/"', 'href="index.html"')
     name = 'index' if k == 'home' else k
