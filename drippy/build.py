@@ -225,6 +225,9 @@ def marquee(words):
     return f'<div class="md-marquee" aria-hidden="true"><div class="md-marquee__track">{run}{run}</div></div>'
 
 
+PAT = f' style="--pat:url({IMG}/pattern-tile.webp)"'
+
+
 def wrap(body):
     return f'<div class="md-site">\n{body}\n</div>'
 
@@ -281,7 +284,7 @@ def home():
 <div class="md-head"><h2>Pick your<br>menu</h2><p>Everything we make, with prices. <a href="/menu"><b>See the full menu &rarr;</b></a></p></div>
 <div class="md-cats">{cats}</div>
 </div></section>
-<section class="md-sec md-sec--pink" id="order"><div class="md-wrap">
+<section class="md-sec md-pat" id="order"{PAT}><div class="md-wrap">
 <div class="md-head"><h2>Order now</h2><p>Pick your closest spot. Delivery through Uber Eats and Deliveroo, or come in and grab a seat.</p></div>
 <div class="md-locs">{loc_card('headford')}{loc_card('valley')}</div>
 </div></section>
@@ -323,8 +326,8 @@ def menu_page():
 <div class="md-msec__order"><a class="md-btn md-btn--uber md-btn--sm" href="{SITES['headford']['uber']}" target="_blank" rel="noopener">Uber Eats · S3</a><a class="md-btn md-btn--roo md-btn--sm" href="{SITES['headford']['roo']}" target="_blank" rel="noopener">Deliveroo · S3</a><a class="md-btn md-btn--uber md-btn--sm" href="{SITES['valley']['uber']}" target="_blank" rel="noopener">Uber Eats · S9</a></div>
 </div></div></section>''')
     body = f'''{nav('/menu')}
-<section class="md-phero md-phero--pink"><div class="md-wrap md-phero__in">
-<div><p class="md-crumbs"><a href="/">Home</a> / Menu</p>
+<section class="md-phero md-pat"{PAT}><div class="md-wrap md-phero__in">
+<div class="md-phero__copy"><p class="md-crumbs"><a href="/">Home</a> / Menu</p>
 <h1>The menu</h1>
 <p>{TOTAL_ITEMS} desserts and drinks, from waffle bowls to Matilda cake. Look for the <span class="md-star">✦</span> for fan faves.</p>
 <div class="md-hero__ctas"><a class="md-btn md-btn--ink" href="/#order">Order now</a></div></div>
@@ -402,7 +405,7 @@ def location_page(key):
 </div></div>
 <div class="md-map"><iframe src="{s['embed']}" title="Map showing Miss Drippy {s['name']}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
 </div></section>
-<section class="md-sec md-sec--sky"><div class="md-wrap">
+<section class="md-sec md-pat"{PAT}><div class="md-wrap">
 <div class="md-head"><h2>What's nearby</h2></div>
 <ul class="md-near">{near}</ul>
 </div></section>
@@ -428,7 +431,7 @@ def location_hub():
 <p>Two spots, same drip. Headford Street in the city centre (S3) and Valley Centertainment near Utilita Arena and Meadowhall (S9).</p></div>
 <div class="md-phero__img">{img('reeses-bowl', "Reese's waffle bowl", 640, 800, eager=True)}</div>
 </div></section>
-<section class="md-sec md-sec--pink" id="order"><div class="md-wrap">
+<section class="md-sec md-pat" id="order"{PAT}><div class="md-wrap">
 <div class="md-locs">{loc_card('headford')}{loc_card('valley')}</div>
 </div></section>
 {footer()}
