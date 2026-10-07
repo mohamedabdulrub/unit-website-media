@@ -12,6 +12,8 @@ body:has(.md-site) header.header,
 body:has(.md-site) .header-announcement-bar-wrapper,
 body:has(.md-site) #footer-sections,
 body:has(.md-site) footer.sections{display:none!important}
+/* Old template sections stay on the page (not deleted) but are hidden once a page has the new design */
+body:has(.md-site) .page-section:not(:has(.md-site)){display:none!important}
 body:has(.md-site){background:#FFF4E8!important}
 body:has(.md-site) #siteWrapper,
 body:has(.md-site) #page,
@@ -88,7 +90,7 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 .md-hero{position:relative;background:var(--pink);border-bottom:var(--b);overflow:hidden;
   background-image:radial-gradient(circle at 12% 18%,rgba(127,211,255,.75) 0 120px,transparent 260px),radial-gradient(circle at 88% 82%,rgba(255,62,142,.45) 0 140px,transparent 320px),radial-gradient(rgba(26,23,20,.13) 1.2px,transparent 1.6px);
   background-size:auto,auto,14px 14px}
-.md-hero__in{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:64px 0 88px}
+.md-hero__in{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px;align-items:center;padding:64px 0 88px}
 .md-hero__brand{position:relative;display:inline-block;margin-bottom:6px}
 .md-hero__logo{width:clamp(200px,23vw,300px);aspect-ratio:7/6;background:#fff;border:var(--b);border-radius:28px;box-shadow:var(--sh);transform:rotate(-3deg);overflow:hidden}
 .md-hero__logo video,.md-hero__logo img{width:100%;height:100%;object-fit:cover}
@@ -147,7 +149,8 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 .md-card:nth-child(4n+4){transform:rotate(1.1deg)}
 .md-card:hover{transform:rotate(0) translateY(-6px)}
 .md-card__img{aspect-ratio:4/5;overflow:hidden;border-bottom:var(--b);background:var(--pink-soft)}
-.md-card__img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.md-card__img img,.md-card__img video{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+@media (min-width:1200px){.md-faves--10{grid-template-columns:repeat(5,1fr);gap:20px}.md-faves--10 .md-card h3{font-size:22px}}
 .md-card:hover .md-card__img img{transform:scale(1.05)}
 .md-card__body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
 .md-card h3{font-size:26px;color:var(--ink)}
@@ -193,7 +196,7 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 .md-loc__top{padding:26px 26px 20px;background:var(--pink);border-bottom:var(--b)}
 .md-loc:nth-child(2) .md-loc__top{background:var(--sky)}
 .md-loc__top .md-kicker{display:inline-block;background:var(--paper);border:2px solid var(--ink);border-radius:999px;padding:4px 10px;margin-bottom:12px}
-.md-loc h3{font-size:clamp(34px,3.6vw,48px)}
+.md-loc h3{font-size:clamp(28px,3.2vw,44px);overflow-wrap:normal;word-break:keep-all}
 .md-loc__body{padding:22px 26px 26px;display:flex;flex-direction:column;gap:16px;flex:1}
 .md-loc__meta{display:grid;gap:8px;font-size:16px}
 .md-loc__meta div{display:grid;grid-template-columns:92px 1fr;gap:10px}
@@ -252,8 +255,8 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 .md-phero{background:var(--mustard);border-bottom:var(--b);padding:56px 0 64px;background-image:radial-gradient(rgba(26,23,20,.14) 1.2px,transparent 1.6px);background-size:14px 14px}
 .md-phero--pink{background-color:var(--pink)}
 .md-phero--sky{background-color:var(--sky)}
-.md-phero__in{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
-.md-phero h1{font-size:clamp(48px,7vw,104px);margin:14px 0 18px}
+.md-phero__in{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:40px;align-items:center}
+.md-phero h1{overflow-wrap:normal;font-size:clamp(40px,6vw,96px);margin:14px 0 18px}
 .md-phero p{font-size:19px;max-width:36em;font-weight:500}
 .md-phero__img{border:var(--b);border-radius:28px;box-shadow:10px 10px 0 var(--ink);transform:rotate(2deg);overflow:hidden;aspect-ratio:4/5;max-width:400px;justify-self:center;width:100%}
 .md-phero__img img{width:100%;height:100%;object-fit:cover}
@@ -320,18 +323,18 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 }
 </style></head><body><div class="md-site">
 <header class="md-nav"><div class="md-wrap md-nav__in">
-<a class="md-nav__logo" href="index.html" aria-label="Miss Drippy &amp; Co. home"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/logo-wordmark.webp" alt="Miss Drippy &amp; Co." width="687" height="339"></a>
+<a class="md-nav__logo" href="index.html" aria-label="Miss Drippy &amp; Co. home"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/logo-wordmark.webp" alt="Miss Drippy &amp; Co." width="687" height="339"></a>
 <nav class="md-nav__links" aria-label="Main"><a href="menu.html">Menu</a><a href="headford-street.html">Headford St</a><a href="centertainment.html">Centertainment</a><a href="franchise.html">Franchise</a><a class="md-btn md-btn--ink md-btn--sm" href="index.html#order">Order now</a></nav>
 </div></header>
 <section class="md-phero"><div class="md-wrap md-phero__in">
 <div><p class="md-crumbs"><a href="index.html">Home</a> / Locations</p>
 <h1>Find us in Sheffield</h1>
 <p>Two spots, same drip. Headford Street in the city centre (S3) and Valley Centertainment near Utilita Arena and Meadowhall (S9), which also delivers to Rotherham.</p></div>
-<div class="md-phero__img"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/reeses-bowl-sm.webp" srcset="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/reeses-bowl-sm.webp 640w, https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/reeses-bowl.webp 1400w" sizes="(max-width:700px) 80vw, 33vw" alt="Reese&#x27;s waffle bowl" width="640" height="800"></div>
+<div class="md-phero__img"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/reeses-bowl-sm.webp" srcset="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/reeses-bowl-sm.webp 640w, https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/reeses-bowl.webp 1400w" sizes="(max-width:700px) 80vw, 33vw" alt="Reese&#x27;s waffle bowl" width="640" height="800"></div>
 </div></section>
-<section class="md-sec md-pat" id="order" style="--pat:url(https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/pattern-tile.webp)"><div class="md-wrap">
+<section class="md-sec md-pat" id="order" style="--pat:url(https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/pattern-tile.webp)"><div class="md-wrap">
 <div class="md-locs"><article class="md-loc" itemscope itemtype="https://schema.org/IceCreamShop">
-<meta itemprop="name" content="Miss Drippy Headford Street"><meta itemprop="servesCuisine" content="Desserts"><meta itemprop="priceRange" content="£"><link itemprop="url" href="https://www.missdrippy.uk/headford-street"><link itemprop="image" href="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/ferrero-bowl.webp"><link itemprop="hasMenu" href="https://www.missdrippy.uk/menu"><meta itemprop="openingHours" content="Mo-Su 11:00-23:00">
+<meta itemprop="name" content="Miss Drippy Headford Street"><meta itemprop="servesCuisine" content="Desserts"><meta itemprop="priceRange" content="£"><link itemprop="url" href="https://www.missdrippy.uk/headford-street"><link itemprop="image" href="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/ferrero-bowl.webp"><link itemprop="hasMenu" href="https://www.missdrippy.uk/menu"><meta itemprop="openingHours" content="Mo-Su 11:00-23:00">
 <div class="md-loc__top"><span class="md-kicker">Sheffield S3</span><h3>Headford Street</h3></div>
 <div class="md-loc__body">
 <p style="margin:0">Inside Unit on Headford Street, minutes from Division Street, West Street and Devonshire Green.</p>
@@ -343,7 +346,7 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 <div class="md-loc__btns"><a class="md-btn md-btn--uber" href="https://www.ubereats.com/gb/store/miss-drippy-desserts/J7Tpqdj2QfKeslBOl2nibg" target="_blank" rel="noopener">Uber Eats</a><a class="md-btn md-btn--roo" href="https://deliveroo.co.uk/menu/sheffield/sheffield-centre/miss-drippy-unit-headford" target="_blank" rel="noopener">Deliveroo</a></div>
 <div class="md-loc__links"><a href="headford-street.html">Store info &rarr;</a><a href="https://www.google.com/maps/dir/?api=1&destination=88+Headford+Street%2C+Sheffield+S3+7WB" target="_blank" rel="noopener">Directions &rarr;</a></div>
 </div></article><article class="md-loc" itemscope itemtype="https://schema.org/IceCreamShop">
-<meta itemprop="name" content="Miss Drippy Centertainment"><meta itemprop="servesCuisine" content="Desserts"><meta itemprop="priceRange" content="£"><link itemprop="url" href="https://www.missdrippy.uk/centertainment"><link itemprop="image" href="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/churros-bowl.webp"><link itemprop="hasMenu" href="https://www.missdrippy.uk/menu"><meta itemprop="openingHours" content="Mo-Th 10:00-22:00"><meta itemprop="openingHours" content="Su 10:00-22:00"><meta itemprop="openingHours" content="Fr-Sa 10:00-23:00">
+<meta itemprop="name" content="Miss Drippy Centertainment"><meta itemprop="servesCuisine" content="Desserts"><meta itemprop="priceRange" content="£"><link itemprop="url" href="https://www.missdrippy.uk/centertainment"><link itemprop="image" href="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/churros-bowl.webp"><link itemprop="hasMenu" href="https://www.missdrippy.uk/menu"><meta itemprop="openingHours" content="Mo-Th 10:00-22:00"><meta itemprop="openingHours" content="Su 10:00-22:00"><meta itemprop="openingHours" content="Fr-Sa 10:00-23:00">
 <div class="md-loc__top"><span class="md-kicker">Sheffield S9</span><h3>Centertainment</h3></div>
 <div class="md-loc__body">
 <p style="margin:0">Inside Unit at Valley Centertainment, next to Cineworld and Hollywood Bowl, on the same road as Utilita Arena. Delivering across east Sheffield and Rotherham.</p>
@@ -358,7 +361,7 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 </div></section>
 <footer class="md-foot"><div class="md-wrap">
 <div class="md-foot__in">
-<div><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/logo-duo.webp" alt="Miss Drippy &amp; Co." width="622" height="779" loading="lazy"><p>Desserts you crave. Waffle bowls, thick shakes, cookie dough and sundaes in Sheffield.</p></div>
+<div><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/logo-duo.webp" alt="Miss Drippy &amp; Co." width="622" height="779" loading="lazy"><p>Desserts you crave. Waffle bowls, thick shakes, cookie dough and sundaes in Sheffield.</p></div>
 <div><h4>Headford St · S3</h4><ul><li>88 Headford Street, S3 7WB</li><li><a href="tel:+441144381532">0114 438 1532</a></li><li><a href="https://www.ubereats.com/gb/store/miss-drippy-desserts/J7Tpqdj2QfKeslBOl2nibg" target="_blank" rel="noopener">Uber Eats</a> · <a href="https://deliveroo.co.uk/menu/sheffield/sheffield-centre/miss-drippy-unit-headford" target="_blank" rel="noopener">Deliveroo</a></li><li><a href="headford-street.html">Store info</a></li></ul></div>
 <div><h4>Centertainment · S9</h4><ul><li>Valley Centertainment, S9 2EP</li><li><a href="tel:+441143992513">0114 399 2513</a></li><li><a href="https://www.ubereats.com/gb/store/miss-drippy-desserts-centertainment/oKgKSRmmXWGwNJozDxAnAg" target="_blank" rel="noopener">Uber Eats</a> · <a href="https://deliveroo.co.uk/menu/sheffield/rotherham-city-centre/miss-drippy" target="_blank" rel="noopener">Deliveroo</a></li><li><a href="centertainment.html">Store info · Rotherham delivery</a></li></ul></div>
 <div><h4>More</h4><ul><li><a href="menu.html">Full menu</a></li><li><a href="franchise.html">Franchise with us</a></li><li><a href="https://www.instagram.com/missdrippy.uk/" target="_blank" rel="noopener">Instagram @missdrippy.uk</a></li><li><a href="https://www.unitfood.co" target="_blank" rel="noopener">Unit Sheffield</a></li></ul></div>

@@ -12,6 +12,8 @@ body:has(.md-site) header.header,
 body:has(.md-site) .header-announcement-bar-wrapper,
 body:has(.md-site) #footer-sections,
 body:has(.md-site) footer.sections{display:none!important}
+/* Old template sections stay on the page (not deleted) but are hidden once a page has the new design */
+body:has(.md-site) .page-section:not(:has(.md-site)){display:none!important}
 body:has(.md-site){background:#FFF4E8!important}
 body:has(.md-site) #siteWrapper,
 body:has(.md-site) #page,
@@ -88,7 +90,7 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 .md-hero{position:relative;background:var(--pink);border-bottom:var(--b);overflow:hidden;
   background-image:radial-gradient(circle at 12% 18%,rgba(127,211,255,.75) 0 120px,transparent 260px),radial-gradient(circle at 88% 82%,rgba(255,62,142,.45) 0 140px,transparent 320px),radial-gradient(rgba(26,23,20,.13) 1.2px,transparent 1.6px);
   background-size:auto,auto,14px 14px}
-.md-hero__in{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:64px 0 88px}
+.md-hero__in{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px;align-items:center;padding:64px 0 88px}
 .md-hero__brand{position:relative;display:inline-block;margin-bottom:6px}
 .md-hero__logo{width:clamp(200px,23vw,300px);aspect-ratio:7/6;background:#fff;border:var(--b);border-radius:28px;box-shadow:var(--sh);transform:rotate(-3deg);overflow:hidden}
 .md-hero__logo video,.md-hero__logo img{width:100%;height:100%;object-fit:cover}
@@ -147,7 +149,8 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 .md-card:nth-child(4n+4){transform:rotate(1.1deg)}
 .md-card:hover{transform:rotate(0) translateY(-6px)}
 .md-card__img{aspect-ratio:4/5;overflow:hidden;border-bottom:var(--b);background:var(--pink-soft)}
-.md-card__img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.md-card__img img,.md-card__img video{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+@media (min-width:1200px){.md-faves--10{grid-template-columns:repeat(5,1fr);gap:20px}.md-faves--10 .md-card h3{font-size:22px}}
 .md-card:hover .md-card__img img{transform:scale(1.05)}
 .md-card__body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
 .md-card h3{font-size:26px;color:var(--ink)}
@@ -193,7 +196,7 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 .md-loc__top{padding:26px 26px 20px;background:var(--pink);border-bottom:var(--b)}
 .md-loc:nth-child(2) .md-loc__top{background:var(--sky)}
 .md-loc__top .md-kicker{display:inline-block;background:var(--paper);border:2px solid var(--ink);border-radius:999px;padding:4px 10px;margin-bottom:12px}
-.md-loc h3{font-size:clamp(34px,3.6vw,48px)}
+.md-loc h3{font-size:clamp(28px,3.2vw,44px);overflow-wrap:normal;word-break:keep-all}
 .md-loc__body{padding:22px 26px 26px;display:flex;flex-direction:column;gap:16px;flex:1}
 .md-loc__meta{display:grid;gap:8px;font-size:16px}
 .md-loc__meta div{display:grid;grid-template-columns:92px 1fr;gap:10px}
@@ -252,8 +255,8 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 .md-phero{background:var(--mustard);border-bottom:var(--b);padding:56px 0 64px;background-image:radial-gradient(rgba(26,23,20,.14) 1.2px,transparent 1.6px);background-size:14px 14px}
 .md-phero--pink{background-color:var(--pink)}
 .md-phero--sky{background-color:var(--sky)}
-.md-phero__in{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
-.md-phero h1{font-size:clamp(48px,7vw,104px);margin:14px 0 18px}
+.md-phero__in{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:40px;align-items:center}
+.md-phero h1{overflow-wrap:normal;font-size:clamp(40px,6vw,96px);margin:14px 0 18px}
 .md-phero p{font-size:19px;max-width:36em;font-weight:500}
 .md-phero__img{border:var(--b);border-radius:28px;box-shadow:10px 10px 0 var(--ink);transform:rotate(2deg);overflow:hidden;aspect-ratio:4/5;max-width:400px;justify-self:center;width:100%}
 .md-phero__img img{width:100%;height:100%;object-fit:cover}
@@ -320,7 +323,7 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 }
 </style></head><body><div class="md-site">
 <header class="md-nav"><div class="md-wrap md-nav__in">
-<a class="md-nav__logo" href="index.html" aria-label="Miss Drippy &amp; Co. home"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/logo-wordmark.webp" alt="Miss Drippy &amp; Co." width="687" height="339"></a>
+<a class="md-nav__logo" href="index.html" aria-label="Miss Drippy &amp; Co. home"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/logo-wordmark.webp" alt="Miss Drippy &amp; Co." width="687" height="339"></a>
 <nav class="md-nav__links" aria-label="Main"><a href="menu.html">Menu</a><a href="headford-street.html">Headford St</a><a href="centertainment.html" aria-current="page">Centertainment</a><a href="franchise.html">Franchise</a><a class="md-btn md-btn--ink md-btn--sm" href="index.html#order">Order now</a></nav>
 </div></header>
 <section class="md-phero md-phero--sky"><div class="md-wrap md-phero__in">
@@ -328,11 +331,11 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 <h1>Miss Drippy<br>Centertainment</h1>
 <p>Dessert at Valley Centertainment, Sheffield S9. Waffle bowls, shakes, cookie dough and sundaes next to Cineworld and Hollywood Bowl, on the same road as Utilita Arena. Delivered across east Sheffield and Rotherham on Uber Eats and Deliveroo.</p>
 <div class="md-hero__ctas"><a class="md-btn md-btn--uber" href="https://www.ubereats.com/gb/store/miss-drippy-desserts-centertainment/oKgKSRmmXWGwNJozDxAnAg" target="_blank" rel="noopener">Uber Eats</a><a class="md-btn md-btn--roo" href="https://deliveroo.co.uk/menu/sheffield/rotherham-city-centre/miss-drippy" target="_blank" rel="noopener">Deliveroo</a><a class="md-btn" href="https://www.google.com/maps/dir/?api=1&destination=Unit+4%2C+Valley+Centertainment%2C+Broughton+Lane%2C+Sheffield+S9+2EP" target="_blank" rel="noopener">Directions</a></div></div>
-<div class="md-phero__img"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/churros-bowl-sm.webp" srcset="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/churros-bowl-sm.webp 640w, https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/churros-bowl.webp 1400w" sizes="(max-width:700px) 80vw, 33vw" alt="Churros waffle bowl from Miss Drippy Centertainment" width="640" height="800"></div>
+<div class="md-phero__img"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/churros-bowl-sm.webp" srcset="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/churros-bowl-sm.webp 640w, https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/churros-bowl.webp 1400w" sizes="(max-width:700px) 80vw, 33vw" alt="Churros waffle bowl from Miss Drippy Centertainment" width="640" height="800"></div>
 </div></section>
 <div class="md-marquee" aria-hidden="true"><div class="md-marquee__track"><span>Waffle bowls<b>✦</b></span><span>Thick shakes<b>✦</b></span><span>Cookie dough<b>✦</b></span><span>Sundaes<b>✦</b></span><span>Sheffield S9<b>✦</b></span><span>Rotherham delivery<b>✦</b></span><span>Waffle bowls<b>✦</b></span><span>Thick shakes<b>✦</b></span><span>Cookie dough<b>✦</b></span><span>Sundaes<b>✦</b></span><span>Sheffield S9<b>✦</b></span><span>Rotherham delivery<b>✦</b></span></div></div>
 <section class="md-sec md-sec--cream"><div class="md-wrap md-split" itemscope itemtype="https://schema.org/IceCreamShop">
-<meta itemprop="name" content="Miss Drippy Centertainment"><meta itemprop="servesCuisine" content="Desserts"><meta itemprop="priceRange" content="£"><link itemprop="url" href="https://www.missdrippy.uk/centertainment"><link itemprop="image" href="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/churros-bowl.webp"><link itemprop="hasMenu" href="https://www.missdrippy.uk/menu"><meta itemprop="openingHours" content="Mo-Th 10:00-22:00"><meta itemprop="openingHours" content="Su 10:00-22:00"><meta itemprop="openingHours" content="Fr-Sa 10:00-23:00">
+<meta itemprop="name" content="Miss Drippy Centertainment"><meta itemprop="servesCuisine" content="Desserts"><meta itemprop="priceRange" content="£"><link itemprop="url" href="https://www.missdrippy.uk/centertainment"><link itemprop="image" href="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/churros-bowl.webp"><link itemprop="hasMenu" href="https://www.missdrippy.uk/menu"><meta itemprop="openingHours" content="Mo-Th 10:00-22:00"><meta itemprop="openingHours" content="Su 10:00-22:00"><meta itemprop="openingHours" content="Fr-Sa 10:00-23:00">
 <div><h2 style="font-size:clamp(40px,5vw,68px);margin-bottom:18px">Dessert before the film, after the game</h2><p style="font-size:18px">We're at Valley Centertainment on Broughton Lane, next to Cineworld and Hollywood Bowl and a short walk from Utilita Arena. Free parking and a tram stop outside make it the easy stop before a Steelers game or gig, after bowling, or after a day at Meadowhall. Find us inside Unit, Unit 4. We also deliver to Rotherham and around Meadowhall, so if you can't make it over, get it brought to you.</p>
 <div class="md-facts" style="grid-template-columns:1fr 1fr;margin-top:22px">
 <div class="md-fact" style="grid-column:1/-1"><h3>Find us</h3><p itemprop="address" itemscope itemtype="https://schema.org/PostalAddress"><span itemprop="streetAddress">Unit 4, Valley Centertainment, Broughton Lane</span>, <span itemprop="addressLocality">Sheffield</span> <span itemprop="postalCode">S9 2EP</span><meta itemprop="addressCountry" content="GB"></p><p><a itemprop="telephone" href="tel:+441143992513">0114 399 2513</a> · <a href="https://www.google.com/maps/dir/?api=1&destination=Unit+4%2C+Valley+Centertainment%2C+Broughton+Lane%2C+Sheffield+S9+2EP" target="_blank" rel="noopener"><b>Directions &rarr;</b></a></p></div>
@@ -341,17 +344,17 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 </div></div>
 <div class="md-map"><iframe src="https://maps.google.com/maps?q=Valley%20Centertainment%2C%20Broughton%20Lane%2C%20Sheffield%20S9%202EP&z=16&output=embed" title="Map showing Miss Drippy Centertainment" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
 </div></section>
-<section class="md-sec md-pat" style="--pat:url(https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/pattern-tile.webp)"><div class="md-wrap">
+<section class="md-sec md-pat" style="--pat:url(https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/pattern-tile.webp)"><div class="md-wrap">
 <div class="md-head"><h2>What's nearby</h2></div>
 <ul class="md-near"><li><b>Utilita Arena</b><span>Steelers, gigs, a short walk</span></li><li><b>Cineworld</b><span>Same complex</span></li><li><b>Hollywood Bowl</b><span>Same complex</span></li><li><b>Meadowhall</b><span>A few minutes away</span></li><li><b>IKEA Sheffield</b><span>Just down the road</span></li><li><b>iceSheffield</b><span>Close by</span></li><li><b>Rotherham</b><span>A short drive, and we deliver</span></li><li><b>Tram</b><span>Stop right outside</span></li></ul>
 </div></section>
 <section class="md-sec md-sec--cream"><div class="md-wrap">
 <div class="md-head"><h2>Fan faves</h2><p><a href="menu.html"><b>See the full menu &rarr;</b></a></p></div>
 <div class="md-faves"><a class="md-card" href="menu.html" style="text-decoration:none"><span class="md-card__price">£8</span>
-<div class="md-card__img"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/ferrero-bowl-sm.webp" srcset="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/ferrero-bowl-sm.webp 640w, https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/ferrero-bowl.webp 1400w" sizes="(max-width:700px) 80vw, 33vw" alt="Ferrero waffle bowl with ice cream, Ferrero Rocher, chocolate drizzle and a cherry" width="640" height="800" loading="lazy" decoding="async"></div><div class="md-card__body"><h3>Ferrero Bowl</h3><p>Waffle bowl, ice cream, Ferrero Rocher and a double drizzle.</p></div></a><a class="md-card" href="menu.html" style="text-decoration:none"><span class="md-card__price">£8</span>
-<div class="md-card__img"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/brownie-bowl-2-sm.webp" srcset="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/brownie-bowl-2-sm.webp 640w, https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/brownie-bowl-2.webp 1400w" sizes="(max-width:700px) 80vw, 33vw" alt="Brownie waffle bowl with ice cream, brownie chunks, drizzle and a cherry" width="640" height="800" loading="lazy" decoding="async"></div><div class="md-card__body"><h3>Brownie Bowl</h3><p>Brownie chunks, chocolate and peanut drizzle, cherry on top.</p></div></a><a class="md-card" href="menu.html" style="text-decoration:none"><span class="md-card__price">£8.50</span>
-<div class="md-card__img"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/lotus-waffle-sm.webp" srcset="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/lotus-waffle-sm.webp 640w, https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/lotus-waffle.webp 1400w" sizes="(max-width:700px) 80vw, 33vw" alt="Lotus Biscoff waffle with ice cream and caramel drizzle" width="640" height="800" loading="lazy" decoding="async"></div><div class="md-card__body"><h3>Lo-Tus Waffle</h3><p>Lotus Biscoff sauce, Lotus crumb and a tower of ice cream.</p></div></a><a class="md-card" href="menu.html" style="text-decoration:none"><span class="md-card__price">£8.50</span>
-<div class="md-card__img"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/ferrero-cookie-dough-top-sm.webp" srcset="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/ferrero-cookie-dough-top-sm.webp 640w, https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/ferrero-cookie-dough-top.webp 1400w" sizes="(max-width:700px) 80vw, 33vw" alt="Ferrero cookie dough skillet seen from above" width="640" height="800" loading="lazy" decoding="async"></div><div class="md-card__body"><h3>Ferrero Cookie Dough</h3><p>Warm cookie dough, Ferrero Rocher and a double drizzle.</p></div></a></div>
+<div class="md-card__img"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/ferrero-bowl-sm.webp" srcset="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/ferrero-bowl-sm.webp 640w, https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/ferrero-bowl.webp 1400w" sizes="(max-width:700px) 80vw, 33vw" alt="Ferrero waffle bowl with ice cream, Ferrero Rocher, chocolate drizzle and a cherry" width="640" height="800" loading="lazy" decoding="async"></div><div class="md-card__body"><h3>Ferrero Bowl</h3><p>Waffle bowl, ice cream, Ferrero Rocher and a double drizzle.</p></div></a><a class="md-card" href="menu.html" style="text-decoration:none"><span class="md-card__price">£8</span>
+<div class="md-card__img"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/brownie-bowl-2-sm.webp" srcset="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/brownie-bowl-2-sm.webp 640w, https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/brownie-bowl-2.webp 1400w" sizes="(max-width:700px) 80vw, 33vw" alt="Brownie waffle bowl with ice cream, brownie chunks, drizzle and a cherry" width="640" height="800" loading="lazy" decoding="async"></div><div class="md-card__body"><h3>Brownie Bowl</h3><p>Brownie chunks, chocolate and peanut drizzle, cherry on top.</p></div></a><a class="md-card" href="menu.html" style="text-decoration:none"><span class="md-card__price">£8.50</span>
+<div class="md-card__img"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/lotus-waffle-sm.webp" srcset="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/lotus-waffle-sm.webp 640w, https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/lotus-waffle.webp 1400w" sizes="(max-width:700px) 80vw, 33vw" alt="Lotus Biscoff waffle with ice cream and caramel drizzle" width="640" height="800" loading="lazy" decoding="async"></div><div class="md-card__body"><h3>Lo-Tus Waffle</h3><p>Lotus Biscoff sauce, Lotus crumb and a tower of ice cream.</p></div></a><a class="md-card" href="menu.html" style="text-decoration:none"><span class="md-card__price">£8.50</span>
+<div class="md-card__img"><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/ferrero-cookie-dough-top-sm.webp" srcset="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/ferrero-cookie-dough-top-sm.webp 640w, https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/ferrero-cookie-dough-top.webp 1400w" sizes="(max-width:700px) 80vw, 33vw" alt="Ferrero cookie dough skillet seen from above" width="640" height="800" loading="lazy" decoding="async"></div><div class="md-card__body"><h3>Ferrero Cookie Dough</h3><p>Warm cookie dough, Ferrero Rocher and a double drizzle.</p></div></a></div>
 </div></section>
 <section class="md-sec md-sec--pink"><div class="md-wrap">
 <div class="md-head"><h2>Questions</h2></div>
@@ -360,7 +363,7 @@ body:has(.md-site) .content-wrapper{padding-top:0!important}
 </div></section>
 <footer class="md-foot"><div class="md-wrap">
 <div class="md-foot__in">
-<div><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@55442a2/drippy/img/logo-duo.webp" alt="Miss Drippy &amp; Co." width="622" height="779" loading="lazy"><p>Desserts you crave. Waffle bowls, thick shakes, cookie dough and sundaes in Sheffield.</p></div>
+<div><img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@804ca0d/drippy/img/logo-duo.webp" alt="Miss Drippy &amp; Co." width="622" height="779" loading="lazy"><p>Desserts you crave. Waffle bowls, thick shakes, cookie dough and sundaes in Sheffield.</p></div>
 <div><h4>Headford St · S3</h4><ul><li>88 Headford Street, S3 7WB</li><li><a href="tel:+441144381532">0114 438 1532</a></li><li><a href="https://www.ubereats.com/gb/store/miss-drippy-desserts/J7Tpqdj2QfKeslBOl2nibg" target="_blank" rel="noopener">Uber Eats</a> · <a href="https://deliveroo.co.uk/menu/sheffield/sheffield-centre/miss-drippy-unit-headford" target="_blank" rel="noopener">Deliveroo</a></li><li><a href="headford-street.html">Store info</a></li></ul></div>
 <div><h4>Centertainment · S9</h4><ul><li>Valley Centertainment, S9 2EP</li><li><a href="tel:+441143992513">0114 399 2513</a></li><li><a href="https://www.ubereats.com/gb/store/miss-drippy-desserts-centertainment/oKgKSRmmXWGwNJozDxAnAg" target="_blank" rel="noopener">Uber Eats</a> · <a href="https://deliveroo.co.uk/menu/sheffield/rotherham-city-centre/miss-drippy" target="_blank" rel="noopener">Deliveroo</a></li><li><a href="centertainment.html">Store info · Rotherham delivery</a></li></ul></div>
 <div><h4>More</h4><ul><li><a href="menu.html">Full menu</a></li><li><a href="franchise.html">Franchise with us</a></li><li><a href="https://www.instagram.com/missdrippy.uk/" target="_blank" rel="noopener">Instagram @missdrippy.uk</a></li><li><a href="https://www.unitfood.co" target="_blank" rel="noopener">Unit Sheffield</a></li></ul></div>
