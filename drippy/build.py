@@ -41,9 +41,9 @@ SITES = {
         hours_h=[('Sun – Thu', '10am – 10pm'), ('Fri – Sat', '10am – 11pm')],
         hours_md=['Mo-Th 10:00-22:00', 'Su 10:00-22:00', 'Fr-Sa 10:00-23:00'],
         uber='https://www.ubereats.com/gb/store/miss-drippy-desserts-centertainment/oKgKSRmmXWGwNJozDxAnAg',
-        roo=None,
+        roo='https://deliveroo.co.uk/menu/sheffield/rotherham-city-centre/miss-drippy',
         url='/centertainment', img='churros-bowl',
-        blurb='Inside Unit at Valley Centertainment, next to Cineworld and Hollywood Bowl, on the same road as Utilita Arena.',
+        blurb='Inside Unit at Valley Centertainment, next to Cineworld and Hollywood Bowl, on the same road as Utilita Arena. Delivering across east Sheffield and Rotherham.',
         maps='https://www.google.com/maps/dir/?api=1&destination=Unit+4%2C+Valley+Centertainment%2C+Broughton+Lane%2C+Sheffield+S9+2EP',
         embed='https://maps.google.com/maps?q=Valley%20Centertainment%2C%20Broughton%20Lane%2C%20Sheffield%20S9%202EP&z=16&output=embed',
     ),
@@ -185,7 +185,7 @@ def footer():
 <div class="md-foot__in">
 <div><img src="{IMG}/logo-duo.webp" alt="Miss Drippy &amp; Co." width="622" height="779" loading="lazy"><p>Desserts you crave. Waffle bowls, thick shakes, cookie dough and sundaes in Sheffield.</p></div>
 <div><h4>Headford St · S3</h4><ul><li>{h['street']}, {h['postcode']}</li><li><a href="tel:{h['tel']}">{h['tel_h']}</a></li><li><a href="{h['uber']}" target="_blank" rel="noopener">Uber Eats</a> · <a href="{h['roo']}" target="_blank" rel="noopener">Deliveroo</a></li><li><a href="/headford-street">Store info</a></li></ul></div>
-<div><h4>Centertainment · S9</h4><ul><li>Valley Centertainment, {v['postcode']}</li><li><a href="tel:{v['tel']}">{v['tel_h']}</a></li><li><a href="{v['uber']}" target="_blank" rel="noopener">Uber Eats</a></li><li><a href="/centertainment">Store info</a></li></ul></div>
+<div><h4>Centertainment · S9</h4><ul><li>Valley Centertainment, {v['postcode']}</li><li><a href="tel:{v['tel']}">{v['tel_h']}</a></li><li><a href="{v['uber']}" target="_blank" rel="noopener">Uber Eats</a> · <a href="{v['roo']}" target="_blank" rel="noopener">Deliveroo</a></li><li><a href="/centertainment">Store info · Rotherham delivery</a></li></ul></div>
 <div><h4>More</h4><ul><li><a href="/menu">Full menu</a></li><li><a href="{INSTA}" target="_blank" rel="noopener">Instagram @missdrippy.uk</a></li><li><a href="https://www.unitfood.co" target="_blank" rel="noopener">Unit Sheffield</a></li></ul></div>
 </div>
 <div class="md-foot__fine"><span>&copy; 2026 Miss Drippy &amp; Co. Sheffield.</span><span>Allergies? Ask our team before you order. Prices on delivery apps may differ.</span></div>
@@ -244,7 +244,8 @@ def home():
     insta_imgs = ['ferrero-bowl-wide', 'waffle-stamped-top', 'reeses-bowl', 'vanilla-shake', 'churros-bowl-wide', 'waffle-bowl-close']
     insta = ''.join(f'<a href="{INSTA}" target="_blank" rel="noopener" aria-label="See more on Instagram">{img(n, "Miss Drippy dessert on Instagram", 640, 640)}</a>' for n in insta_imgs)
     faqs = [
-        ('Do you deliver desserts in Sheffield?', f'Yes. Order from our Headford Street kitchen (S3) on <a href="{h["uber"]}" target="_blank" rel="noopener">Uber Eats</a> or <a href="{h["roo"]}" target="_blank" rel="noopener">Deliveroo</a>, and from Valley Centertainment (S9) on <a href="{v["uber"]}" target="_blank" rel="noopener">Uber Eats</a>. The app shows which one delivers to you.'),
+        ('Do you deliver desserts in Sheffield?', f'Yes. Order from our Headford Street kitchen (S3) on <a href="{h["uber"]}" target="_blank" rel="noopener">Uber Eats</a> or <a href="{h["roo"]}" target="_blank" rel="noopener">Deliveroo</a>, and from Valley Centertainment (S9) on <a href="{v["uber"]}" target="_blank" rel="noopener">Uber Eats</a> or <a href="{v["roo"]}" target="_blank" rel="noopener">Deliveroo</a>. The app shows which one delivers to you.'),
+        ('Do you deliver to Rotherham?', f'Yes. Our Centertainment kitchen on Broughton Lane delivers to Rotherham on <a href="{v["roo"]}" target="_blank" rel="noopener">Deliveroo</a> and <a href="{v["uber"]}" target="_blank" rel="noopener">Uber Eats</a>. Pop your postcode in the app to check you\'re in range. We\'re also a short drive from Rotherham, just off the Parkway near Meadowhall.'),
         ('Where are you?', f'Two spots in Sheffield: <a href="/headford-street">88 Headford Street, S3 7WB</a> in the city centre, and <a href="/centertainment">Unit 4, Valley Centertainment, S9 2EP</a> on Broughton Lane. Both are inside Unit.'),
         ('How late are you open?', 'Headford Street is open 11am to 11pm every day. Centertainment is open 10am to 10pm Sunday to Thursday and until 11pm on Friday and Saturday.'),
         ("What's a waffle bowl?", 'A crispy waffle shaped into a bowl, filled with ice cream, sauce and toppings like Ferrero, brownie, churros or Reese\'s. You eat the bowl at the end.'),
@@ -323,7 +324,7 @@ def menu_page():
         secs.append(f'''<section class="md-msec" id="{c['id']}" itemprop="hasMenuSection" itemscope itemtype="https://schema.org/MenuSection"><div class="md-wrap md-msec__in">
 <div class="md-msec__side"><h2 itemprop="name">{c['name']}</h2><span class="md-msec__price">{c['price']}</span><p>{c['blurb']}</p>{pic}</div>
 <div><ul class="md-items">{''.join(items)}</ul>
-<div class="md-msec__order"><a class="md-btn md-btn--uber md-btn--sm" href="{SITES['headford']['uber']}" target="_blank" rel="noopener">Uber Eats · S3</a><a class="md-btn md-btn--roo md-btn--sm" href="{SITES['headford']['roo']}" target="_blank" rel="noopener">Deliveroo · S3</a><a class="md-btn md-btn--uber md-btn--sm" href="{SITES['valley']['uber']}" target="_blank" rel="noopener">Uber Eats · S9</a></div>
+<div class="md-msec__order"><a class="md-btn md-btn--uber md-btn--sm" href="{SITES['headford']['uber']}" target="_blank" rel="noopener">Uber Eats · S3</a><a class="md-btn md-btn--roo md-btn--sm" href="{SITES['headford']['roo']}" target="_blank" rel="noopener">Deliveroo · S3</a><a class="md-btn md-btn--uber md-btn--sm" href="{SITES['valley']['uber']}" target="_blank" rel="noopener">Uber Eats · S9</a><a class="md-btn md-btn--roo md-btn--sm" href="{SITES['valley']['roo']}" target="_blank" rel="noopener">Deliveroo · S9 &amp; Rotherham</a></div>
 </div></div></section>''')
     body = f'''{nav('/menu')}
 <section class="md-phero md-pat"{PAT}><div class="md-wrap md-phero__in">
@@ -361,13 +362,14 @@ LOC = {
               ('Do you have allergen info?', 'Yes. Please tell the team about any allergies before you order, or check the allergen notes in the delivery app.')]),
     'valley': dict(
         h1='Miss Drippy<br>Centertainment',
-        lede='Dessert at Valley Centertainment, Sheffield S9. Waffle bowls, shakes, cookie dough and sundaes next to Cineworld and Hollywood Bowl, on the same road as Utilita Arena. Delivered across S9 on Uber Eats.',
+        lede='Dessert at Valley Centertainment, Sheffield S9. Waffle bowls, shakes, cookie dough and sundaes next to Cineworld and Hollywood Bowl, on the same road as Utilita Arena. Delivered across east Sheffield and Rotherham on Uber Eats and Deliveroo.',
         hero='churros-bowl', hero_alt='Churros waffle bowl from Miss Drippy Centertainment', tone='md-phero--sky',
         near=[('Utilita Arena', 'Steelers, gigs, a short walk'), ('Cineworld', 'Same complex'), ('Hollywood Bowl', 'Same complex'), ('Meadowhall', 'A few minutes away'),
-              ('IKEA Sheffield', 'Just down the road'), ('iceSheffield', 'Close by'), ('Parking', 'Free at Centertainment'), ('Tram', 'Stop right outside')],
+              ('IKEA Sheffield', 'Just down the road'), ('iceSheffield', 'Close by'), ('Rotherham', 'A short drive, and we deliver'), ('Tram', 'Stop right outside')],
         intro=('Dessert before the film, after the game',
-               'We\'re at Valley Centertainment on Broughton Lane, next to Cineworld and Hollywood Bowl and a short walk from Utilita Arena. Free parking and a tram stop outside make it the easy stop before a Steelers game or gig, after bowling, or after a day at Meadowhall. Find us inside Unit, Unit 4.'),
-        faqs=[('Do you deliver from Centertainment?', 'Yes, on Uber Eats. Search Miss Drippy Desserts – Centertainment in the app.'),
+               'We\'re at Valley Centertainment on Broughton Lane, next to Cineworld and Hollywood Bowl and a short walk from Utilita Arena. Free parking and a tram stop outside make it the easy stop before a Steelers game or gig, after bowling, or after a day at Meadowhall. Find us inside Unit, Unit 4. We also deliver to Rotherham and around Meadowhall, so if you can\'t make it over, get it brought to you.'),
+        faqs=[('Do you deliver from Centertainment?', 'Yes, on Uber Eats and Deliveroo. On Deliveroo we\'re listed as Miss Drippy – Rotherham City Centre, and on Uber Eats as Miss Drippy Desserts – Centertainment.'),
+              ('Do you deliver to Rotherham?', 'Yes. Our Centertainment kitchen delivers dessert to Rotherham on Deliveroo and Uber Eats. Enter your postcode in the app to check you\'re in range.'),
               ('What are your opening times?', 'Sunday to Thursday 10am to 10pm, Friday and Saturday 10am to 11pm. Delivery can finish a little earlier.'),
               ('Is there parking?', 'Yes, Valley Centertainment has free parking, and the tram stops right outside.'),
               ('Are you near Utilita Arena?', 'Yes, we\'re on Broughton Lane, the same road as Utilita Arena. Grab dessert before or after the show.'),
@@ -428,7 +430,7 @@ def location_hub():
 <section class="md-phero"><div class="md-wrap md-phero__in">
 <div><p class="md-crumbs"><a href="/">Home</a> / Locations</p>
 <h1>Find us in Sheffield</h1>
-<p>Two spots, same drip. Headford Street in the city centre (S3) and Valley Centertainment near Utilita Arena and Meadowhall (S9).</p></div>
+<p>Two spots, same drip. Headford Street in the city centre (S3) and Valley Centertainment near Utilita Arena and Meadowhall (S9), which also delivers to Rotherham.</p></div>
 <div class="md-phero__img">{img('reeses-bowl', "Reese's waffle bowl", 640, 800, eager=True)}</div>
 </div></section>
 <section class="md-sec md-pat" id="order"{PAT}><div class="md-wrap">
@@ -449,7 +451,7 @@ TITLES = {
     'home': 'Miss Drippy & Co. | Dessert Delivery in Sheffield',
     'menu': 'Menu | Miss Drippy & Co. Sheffield',
     'headford-street': 'Miss Drippy Headford Street | Desserts in Sheffield City Centre S3',
-    'centertainment': 'Miss Drippy Centertainment | Desserts near Utilita Arena, Sheffield S9',
+    'centertainment': 'Miss Drippy Centertainment | Dessert Delivery Sheffield S9 & Rotherham',
     'location': 'Locations | Miss Drippy & Co. Sheffield',
 }
 for k, v in PAGES.items():
