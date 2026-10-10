@@ -1,0 +1,21 @@
+<style>
+html.wisl-live #header,html.wisl-live header.header,html.wisl-live .header-announcement-bar-wrapper,html.wisl-live #footer-sections,html.wisl-live footer.sections,html.wisl-live #page{display:none!important}
+html.wisl-live,html.wisl-live body{overflow:hidden!important;background:#F99B3A!important}
+#wisl-frame{position:fixed;inset:0;width:100%;height:100%;border:0;z-index:2147483000;background:#F99B3A}
+</style>
+<script>
+(function(){
+  var SRC='https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@851da04f49b886d8a116c219e09bf1b095ffa743/wisl-site/index.html';
+  if (window.top !== window) return; /* inside the Squarespace editor: leave the page editable */
+  document.documentElement.classList.add('wisl-live');
+  var html = fetch(SRC).then(function(r){ if(!r.ok) throw 0; return r.text(); });
+  function mount(){
+    var f=document.createElement('iframe');
+    f.id='wisl-frame'; f.title='Wisl Cola'; f.setAttribute('allow','fullscreen; autoplay');
+    document.body.appendChild(f);
+    html.then(function(h){ f.srcdoc=h; f.focus(); })
+        .catch(function(){ document.documentElement.classList.remove('wisl-live'); f.remove(); });
+  }
+  if (document.body) mount(); else document.addEventListener('DOMContentLoaded', mount);
+})();
+</script>
