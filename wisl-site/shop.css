@@ -48,7 +48,7 @@ html.wisl-shop .product-nav{display:flex;gap:8px;align-items:center;margin-botto
 html.wisl-shop .product-nav a{color:var(--w-ink)!important;text-decoration:none;font-weight:500}
 html.wisl-shop .product-nav a:first-child{border:2px solid var(--w-ink);border-radius:999px;padding:4px 12px;background:var(--w-white);box-shadow:0 3px 0 var(--w-ink)}
 html.wisl-shop .product-content-wrapper{align-items:flex-start;gap:clamp(24px,4vw,64px)}
-html.wisl-shop .product-gallery{border:3px solid var(--w-ink);border-radius:20px;overflow:hidden;background:var(--w-ink);box-shadow:8px 8px 0 var(--w-ink);transform:rotate(-1.2deg)}
+html.wisl-shop .product-gallery{border:3px solid var(--w-ink);border-radius:20px;overflow:hidden;background:var(--w-white);box-shadow:8px 8px 0 var(--w-ink);transform:rotate(-1.2deg)}
 html.wisl-shop .product-gallery-slides-item-image{border-radius:0!important}
 html.wisl-shop .product-gallery-thumbnails img,html.wisl-shop .product-gallery-thumbnails-item{border-radius:10px;border:2px solid var(--w-ink)}
 html.wisl-shop .product-title{font-size:clamp(40px,5.2vw,78px)!important;line-height:.95!important;margin:0 0 18px!important;text-wrap:balance}
