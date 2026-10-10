@@ -1,9 +1,10 @@
+<style>html.wisl-shop #header,html.wisl-shop .header-announcement-bar-wrapper,html.wisl-shop #footer-sections{display:none!important}</style>
 <script>
 (function(){
   if(!/^\/(shop|cart)(\/|$)/.test(location.pathname)) return;
-  var B='https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@main/wisl-site/', v=Math.floor(Date.now()/36e5);
+  var R='https://raw.githubusercontent.com/mohamedabdulrub/unit-website-media/main/wisl-site/';
   document.documentElement.classList.add('wisl-shop');
-  var l=document.createElement('link'); l.rel='stylesheet'; l.href=B+'shop.css?v='+v; document.head.appendChild(l);
-  var s=document.createElement('script'); s.src=B+'shop.js?v='+v; s.defer=true; document.head.appendChild(s);
+  function add(file, tag){ fetch(R+file).then(function(r){ return r.text(); }).then(function(t){ var e=document.createElement(tag); e.textContent=t; document.head.appendChild(e); }); }
+  add('shop.css','style'); add('shop.js','script');
 })();
 </script>
