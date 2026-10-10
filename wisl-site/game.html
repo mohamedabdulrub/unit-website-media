@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Seven Hills Run</title>
+<style>
+@font-face{font-family:'Motter Corpus';src:url(fonts/motter.ttf) format('truetype');font-display:swap}
+@font-face{font-family:'Poppins';src:url(fonts/p400.ttf) format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Poppins';src:url(fonts/p500.ttf) format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:'Poppins';src:url(fonts/p700.ttf) format('truetype');font-weight:600 800;font-display:swap}
+:root{
+  --pink:#EF445D;--pink-pale:#FFD6DC;--orange:#F89D3A;--orange-pale:#FFE2BF;
+  --ink:#0A0A0A;--white:#FFFFFF;--cream:#FFF6EA;--muted:#5b4a40;
+  --display:'Motter Corpus','Poppins','Arial Black',sans-serif;
+  --body:'Poppins',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--orange);color:var(--ink);font-family:var(--body);-webkit-user-select:none;user-select:none;touch-action:none;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+canvas#c{position:fixed;inset:0;width:100%;height:100%;display:block}
+.mark{font-family:var(--display);font-weight:400;color:var(--white);-webkit-text-stroke:2.5px var(--ink);paint-order:stroke fill;text-shadow:0 6px 0 var(--ink),2px 6px 0 var(--ink),-2px 6px 0 var(--ink);letter-spacing:normal}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border:2.5px solid var(--ink);border-radius:999px;background:var(--white);color:var(--ink);font:600 16px var(--body);text-decoration:none;cursor:pointer;box-shadow:0 5px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 7px 0 var(--ink)}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.btn.dark{background:var(--ink);color:var(--white);box-shadow:0 5px 0 var(--pink)}
+.btn:focus-visible,.icon-btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+
+/* HUD */
+.hud{position:fixed;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:calc(12px + env(safe-area-inset-top,0px)) 14px 0;pointer-events:none;z-index:5}
+.hud-l,.hud-r{display:flex;flex-direction:column;gap:8px}
+.hud-r{align-items:flex-end}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:2.5px solid var(--ink);border-radius:999px;padding:6px 14px;box-shadow:0 4px 0 var(--ink);font:700 14px var(--body);white-space:nowrap}
+.pill.score{font-family:var(--display);font-weight:400;font-size:26px;padding:6px 16px 3px}
+.pill.hill{background:var(--orange-pale)}
+.pill.crates{background:var(--pink-pale)}
+.lives{display:flex;gap:6px}
+.life{width:26px;height:26px;border-radius:50%;background:var(--orange);border:2.5px solid var(--ink);box-shadow:0 3px 0 var(--ink);position:relative}
+.life::after{content:"";position:absolute;inset:5px;border-radius:50%;border:2px dashed var(--ink)}
+.life.off{background:var(--cream);opacity:.45}
+.icon-btn{pointer-events:auto;width:44px;height:44px;border-radius:50%;border:2.5px solid var(--ink);background:var(--white);box-shadow:0 4px 0 var(--ink);font:700 16px var(--body);cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.boost{position:fixed;left:50%;top:calc(70px + env(safe-area-inset-top,0px));transform:translateX(-50%);z-index:5;pointer-events:none;width:min(220px,50vw);height:14px;border:2.5px solid var(--ink);border-radius:999px;background:var(--white);overflow:hidden;box-shadow:0 3px 0 var(--ink)}
+.boost i{display:block;height:100%;width:100%;background:var(--orange);transform-origin:left}
+
+.toast{position:fixed;left:50%;top:32%;transform:translate(-50%,-50%) rotate(-3deg);z-index:6;pointer-events:none;text-align:center;font-size:clamp(30px,7vw,64px);line-height:.95;opacity:0;transition:opacity .2s;max-width:92vw}
+.toast.show{opacity:1;animation:pop .5s cubic-bezier(.2,.9,.3,1.4)}
+.toast small{display:block;margin-top:10px;font:700 15px var(--body);color:var(--ink);-webkit-text-stroke:0;text-shadow:none}
+@keyframes pop{from{transform:translate(-50%,-50%) rotate(-3deg) scale(.6)}to{transform:translate(-50%,-50%) rotate(-3deg) scale(1)}}
+
+/* Screens */
+.screen{position:fixed;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;padding:20px;overflow:auto}
+#title{justify-content:flex-start;padding-left:clamp(20px,5vw,72px)}
+#title .card{width:min(500px,100%)}
+@media (max-aspect-ratio:4/5){#title{justify-content:center;align-items:flex-end;padding:20px 14px calc(16px + env(safe-area-inset-bottom,0px))}#title .card{padding:18px 16px 16px}#title .lede{display:none}#title .rules li{font-size:11.5px;padding:7px 9px}#title .keys{display:none}#title h1{font-size:clamp(40px,12vw,60px)}}
+.card{width:min(560px,100%);background:var(--cream);border:3px solid var(--ink);border-radius:26px;box-shadow:8px 8px 0 var(--ink);padding:28px 26px 26px;text-align:center}
+.card .eyebrow{margin:0 0 10px;font:700 12px var(--body);letter-spacing:.12em;text-transform:uppercase}
+.card h1{margin:0;font-size:clamp(46px,10vw,78px);line-height:.92}
+.card .lede{margin:18px auto 0;max-width:40ch;font-size:15px;line-height:1.55}
+.rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0 0;padding:0;list-style:none;text-align:left}
+.rules li{background:var(--white);border:2px solid var(--ink);border-radius:16px;padding:10px 12px;font-size:13px;line-height:1.4}
+.rules b{display:block;font-size:13px}
+.keys{margin:16px 0 0;font-size:12.5px;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:22px}
+.best{margin:14px 0 0;font:600 13px var(--body)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:20px 0 0}
+.stat{background:var(--white);border:2px solid var(--ink);border-radius:16px;padding:10px 6px}
+.stat b{display:block;font-family:var(--display);font-weight:400;font-size:30px;line-height:1.1}
+.stat span{font-size:12px;font-weight:600}
+.loading{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;background:var(--orange);font:700 15px var(--body)}
+.loading .bar{width:180px;height:14px;border:2.5px solid var(--ink);border-radius:999px;background:var(--white);overflow:hidden;margin-top:12px}
+.loading .bar i{display:block;height:100%;width:0;background:var(--pink);transition:width .2s}
+.touch-hint{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:5;pointer-events:none;font:700 12px var(--body);background:var(--white);border:2px solid var(--ink);border-radius:999px;padding:6px 12px;opacity:.9}
+@media (max-width:520px){
+  .card{padding:22px 16px 18px;border-radius:22px}
+  .rules{grid-template-columns:1fr 1fr;gap:8px}
+  .rules li{padding:8px 10px;font-size:12px}
+  .pill.score{font-size:22px}
+  .pill{font-size:12px;padding:5px 11px}
+}
+@media (prefers-reduced-motion:reduce){.toast.show{animation:none}}
+</style>
+</head>
+<body>
+<canvas id="c" aria-label="Seven Hills Run game"></canvas>
+
+<div class="hud" id="hud" hidden>
+  <div class="hud-l">
+    <span class="pill score" id="score">0</span>
+    <span class="pill hill" id="hill">Hill 1 of 7</span>
+  </div>
+  <div class="hud-r">
+    <div style="display:flex;gap:8px;align-items:center">
+      <div class="lives" id="lives" aria-label="Lives"></div>
+      <button class="icon-btn" id="pauseBtn" type="button" aria-label="Pause">II</button>
+    </div>
+    <span class="pill crates" id="crates">Crates 0/3</span>
+    <span class="pill" id="deliv">Delivered 0</span>
+  </div>
+</div>
+<div class="boost" id="boost" hidden><i id="boostFill"></i></div>
+<div class="toast mark" id="toast" aria-live="polite"></div>
+<div class="touch-hint" id="touchHint" hidden>Swipe left / right to switch · Swipe up or tap to jump</div>
+
+<section class="screen" id="title" hidden>
+  <div class="card">
+    <p class="eyebrow">A Wisl Cola game</p>
+    <h1 class="mark">Seven Hills Run</h1>
+    <p class="lede">Sheffield is built on seven hills and we deliver every bottle ourselves. Help Wisl get the crates over the hills to the indies.</p>
+    <ul class="rules">
+      <li><b>Grab crates</b>Carry up to three at a time.</li>
+      <li><b>Deliver to the indies</b>Run in the lane next to a café to drop them off.</li>
+      <li><b>Dodge</b>Jump the cones and potholes. Swerve the Big Fizz Co. lorries.</li>
+      <li><b>Psssht!</b>A golden cap gives you a fizz boost.</li>
+    </ul>
+    <p class="keys" id="keysHint">Arrow keys or A / D to switch lanes · Up, W or Space to jump · P to pause</p>
+    <div class="actions"><button class="btn dark" id="playBtn" type="button">Play</button></div>
+    <p class="best" id="bestLine"></p>
+  </div>
+</section>
+
+<section class="screen" id="paused" hidden>
+  <div class="card">
+    <h1 class="mark">Paused</h1>
+    <div class="actions"><button class="btn dark" id="resumeBtn" type="button">Keep running</button><button class="btn" id="quitBtn" type="button">Quit</button></div>
+  </div>
+</section>
+
+<section class="screen" id="over" hidden>
+  <div class="card">
+    <p class="eyebrow" id="overEyebrow">Run over</p>
+    <h1 class="mark" id="overTitle">Flat out!</h1>
+    <div class="stats">
+      <div class="stat"><b id="oScore">0</b><span>Score</span></div>
+      <div class="stat"><b id="oDeliv">0</b><span>Crates delivered</span></div>
+      <div class="stat"><b id="oHills">0</b><span>Hills climbed</span></div>
+    </div>
+    <p class="best" id="overBest"></p>
+    <div class="actions">
+      <button class="btn dark" id="againBtn" type="button">Run again</button>
+      <a class="btn" id="buyBtn" href="https://www.wisl.uk/shop" target="_top">Get the real thing</a>
+    </div>
+  </div>
+</section>
+
+<div class="loading" id="loading"><div style="text-align:center">Loading the fizz…<div class="bar"><i id="loadFill"></i></div></div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/loaders/GLTFLoader.js"></script>
+<script>
+(function(){
+'use strict';
+var $ = function(id){ return document.getElementById(id); };
+var store = {
+  get:function(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } },
+  set:function(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+};
+
+/* ---------- constants ---------- */
+var COL = { pink:0xEF445D, pinkPale:0xFFD6DC, orange:0xF89D3A, orangePale:0xFFE2BF, ink:0x0A0A0A, white:0xFFFFFF, cream:0xFFF6EA, grey:0x8c8c8c, green:0x7cc576 };
+var LANES = [-2.3, 0, 2.3];
+var HILL_LEN = 520;          // world units per hill
+var VIEW = 140;              // how far ahead things are spawned
+var STOCKISTS = ['Builders Brew','Marmadukes','Unit','Steam Yard','Pigeon','Neepsend Social','Miss Drippy','TA'];
+
+/* ---------- renderer / scene ---------- */
+var canvas = $('c');
+var renderer = new THREE.WebGLRenderer({ canvas:canvas, antialias:true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+renderer.outputEncoding = THREE.sRGBEncoding;
+var scene = new THREE.Scene();
+scene.background = new THREE.Color(COL.orange);
+scene.fog = new THREE.Fog(COL.orange, 70, VIEW);
+var camera = new THREE.PerspectiveCamera(58, 1, 0.1, 400);
+scene.add(new THREE.HemisphereLight(0xffffff, 0xffe2bf, 0.95));
+var sun = new THREE.DirectionalLight(0xffffff, 0.75); sun.position.set(4, 10, 6); scene.add(sun);
+
+function toon(color){ return new THREE.MeshToonMaterial({ color:color }); }
+var inkMat = new THREE.MeshBasicMaterial({ color:COL.ink });
+var outlineMat = new THREE.MeshBasicMaterial({ color:COL.ink, side:THREE.BackSide });
+function withOutline(mesh, s){
+  var o = new THREE.Mesh(mesh.geometry, outlineMat); o.scale.setScalar(s || 1.06); mesh.add(o); return mesh;
+}
+function boxMesh(w,h,d,color,outline){
+  var m = new THREE.Mesh(new THREE.BoxGeometry(w,h,d), toon(color));
+  if (outline !== false) withOutline(m, 1 + 0.08 / Math.min(w,h,d));
+  return m;
+}
+function canvasTex(w, h, draw){
+  var cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+  draw(cv.getContext('2d'), w, h);
+  var t = new THREE.CanvasTexture(cv); t.encoding = THREE.sRGBEncoding; t.anisotropy = 4; return t;
+}
+function fontReady(){ return (document.fonts && document.fonts.load) ? Promise.all([document.fonts.load('40px "Motter Corpus"'), document.fonts.load('700 20px Poppins')]).catch(function(){}) : Promise.resolve(); }
+
+/* ---------- hills ---------- */
+function hillAmp(i){ return [5.5,7,4.5,8,6,7.5,9][((i % 7) + 7) % 7]; }
+function H(d){
+  if (d < 40) return 0;
+  var x = d - 40, i = Math.floor(x / HILL_LEN), t = (x - i * HILL_LEN) / HILL_LEN;
+  var s = Math.sin(Math.PI * t);
+  return hillAmp(i) * s * s;
+}
+function slope(d){ return (H(d + 1) - H(d - 1)) / 2; }
+
+/* ---------- road ---------- */
+var ROAD_LEN = VIEW + 30, ROWS = 110;
+var roadGeo = new THREE.PlaneGeometry(1, ROAD_LEN, 1, ROWS); roadGeo.rotateX(-Math.PI / 2);
+function strip(width, x, color, yOff){
+  var g = roadGeo.clone(); var m = new THREE.Mesh(g, toon(color));
+  m.scale.x = width; m.position.x = x; m.userData.yOff = yOff || 0; scene.add(m); return m;
+}
+var strips = [
+  strip(8.2, 0, 0x3a3a3a, 0),             // tarmac
+  strip(2.2, -5.2, COL.pinkPale, 0.12),   // pavements
+  strip(2.2, 5.2, COL.pinkPale, 0.12),
+  strip(0.25, -4.1, COL.ink, 0.13),       // kerbs
+  strip(0.25, 4.1, COL.ink, 0.13),
+  strip(40, -26.3, 0xF6B868, -0.05),      // land
+  strip(40, 26.3, 0xF6B868, -0.05)
+];
+var dashGeo = new THREE.PlaneGeometry(0.18, 2.2); dashGeo.rotateX(-Math.PI / 2);
+var dashMat = new THREE.MeshBasicMaterial({ color:COL.cream });
+var dashes = [];
+for (var di = 0; di < 2; di++) for (var dj = 0; dj < 34; dj++) { var dm = new THREE.Mesh(dashGeo, dashMat); dm.userData.x = di ? 1.15 : -1.15; dm.userData.k = dj; scene.add(dm); dashes.push(dm); }
+
+function updateRoad(dist){
+  strips.forEach(function(m){
+    var p = m.geometry.attributes.position;
+    for (var i = 0; i < p.count; i++){
+      var lz = p.getZ(i);               // -ROAD_LEN/2 .. ROAD_LEN/2 around centre
+      var z = lz - (ROAD_LEN / 2 - 12);   // shift so the strip runs from +12 behind to far ahead
+      p.setY(i, H(dist - z) + m.userData.yOff);
+    }
+    p.needsUpdate = true; m.geometry.computeVertexNormals();
+    m.position.z = -(ROAD_LEN / 2 - 12);
+  });
+  var gap = 4.4, off = dist % gap;
+  dashes.forEach(function(m){
+    var z = 10 - m.userData.k * gap + off;
+    m.position.set(m.userData.x, H(dist - z) + 0.02, z);
+    m.rotation.x = -Math.atan(slope(dist - z));
+  });
+}
+
+/* ---------- textures ---------- */
+var tex = {};
+function buildTextures(){
+  tex.crate = canvasTex(256, 256, function(c, w, h){
+    c.fillStyle = '#F89D3A'; c.fillRect(0,0,w,h);
+    c.strokeStyle = '#0A0A0A'; c.lineWidth = 14; c.strokeRect(7,7,w-14,h-14);
+    c.fillStyle = '#FFFFFF'; c.font = '86px "Motter Corpus", Arial Black'; c.textAlign = 'center'; c.textBaseline = 'middle';
+    c.lineWidth = 10; c.lineJoin = 'round'; c.strokeText('WISL', w/2, h/2 + 4); c.fillText('WISL', w/2, h/2 + 4);
+  });
+  tex.lorry = canvasTex(512, 256, function(c, w, h){
+    c.fillStyle = '#d9d9d9'; c.fillRect(0,0,w,h);
+    c.fillStyle = '#9a9a9a'; for (var i = 0; i < w; i += 32) c.fillRect(i, 0, 3, h);
+    c.fillStyle = '#5e5e5e'; c.font = '700 46px Poppins, Arial'; c.textAlign = 'center'; c.textBaseline = 'middle';
+    c.fillText('BIG FIZZ CO.', w/2, h/2 - 22);
+    c.font = '600 24px Poppins, Arial'; c.fillText('same old cola', w/2, h/2 + 30);
+  });
+  tex.cafe = {};
+}
+function signTex(name, bg){
+  var key = name + bg;
+  if (tex.cafe[key]) return tex.cafe[key];
+  return tex.cafe[key] = canvasTex(512, 128, function(c, w, h){
+    c.fillStyle = bg; c.fillRect(0,0,w,h);
+    c.strokeStyle = '#0A0A0A'; c.lineWidth = 12; c.strokeRect(6,6,w-12,h-12);
+    c.fillStyle = '#FFFFFF'; c.textAlign = 'center'; c.textBaseline = 'middle';
+    var size = name.length > 12 ? 50 : 62; c.font = size + 'px "Motter Corpus", Arial Black';
+    c.lineWidth = 9; c.lineJoin = 'round'; c.strokeText(name, w/2, h/2 + 3); c.fillText(name, w/2, h/2 + 3);
+  });
+}
+
+/* ---------- entity factories ---------- */
+function makeCone(){
+  var g = new THREE.Group();
+  var cone = new THREE.Mesh(new THREE.ConeGeometry(0.42, 1.0, 14), toon(COL.orange)); cone.position.y = 0.55; withOutline(cone, 1.12); g.add(cone);
+  var band = new THREE.Mesh(new THREE.CylinderGeometry(0.27, 0.32, 0.18, 14), toon(COL.white)); band.position.y = 0.55; g.add(band);
+  var base = new THREE.Mesh(new THREE.BoxGeometry(0.95, 0.1, 0.95), toon(COL.ink)); base.position.y = 0.05; g.add(base);
+  return g;
+}
+function makePothole(){
+  var g = new THREE.Group();
+  var m = new THREE.Mesh(new THREE.CircleGeometry(0.95, 20), inkMat); m.rotation.x = -Math.PI / 2; m.position.y = 0.04; m.scale.set(1, 0.75, 1); g.add(m);
+  var rim = new THREE.Mesh(new THREE.RingGeometry(0.95, 1.12, 20), new THREE.MeshBasicMaterial({ color:0x6b6b6b })); rim.rotation.x = -Math.PI / 2; rim.position.y = 0.035; rim.scale.set(1, 0.75, 1); g.add(rim);
+  return g;
+}
+function makeLorry(){
+  var g = new THREE.Group();
+  var sideMat = new THREE.MeshToonMaterial({ map:tex.lorry });
+  var greyMat = toon(0xd9d9d9);
+  var body = new THREE.Mesh(new THREE.BoxGeometry(2.0, 2.4, 4.6), [sideMat, sideMat, greyMat, greyMat, sideMat, sideMat]);
+  body.position.set(0, 1.75, -0.6); withOutline(body, 1.03); g.add(body);
+  var cab = boxMesh(2.0, 1.7, 1.5, 0x6e6e6e); cab.position.set(0, 1.4, 2.4); g.add(cab);
+  var win = new THREE.Mesh(new THREE.PlaneGeometry(1.6, 0.6), new THREE.MeshBasicMaterial({ color:0xbfe3ff })); win.position.set(0, 1.75, 3.16); g.add(win);
+  [[-0.95,1.9],[0.95,1.9],[-0.95,-1.7],[0.95,-1.7]].forEach(function(p){
+    var w = new THREE.Mesh(new THREE.CylinderGeometry(0.45, 0.45, 0.35, 14), toon(COL.ink)); w.rotation.z = Math.PI / 2; w.position.set(p[0], 0.45, p[1]); g.add(w);
+  });
+  return g;
+}
+function makeCrate(){
+  var m = new THREE.Mesh(new THREE.BoxGeometry(0.85, 0.65, 0.85), new THREE.MeshToonMaterial({ map:tex.crate }));
+  withOutline(m, 1.09); m.position.y = 0.9;
+  var g = new THREE.Group(); g.add(m); g.userData.spin = m; return g;
+}
+var bubbleGeo = new THREE.SphereGeometry(0.26, 14, 10);
+var bubbleMat = toon(COL.white);
+function makeBubble(){
+  var m = new THREE.Mesh(bubbleGeo, bubbleMat); withOutline(m, 1.18); m.position.y = 0.9;
+  var shine = new THREE.Mesh(new THREE.SphereGeometry(0.07, 8, 6), new THREE.MeshBasicMaterial({ color:COL.pink })); shine.position.set(-0.09, 0.09, 0.2); m.add(shine);
+  var g = new THREE.Group(); g.add(m); g.userData.spin = m; return g;
+}
+function makeCap(){
+  var g = new THREE.Group();
+  var m = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.2, 20), toon(0xFFC531)); withOutline(m, 1.12);
+  m.rotation.x = Math.PI / 2; m.position.y = 1.0; g.add(m);
+  var ridge = new THREE.Mesh(new THREE.TorusGeometry(0.5, 0.06, 6, 20), toon(0xE09A00)); m.add(ridge); ridge.rotation.x = Math.PI / 2;
+  g.userData.spin = m; return g;
+}
+var BUILD_COLS = [COL.pink, COL.orangePale, COL.cream, 0xF2C14E, COL.pinkPale, 0xBFD8C2];
+function makeBuilding(side){
+  var w = 4 + Math.random() * 4, h = 4 + Math.random() * 9, d = 5 + Math.random() * 5;
+  var g = new THREE.Group();
+  var b = boxMesh(w, h, d, BUILD_COLS[(Math.random() * BUILD_COLS.length) | 0]); b.position.y = h / 2 - 0.5; g.add(b);
+  var rows = Math.max(1, Math.floor((h - 1.5) / 2.2)), winMat = new THREE.MeshBasicMaterial({ color:COL.ink });
+  for (var r = 0; r < rows; r++) for (var cI = 0; cI < 2; cI++) {
+    var wm = new THREE.Mesh(new THREE.PlaneGeometry(0.9, 1.1), winMat);
+    wm.position.set(-side * (w / 2 + 0.01), 1.6 + r * 2.2, (cI ? 1 : -1) * d * 0.22); wm.rotation.y = -side * Math.PI / 2; g.add(wm);
+  }
+  g.userData.halfW = w / 2;
+  return g;
+}
+function makeCafe(side, name){
+  var g = new THREE.Group();
+  var bg = ['#EF445D','#0A0A0A','#F89D3A'][(Math.random() * 3) | 0];
+  var b = boxMesh(5, 5.5, 7, COL.cream); b.position.y = 2.25; g.add(b);
+  var sign = new THREE.Mesh(new THREE.PlaneGeometry(5.4, 1.35), new THREE.MeshBasicMaterial({ map:signTex(name, bg) }));
+  sign.position.set(-side * 2.52, 4.1, 0); sign.rotation.y = -side * Math.PI / 2; g.add(sign);
+  var awnTex = canvasTex(256, 64, function(c, w, h){ for (var i = 0; i < 8; i++){ c.fillStyle = i % 2 ? '#FFFFFF' : bg; c.fillRect(i * w / 8, 0, w / 8, h); } });
+  var awn = new THREE.Mesh(new THREE.PlaneGeometry(6.6, 1.4), new THREE.MeshToonMaterial({ map:awnTex, side:THREE.DoubleSide }));
+  awn.position.set(-side * 3.1, 2.9, 0); awn.rotation.set(0, -side * Math.PI / 2, 0); awn.rotateX(-0.55); g.add(awn);
+  var door = new THREE.Mesh(new THREE.PlaneGeometry(1.4, 2.3), new THREE.MeshBasicMaterial({ color:COL.ink })); door.position.set(-side * 2.52, 0.65, 0); door.rotation.y = -side * Math.PI / 2; g.add(door);
+  var mat = new THREE.Mesh(new THREE.PlaneGeometry(2.4, 3.4), new THREE.MeshBasicMaterial({ color:0xFFC531 })); mat.rotation.x = -Math.PI / 2; mat.position.set(-side * 3.9, -0.37, 0); g.add(mat);
+  g.userData.halfW = 2.5;
+  return g;
+}
+
+/* ---------- player ---------- */
+var player = new THREE.Group(); scene.add(player);
+var model = null, mixer = null, actions = {}, faceAction = null;
+var playerShadow = new THREE.Mesh(new THREE.CircleGeometry(0.55, 20), new THREE.MeshBasicMaterial({ color:COL.ink, transparent:true, opacity:0.22 }));
+playerShadow.rotation.x = -Math.PI / 2; scene.add(playerShadow);
+
+function loadModel(){
+  return new Promise(function(resolve, reject){
+    var loader = new THREE.GLTFLoader();
+    loader.load('wisl_toon.json', function(gltf){
+      gltf.parser.getDependencies('material').then(function(mats){
+        var byName = {}; mats.forEach(function(m){ byName[m.name] = m; });
+        var swap = { 'WISL_Body':'WISL_Body_Cola', 'WISL_Ink':'WISL_Ink_White' };
+        gltf.scene.traverse(function(o){
+          if (!o.isMesh) return;
+          o.frustumCulled = false;
+          if (o.material && swap[o.material.name] && byName[swap[o.material.name]]) o.material = byName[swap[o.material.name]];
+          if (o.name && /Shadow/i.test(o.name)) o.visible = false;
+        });
+        model = gltf.scene;
+        var box = new THREE.Box3().setFromObject(model), size = box.getSize(new THREE.Vector3());
+        var s = 2.1 / (size.y || 1); model.scale.setScalar(s);
+        box.setFromObject(model); model.position.y -= box.min.y;
+        player.add(model);
+        mixer = new THREE.AnimationMixer(model);
+        gltf.animations.forEach(function(clip){ actions[clip.name] = mixer.clipAction(clip); });
+        ['Cap_Flip','Happy_Hop','Expr_Grin','Expr_Smirk','Expr_Whistle'].forEach(function(n){
+          var a = actions[n]; if (!a) return; a.setLoop(THREE.LoopOnce, 1); a.clampWhenFinished = true;
+        });
+        resolve();
+      }, reject);
+    }, function(e){ if (e && e.total) $('loadFill').style.width = Math.round(e.loaded / e.total * 100) + '%'; }, reject);
+  });
+}
+var bodyAction = null;
+function setBody(name, fade){
+  var a = actions[name]; if (!a || a === bodyAction) return;
+  a.reset(); a.enabled = true; a.setEffectiveWeight(1); a.play();
+  if (bodyAction) bodyAction.crossFadeTo(a, fade || 0.2, false);
+  bodyAction = a;
+}
+function playOnce(name, after, fade){
+  var a = actions[name]; if (!a) return;
+  setBody(name, fade || 0.12); bodyAction = a;
+  var onFin = function(e){ if (e.action === a){ mixer.removeEventListener('finished', onFin); if (bodyAction === a) setBody(after || 'Waddle', 0.18); } };
+  mixer.addEventListener('finished', onFin);
+}
+function setFace(name){
+  if (faceAction){ faceAction.stop(); faceAction = null; }
+  if (!name || !actions[name]) return;
+  faceAction = actions[name]; faceAction.reset(); faceAction.play();
+}
+
+/* ---------- audio (tiny synth, off until the first tap) ---------- */
+var actx = null, muted = store.get('wislRunMuted') === '1';
+function beep(f1, f2, dur, type, vol){
+  if (muted) return;
+  try{
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    var o = actx.createOscillator(), g = actx.createGain(), t = actx.currentTime;
+    o.type = type || 'square'; o.frequency.setValueAtTime(f1, t); o.frequency.exponentialRampToValueAtTime(f2, t + dur);
+    g.gain.setValueAtTime(vol || 0.08, t); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); g.connect(actx.destination); o.start(t); o.stop(t + dur);
+  }catch(e){}
+}
+function fizz(){
+  if (muted) return;
+  try{
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    var len = actx.sampleRate * 0.5, buf = actx.createBuffer(1, len, actx.sampleRate), d = buf.getChannelData(0);
+    for (var i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2);
+    var src = actx.createBufferSource(), f = actx.createBiquadFilter(), g = actx.createGain();
+    f.type = 'highpass'; f.frequency.value = 2500; g.gain.value = 0.18;
+    src.buffer = buf; src.connect(f); f.connect(g); g.connect(actx.destination); src.start();
+  }catch(e){}
+}
+
+/* ---------- game state ---------- */
+var S = null, entities = [], scenery = [], state = 'loading';
+function reset(){
+  entities.forEach(function(e){ scene.remove(e.obj); }); entities = [];
+  scenery.forEach(function(e){ scene.remove(e.obj); }); scenery = [];
+  S = { dist:0, speed:15, lane:1, x:0, y:0, vy:0, air:false, lives:3, score:0, bubbles:0, crates:0, delivered:0,
+        nextSpawn:40, nextCafe:180, cafeIdx:(Math.random() * STOCKISTS.length) | 0, nextScenery:{ '-1':-10, '1':-10 },
+        invuln:0, boost:0, shake:0, hillsDone:0, time:0, lastHill:0 };
+  for (var i = 0; i < 2; i++) fillScenery(i ? 1 : -1);
+  player.position.set(0, 0, 0); player.rotation.set(0, Math.PI, 0);
+  updateHUD();
+}
+function addEntity(type, d, lane, extra){
+  var obj;
+  if (type === 'cone') obj = makeCone();
+  else if (type === 'pothole') obj = makePothole();
+  else if (type === 'lorry') obj = makeLorry();
+  else if (type === 'crate') obj = makeCrate();
+  else if (type === 'bubble') obj = makeBubble();
+  else if (type === 'cap') obj = makeCap();
+  scene.add(obj);
+  var e = { type:type, d:d, lane:lane, obj:obj, hit:false };
+  if (extra) for (var k in extra) e[k] = extra[k];
+  entities.push(e); return e;
+}
+function fillScenery(side){
+  while (S.nextScenery[side] < S.dist + VIEW){
+    var d = S.nextScenery[side], obj, isCafe = false, name = null;
+    if (side === S.cafeSide && !S.cafePlaced && d >= S.cafeAt - 8){
+      name = STOCKISTS[S.cafeIdx % STOCKISTS.length]; obj = makeCafe(side, name); isCafe = true; S.cafePlaced = true; S.cafeAt = d;
+    } else obj = makeBuilding(side);
+    var half = obj.userData.halfW;
+    obj.userData.x = side * (6.4 + half);
+    scene.add(obj);
+    scenery.push({ obj:obj, d:d, side:side, cafe:isCafe, name:name, done:false });
+    S.nextScenery[side] = d + (isCafe ? 8 : 6 + Math.random() * 4);
+  }
+}
+function scheduleCafe(){
+  S.cafeSide = Math.random() < 0.5 ? -1 : 1; S.cafeAt = Math.max(S.nextCafe, S.nextScenery[S.cafeSide]); S.cafePlaced = false;
+}
+function spawn(){
+  while (S.nextSpawn < S.dist + VIEW){
+    var d = S.nextSpawn, roll = Math.random(), difficulty = Math.min(1, S.dist / 3000);
+    var lanes = [0,1,2].sort(function(){ return Math.random() - 0.5; });
+    var free = lanes[0];
+    var nObs = roll < 0.25 + difficulty * 0.35 ? 2 : 1;
+    for (var i = 1; i <= nObs; i++){
+      var r = Math.random(), t = r < 0.4 ? 'cone' : (r < 0.7 ? 'pothole' : 'lorry');
+      addEntity(t, d, lanes[i]);
+    }
+    if (Math.random() < 0.28 && S.crates < 3) addEntity('crate', d, free);
+    else if (Math.random() < 0.035 && S.boost <= 0) addEntity('cap', d, free);
+    else for (var b = 0; b < 5; b++) addEntity('bubble', d - 3 - b * 1.8, free);
+    S.nextSpawn = d + Math.max(11, 22 - difficulty * 9) + Math.random() * 6;
+  }
+}
+
+/* ---------- input ---------- */
+function move(dir){ if (state !== 'play') return; var n = Math.max(0, Math.min(2, S.lane + dir)); if (n !== S.lane){ S.lane = n; beep(520, 640, 0.06, 'triangle', 0.05); } }
+function jump(){
+  if (state !== 'play' || S.air) return;
+  S.vy = 11.5; S.air = true; playOnce('Happy_Hop', 'Waddle', 0.08);
+  if (actions.Happy_Hop) actions.Happy_Hop.timeScale = 1.6;
+  beep(380, 820, 0.14, 'square', 0.05);
+}
+window.addEventListener('keydown', function(e){
+  var k = e.key;
+  if (k === 'ArrowLeft' || k === 'a' || k === 'A'){ move(-1); e.preventDefault(); }
+  else if (k === 'ArrowRight' || k === 'd' || k === 'D'){ move(1); e.preventDefault(); }
+  else if (k === 'ArrowUp' || k === 'w' || k === 'W' || k === ' '){ if (state === 'play'){ jump(); e.preventDefault(); } }
+  else if (k === 'p' || k === 'P' || k === 'Escape'){ if (state === 'play') pause(); else if (state === 'paused') resume(); }
+});
+var touch = null;
+canvas.addEventListener('pointerdown', function(e){ touch = { x:e.clientX, y:e.clientY, t:performance.now() }; });
+canvas.addEventListener('pointerup', function(e){
+  if (!touch) return;
+  var dx = e.clientX - touch.x, dy = e.clientY - touch.y, adx = Math.abs(dx), ady = Math.abs(dy);
+  if (adx < 24 && ady < 24) jump();
+  else if (adx > ady) move(dx > 0 ? 1 : -1);
+  else if (dy < 0) jump();
+  touch = null;
+});
+document.addEventListener('visibilitychange', function(){ if (document.hidden && state === 'play') pause(); });
+
+/* ---------- HUD ---------- */
+function updateHUD(){
+  $('score').textContent = Math.floor(S.score).toLocaleString('en-GB');
+  var hillNo = Math.min(7, Math.floor(Math.max(0, S.dist - 40) / HILL_LEN) + 1);
+  $('hill').textContent = S.dist - 40 >= HILL_LEN * 7 ? 'All seven hills!' : 'Hill ' + hillNo + ' of 7';
+  $('crates').textContent = 'Crates ' + S.crates + '/3';
+  $('deliv').textContent = 'Delivered ' + S.delivered;
+  var lv = $('lives'); lv.innerHTML = '';
+  for (var i = 0; i < 3; i++){ var c = document.createElement('span'); c.className = 'life' + (i < S.lives ? '' : ' off'); lv.appendChild(c); }
+  lv.setAttribute('aria-label', S.lives + ' lives left');
+}
+var toastTimer = null;
+function toast(big, small){
+  var t = $('toast'); t.innerHTML = ''; t.appendChild(document.createTextNode(big));
+  if (small){ var s = document.createElement('small'); s.textContent = small; t.appendChild(s); }
+  t.classList.remove('show'); void t.offsetWidth; t.classList.add('show');
+  clearTimeout(toastTimer); toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 1300);
+}
+
+/* ---------- screens ---------- */
+function show(id){ ['title','paused','over'].forEach(function(s){ $(s).hidden = s !== id; }); }
+function bestScore(){ return parseInt(store.get('wislRunBest') || '0', 10) || 0; }
+function titleScreen(){
+  state = 'title'; reset(); show('title'); $('hud').hidden = true; $('boost').hidden = true; $('touchHint').hidden = true;
+  var b = bestScore(); $('bestLine').textContent = b ? 'Your best: ' + b.toLocaleString('en-GB') : '';
+  setBody('Idle', 0.3); setFace('Expr_Whistle');
+  player.rotation.y = Math.PI;
+}
+function start(){
+  reset(); state = 'play'; show(null); $('hud').hidden = false;
+  var coarse = window.matchMedia && window.matchMedia('(pointer:coarse)').matches;
+  if (coarse){ $('touchHint').hidden = false; setTimeout(function(){ $('touchHint').hidden = true; }, 4000); }
+  setFace(null); setBody('Waddle', 0.2); scheduleCafe();
+  toast('Go!', 'Grab crates, deliver to the indies');
+  fizz(); canvas.focus && canvas.focus();
+}
+function pause(){ state = 'paused'; show('paused'); }
+function resume(){ state = 'play'; show(null); last = performance.now(); }
+function gameOver(){
+  state = 'over'; $('boost').hidden = true;
+  var score = Math.floor(S.score), best = bestScore(), isBest = score > best;
+  if (isBest) store.set('wislRunBest', String(score));
+  $('oScore').textContent = score.toLocaleString('en-GB');
+  $('oDeliv').textContent = S.delivered;
+  $('oHills').textContent = Math.min(7, S.hillsDone) + (S.hillsDone >= 7 ? '+' : '');
+  $('overTitle').textContent = S.hillsDone >= 7 ? 'Sheffield sorted!' : (S.delivered >= 10 ? 'Proper delivery!' : 'Flat out!');
+  $('overEyebrow').textContent = isBest ? 'New best score' : 'Run over';
+  $('overBest').textContent = isBest ? 'That beats your old best of ' + best.toLocaleString('en-GB') + '.' : 'Your best: ' + Math.max(best, score).toLocaleString('en-GB');
+  setBody('Idle', 0.3); setFace('Expr_Smirk');
+  setTimeout(function(){ show('over'); }, 650);
+}
+$('playBtn').addEventListener('click', start);
+$('againBtn').addEventListener('click', start);
+$('resumeBtn').addEventListener('click', resume);
+$('quitBtn').addEventListener('click', titleScreen);
+$('pauseBtn').addEventListener('click', function(){ if (state === 'play') pause(); });
+
+/* ---------- loop ---------- */
+var last = performance.now(), camY = 3, camLook = new THREE.Vector3();
+function placeOnRoad(obj, d, x){ var z = S.dist - d; obj.position.set(x, H(d), z); return z; }
+
+function tick(now){
+  requestAnimationFrame(tick);
+  var dt = Math.min(0.05, (now - last) / 1000); last = now;
+  if (mixer) mixer.update(dt);
+  if (!S){ renderer.render(scene, camera); return; }
+
+  if (state === 'play'){
+    S.time += dt;
+    var boosting = S.boost > 0;
+    S.speed = Math.min(36, 15 + S.time * 0.22) * (boosting ? 1.35 : 1);
+    var climb = slope(S.dist);
+    var eff = S.speed * (1 - Math.max(-0.12, Math.min(0.18, climb * 0.6)));
+    S.dist += eff * dt;
+    S.score += eff * dt * 0.5;
+    if (actions.Waddle) actions.Waddle.timeScale = 0.9 + S.speed / 22;
+
+    if (S.air){ S.vy -= 32 * dt; S.y += S.vy * dt; if (S.y <= 0){ S.y = 0; S.vy = 0; S.air = false; } }
+    S.x += (LANES[S.lane] - S.x) * Math.min(1, dt * 14);
+    if (S.invuln > 0) S.invuln -= dt;
+    if (S.boost > 0){ S.boost -= dt; $('boostFill').style.transform = 'scaleX(' + Math.max(0, S.boost / 6) + ')'; if (S.boost <= 0) $('boost').hidden = true; }
+
+    var hillsDone = Math.floor(Math.max(0, S.dist - 40) / HILL_LEN);
+    if (hillsDone > S.hillsDone){
+      S.hillsDone = hillsDone; S.score += 250;
+      if (hillsDone === 7) toast('All seven hills!', '+250 · Sheffield conquered. Keep going!');
+      else toast('Hill ' + hillsDone + ' done', '+250 · ' + (7 - hillsDone) + ' to go');
+      beep(500, 1000, 0.25, 'triangle', 0.07);
+    }
+
+    spawn(); fillScenery(-1); fillScenery(1);
+
+    // collisions and pickups
+    for (var i = entities.length - 1; i >= 0; i--){
+      var e = entities[i], dz = e.d - S.dist;
+      if (dz < -12){ scene.remove(e.obj); entities.splice(i, 1); continue; }
+      if (e.hit) continue;
+      var sameLane = Math.abs(LANES[e.lane] - S.x) < 1.1;
+      if (e.type === 'bubble' || e.type === 'crate' || e.type === 'cap'){
+        var magnet = boosting && e.type === 'bubble' && Math.abs(dz) < 8;
+        if ((sameLane && Math.abs(dz) < 0.9 && S.y < 2.2) || (magnet && Math.abs(dz) < 1.2)){
+          e.hit = true; scene.remove(e.obj);
+          if (e.type === 'bubble'){ S.score += 10; S.bubbles++; beep(900, 1400, 0.05, 'sine', 0.05); }
+          else if (e.type === 'crate'){
+            if (S.crates < 3){ S.crates++; toast('+1 crate', S.crates === 3 ? 'Full up! Find a café' : 'Find a café to deliver'); beep(300, 600, 0.12, 'square', 0.06); }
+          } else { S.boost = 6; S.invuln = Math.max(S.invuln, 6); $('boost').hidden = false; playOnce('Cap_Flip', 'Waddle', 0.1); toast('Psssht!', 'Fizz boost'); fizz(); }
+          updateHUD();
+        }
+      } else if (sameLane){
+        var len = e.type === 'lorry' ? 3.4 : 0.7;
+        var jumpable = e.type !== 'lorry';
+        if (Math.abs(dz) < len && !(jumpable && S.y > (e.type === 'cone' ? 0.85 : 0.35))){
+          e.hit = true;
+          if (S.invuln > 0) continue;
+          S.lives--; S.invuln = 1.6; S.shake = 0.35;
+          setFace('Expr_Smirk'); setTimeout(function(){ if (state === 'play') setFace(null); }, 900);
+          beep(220, 70, 0.3, 'sawtooth', 0.09);
+          if (e.type === 'pothole') toast('Pothole!', 'Classic Sheffield');
+          else if (e.type === 'lorry') toast('Big Fizz Co.!', 'Same old cola, everywhere');
+          else toast('Bonk!');
+          updateHUD();
+          if (S.lives <= 0){ gameOver(); break; }
+        }
+      }
+    }
+    // deliveries
+    for (var j = scenery.length - 1; j >= 0; j--){
+      var sc = scenery[j];
+      if (sc.d - S.dist < -30){ scene.remove(sc.obj); scenery.splice(j, 1); continue; }
+      if (sc.cafe && !sc.done && Math.abs(sc.d - S.dist) < 3){
+        var edgeLane = sc.side < 0 ? 0 : 2;
+        if (S.lane === edgeLane && S.crates > 0){
+          sc.done = true; var n = S.crates; S.delivered += n; S.score += 100 * n; S.crates = 0;
+          toast('Delivered!', n + (n > 1 ? ' crates' : ' crate') + ' to ' + sc.name + ' · +' + (100 * n));
+          setFace('Expr_Grin'); setTimeout(function(){ if (state === 'play') setFace(null); }, 1200);
+          beep(660, 1320, 0.18, 'triangle', 0.08); setTimeout(function(){ beep(880, 1760, 0.18, 'triangle', 0.07); }, 120);
+          updateHUD();
+        } else if (sc.d - S.dist < -2.5){ sc.done = true; }
+      }
+      if (sc.cafe && sc.d - S.dist < -3 && !sc.next){
+        sc.next = true; S.cafeIdx++; S.nextCafe = sc.d + 200 + Math.random() * 120; scheduleCafe();
+      }
+    }
+    if ((S.time * 4 | 0) !== ((S.time - dt) * 4 | 0)) updateHUD();
+  }
+
+  // place everything
+  updateRoad(S.dist);
+  entities.forEach(function(e){
+    placeOnRoad(e.obj, e.d, LANES[e.lane]);
+    if (e.obj.userData.spin){ e.obj.userData.spin.rotation.y += dt * 2.5; e.obj.userData.spin.position.y = 0.9 + Math.sin(now / 250 + e.d) * 0.12; }
+    if (e.type === 'lorry'){ e.obj.rotation.x = -Math.atan(slope(e.d)); e.obj.rotation.y = Math.PI; }
+  });
+  scenery.forEach(function(sc){ placeOnRoad(sc.obj, sc.d, sc.obj.userData.x); sc.obj.position.y = H(sc.d) - 0.2; });
+
+  var groundY = H(S.dist);
+  player.position.set(S.x, groundY + S.y, 0);
+  var lean = (LANES[S.lane] - S.x) * -0.12;
+  if (state === 'play' || state === 'over'){
+    player.rotation.set(Math.atan(slope(S.dist)) * 0.4, (LANES[S.lane] - S.x) * 0.35, -lean);
+  } else {
+    player.rotation.x = 0; player.rotation.z = 0;
+    player.rotation.y += (Math.PI + 0.35 * Math.sin(now / 1400) - player.rotation.y) * 0.05;
+  }
+  player.visible = !(state === 'play' && S.invuln > 0 && S.boost <= 0 && Math.floor(now / 90) % 2 === 0);
+  playerShadow.position.set(S.x, groundY + 0.03, 0);
+  playerShadow.scale.setScalar(Math.max(0.4, 1 - S.y * 0.18));
+
+  // camera
+  var title = state === 'title' || state === 'loading';
+  var portrait = window.innerWidth / window.innerHeight < 0.8;
+  var wantY = groundY + (title ? (portrait ? 1.2 : 1.7) : 3.7), wantZ = title ? (portrait ? -8.5 : -6.2) : 6.8, wantX = title ? (portrait ? 0 : 2.2) : S.x * 0.55;
+  camY += (wantY - camY) * Math.min(1, dt * 5);
+  camera.position.set(camera.position.x + (wantX - camera.position.x) * Math.min(1, dt * 6), camY, camera.position.z + (wantZ - camera.position.z) * Math.min(1, dt * 3));
+  if (S.shake > 0){ S.shake -= dt; camera.position.x += (Math.random() - 0.5) * S.shake; camera.position.y += (Math.random() - 0.5) * S.shake; }
+  if (title) camLook.set(portrait ? 0 : 2.2, groundY + (portrait ? -1.9 : 1.1), 0);
+  else camLook.set(S.x * 0.35, H(S.dist + 18) + 1.2, -18);
+  camera.lookAt(camLook);
+
+  renderer.render(scene, camera);
+}
+
+function resize(){
+  var w = window.innerWidth, h = window.innerHeight;
+  renderer.setSize(w, h, false); camera.aspect = w / h;
+  camera.fov = w / h < 0.8 ? 72 : 58; camera.updateProjectionMatrix();
+}
+window.addEventListener('resize', resize); resize();
+
+/* ---------- boot ---------- */
+fontReady().then(function(){
+  buildTextures();
+  return loadModel();
+}).then(function(){
+  $('loading').hidden = true; titleScreen(); requestAnimationFrame(tick);
+}).catch(function(err){
+  console.error(err);
+  $('loading').innerHTML = '<div style="text-align:center;padding:20px">Couldn’t load the game. Try refreshing the page.</div>';
+});
+})();
+</script>
+</body>
+</html>
