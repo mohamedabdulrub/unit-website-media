@@ -536,12 +536,14 @@ function titleScreen(){
   var b = bestScore(); $('bestLine').textContent = b ? 'Your best: ' + b.toLocaleString('en-GB') : '';
   setBody('Idle', 0.3); setFace('Expr_Whistle');
   player.rotation.y = Math.PI;
+  var pt = window.innerWidth / window.innerHeight < 0.8; camY = pt ? 1.2 : 1.7; camera.position.set(pt ? 0 : 2.2, camY, pt ? -8.5 : -6.2);
 }
 function start(){
   reset(); state = 'play'; show(null); $('hud').hidden = false;
   var coarse = window.matchMedia && window.matchMedia('(pointer:coarse)').matches;
   if (coarse){ $('touchHint').hidden = false; setTimeout(function(){ $('touchHint').hidden = true; }, 4000); }
   setFace(null); setBody('Waddle', 0.2); scheduleCafe();
+  camY = 3.7; camera.position.set(0, 3.7, 6.8);
   toast('Go!', 'Grab crates, deliver to the indies');
   fizz(); canvas.focus && canvas.focus();
 }
