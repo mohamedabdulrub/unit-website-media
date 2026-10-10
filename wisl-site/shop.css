@@ -1,0 +1,116 @@
+/* Wisl shop skin: Squarespace /shop, /shop/p/* and /cart, styled to match the Wisl homepage.
+   Loaded only when <html> has .wisl-shop (set by the site-wide header injection). */
+@font-face{font-family:'Motter Corpus';src:url(https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@03aed2413993b6d486103edfa9f81c4d3cad9ba1/wisl-site/fonts/motter.ttf) format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Poppins';src:url(https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@03aed2413993b6d486103edfa9f81c4d3cad9ba1/wisl-site/fonts/p400.ttf) format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Poppins';src:url(https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@03aed2413993b6d486103edfa9f81c4d3cad9ba1/wisl-site/fonts/p500.ttf) format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:'Poppins';src:url(https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@03aed2413993b6d486103edfa9f81c4d3cad9ba1/wisl-site/fonts/p700.ttf) format('truetype');font-weight:600 800;font-display:swap}
+
+html.wisl-shop{
+  --w-pink:#EF445D;--w-pink-pale:#FFD6DC;--w-orange:#F89D3A;--w-orange-pale:#FFE2BF;
+  --w-ink:#0A0A0A;--w-white:#FFFFFF;--w-cream:#FFF6EA;--w-muted:#5b4a40;
+  --w-display:'Motter Corpus','Poppins','Arial Black',sans-serif;
+  --w-body:'Poppins',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+  --w-gut:clamp(16px,3vw,40px);
+}
+html.wisl-shop body{background:var(--w-cream)!important;color:var(--w-ink)!important;font-family:var(--w-body)!important}
+html.wisl-shop body *{font-family:var(--w-body)}
+
+/* Swap the template header and footer for the Wisl ones */
+html.wisl-shop #header,html.wisl-shop .header-announcement-bar-wrapper,html.wisl-shop #footer-sections{display:none!important}
+html.wisl-shop #page,html.wisl-shop .system-page{padding-top:0!important}
+html.wisl-shop .page-section,html.wisl-shop .section-background,html.wisl-shop .product-list-section,html.wisl-shop .collection-content-wrapper{background:var(--w-cream)!important;color:var(--w-ink)!important}
+html.wisl-shop .page-section{padding-top:32px!important}
+
+.wisl-bar{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px var(--w-gut);background:var(--w-orange);border-bottom:3px solid var(--w-ink)}
+.wisl-bar img{display:block;height:44px;width:auto}
+.wisl-bar nav{display:flex;align-items:center;gap:18px}
+.wisl-bar nav a{color:var(--w-ink)!important;text-decoration:none;font:500 14px var(--w-body)}
+.wisl-bar nav a.wisl-link:hover{text-decoration:underline;text-underline-offset:4px}
+
+.wisl-btn,html.wisl-shop .sqs-add-to-cart-button,html.wisl-shop #sqs-cart-container .sqs-button-element--primary,html.wisl-shop #sqs-cart-container .sqs-button-element--secondary,html.wisl-shop .cart-continue-button{
+  display:inline-flex!important;align-items:center;justify-content:center;gap:10px;min-height:46px;padding:0 22px!important;
+  border:2.5px solid var(--w-ink)!important;border-radius:999px!important;background:var(--w-white)!important;color:var(--w-ink)!important;
+  font:600 14px var(--w-body)!important;letter-spacing:normal!important;text-transform:none!important;text-decoration:none!important;
+  box-shadow:0 4px 0 var(--w-ink)!important;transition:transform .12s,box-shadow .12s!important;cursor:pointer}
+.wisl-btn:hover,html.wisl-shop .sqs-add-to-cart-button:hover,html.wisl-shop #sqs-cart-container .sqs-button-element--primary:hover,html.wisl-shop .cart-continue-button:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--w-ink)!important}
+.wisl-btn:active,html.wisl-shop .sqs-add-to-cart-button:active{transform:translateY(3px);box-shadow:0 1px 0 var(--w-ink)!important}
+.wisl-count{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--w-ink);color:var(--w-white);font:700 12px var(--w-body)}
+
+/* Shared headline look (white fill, ink outline, drop shadow) */
+.wisl-mark,html.wisl-shop .product-title,html.wisl-shop .cart-title{
+  font-family:var(--w-display)!important;font-weight:400!important;letter-spacing:normal!important;text-transform:none!important;
+  color:var(--w-white)!important;-webkit-text-stroke:2.5px var(--w-ink);paint-order:stroke fill;
+  text-shadow:0 6px 0 var(--w-ink),2px 6px 0 var(--w-ink),-2px 6px 0 var(--w-ink)}
+
+/* ---------- Product page ---------- */
+html.wisl-shop .product-detail{padding:24px var(--w-gut) 64px!important}
+html.wisl-shop .product-nav{display:flex;gap:8px;align-items:center;margin-bottom:28px!important;font-size:13px}
+html.wisl-shop .product-nav a{color:var(--w-ink)!important;text-decoration:none;font-weight:500}
+html.wisl-shop .product-nav a:first-child{border:2px solid var(--w-ink);border-radius:999px;padding:4px 12px;background:var(--w-white);box-shadow:0 3px 0 var(--w-ink)}
+html.wisl-shop .product-content-wrapper{align-items:flex-start;gap:clamp(24px,4vw,64px)}
+html.wisl-shop .product-gallery{border:3px solid var(--w-ink);border-radius:20px;overflow:hidden;background:var(--w-ink);box-shadow:8px 8px 0 var(--w-ink);transform:rotate(-1.2deg)}
+html.wisl-shop .product-gallery-slides-item-image{border-radius:0!important}
+html.wisl-shop .product-gallery-thumbnails img,html.wisl-shop .product-gallery-thumbnails-item{border-radius:10px;border:2px solid var(--w-ink)}
+html.wisl-shop .product-title{font-size:clamp(40px,5.2vw,78px)!important;line-height:.95!important;margin:0 0 18px!important;text-wrap:balance}
+html.wisl-shop .product-price-value{display:inline-block;font-family:var(--w-display)!important;font-size:30px!important;line-height:1;color:var(--w-ink)!important;background:var(--w-orange);border:2.5px solid var(--w-ink);border-radius:999px;padding:8px 18px 6px;box-shadow:0 4px 0 var(--w-ink);transform:rotate(-2deg)}
+html.wisl-shop .product-price{margin-bottom:18px!important}
+html.wisl-shop .product-description{font-size:15px!important;line-height:1.65!important;color:var(--w-ink)!important;max-width:52ch}
+html.wisl-shop .product-description p{margin:0 0 12px!important;color:var(--w-ink)!important}
+html.wisl-shop .product-description p:empty{display:none}
+html.wisl-shop .product-add-to-cart{margin-top:22px!important}
+html.wisl-shop .product-purchase-controls-wrapper{display:flex!important;flex-wrap:wrap;gap:14px;align-items:center}
+html.wisl-shop .product-quantity-input{border:2.5px solid var(--w-ink)!important;border-radius:999px!important;background:var(--w-white)!important;box-shadow:0 4px 0 var(--w-ink);min-height:52px;padding:0 6px!important}
+html.wisl-shop .product-quantity-input input{font:600 16px var(--w-body)!important;color:var(--w-ink)!important;background:transparent!important;border:0!important}
+html.wisl-shop .product-quantity-input button{color:var(--w-ink)!important}
+html.wisl-shop .product-quantity-input-wrapper .form-input-effects{display:none!important}
+html.wisl-shop .sqs-add-to-cart-button-wrapper{flex:1 1 220px}
+html.wisl-shop .sqs-add-to-cart-button{width:100%!important;min-height:56px!important;background:var(--w-ink)!important;color:var(--w-white)!important;font-size:16px!important;box-shadow:0 5px 0 var(--w-pink)!important}
+html.wisl-shop .sqs-add-to-cart-button:hover{box-shadow:0 7px 0 var(--w-pink)!important}
+html.wisl-shop .sqs-add-to-cart-button *{color:var(--w-white)!important}
+html.wisl-shop .product-variants select,html.wisl-shop .variant-option select{border:2.5px solid var(--w-ink)!important;border-radius:999px!important;background:var(--w-white)!important;min-height:48px;padding:0 18px!important;font:500 15px var(--w-body)!important}
+
+.wisl-perks{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0;padding:0;list-style:none}
+.wisl-perks li{border:2px solid var(--w-ink);border-radius:999px;background:var(--w-white);padding:6px 12px;font:600 12px var(--w-body);box-shadow:0 3px 0 var(--w-ink)}
+.wisl-perks li:nth-child(2){background:var(--w-pink-pale)}.wisl-perks li:nth-child(3){background:var(--w-orange-pale)}
+
+/* ---------- Shop list ---------- */
+.wisl-shop-hero{padding:56px var(--w-gut) 8px;background:var(--w-cream)}
+.wisl-shop-hero h1{margin:0;font-size:clamp(52px,8vw,128px);line-height:.9}
+.wisl-shop-hero p{margin:20px 0 0;max-width:46ch;font-size:15px;line-height:1.6}
+html.wisl-shop .product-list{padding:24px var(--w-gut) 64px!important}
+html.wisl-shop .product-list-container{gap:28px!important}
+html.wisl-shop .product-list-item{background:var(--w-white);border:3px solid var(--w-ink);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 var(--w-ink);transition:transform .3s cubic-bezier(.2,.9,.3,1.3)}
+html.wisl-shop .product-list-item:nth-child(odd){transform:rotate(-.8deg)}html.wisl-shop .product-list-item:nth-child(even){transform:rotate(.8deg)}
+html.wisl-shop .product-list-item:hover{transform:rotate(0) translateY(-4px)}
+html.wisl-shop .product-list-item-link{color:var(--w-ink)!important;text-decoration:none!important}
+html.wisl-shop .product-list-image-wrapper{border-bottom:3px solid var(--w-ink)}
+html.wisl-shop .product-list-item-meta{padding:16px 18px 18px!important}
+html.wisl-shop .product-list-title-price{display:flex!important;justify-content:space-between;align-items:center;gap:12px}
+html.wisl-shop .product-list-item-title{font:600 17px var(--w-body)!important;color:var(--w-ink)!important;text-transform:none!important;letter-spacing:normal!important}
+html.wisl-shop .product-list-item-price{font-family:var(--w-display)!important;font-size:22px!important;color:var(--w-ink)!important;background:var(--w-orange);border:2px solid var(--w-ink);border-radius:999px;padding:4px 12px 2px;white-space:nowrap}
+html.wisl-shop .product-list-filters{display:none!important}
+html.wisl-shop .product-list-item .product-list-item-quick-view-button,html.wisl-shop .product-list-item [class*=quick-view]{font-family:var(--w-body)!important}
+
+/* ---------- Cart ---------- */
+html.wisl-shop #sqs-cart-container{max-width:980px;margin:0 auto;padding:48px var(--w-gut) 72px;color:var(--w-ink)}
+html.wisl-shop #sqs-cart-container *{color:var(--w-ink)}
+html.wisl-shop .cart-title{font-size:clamp(44px,6vw,88px)!important;line-height:.95!important}
+html.wisl-shop #sqs-cart-container img{border:2.5px solid var(--w-ink);border-radius:14px}
+html.wisl-shop #sqs-cart-container .sqs-button-element--primary{background:var(--w-ink)!important;color:var(--w-white)!important;min-height:56px!important;font-size:16px!important;box-shadow:0 5px 0 var(--w-pink)!important}
+html.wisl-shop #sqs-cart-container .sqs-button-element--primary *{color:var(--w-white)!important}
+html.wisl-shop #sqs-cart-container input{border:2px solid var(--w-ink)!important;border-radius:999px!important;background:var(--w-white)!important}
+
+/* ---------- Footer ---------- */
+.wisl-foot{background:var(--w-ink);color:var(--w-white);padding:40px var(--w-gut) calc(40px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:18px;font:400 13px var(--w-body)}
+.wisl-foot img{height:48px;width:auto;display:block}
+.wisl-foot nav{display:flex;flex-wrap:wrap;gap:20px}
+.wisl-foot a{color:var(--w-white)!important;text-decoration:underline;text-underline-offset:4px}
+
+@media (max-width:767px){
+  .wisl-bar img{height:36px}
+  .wisl-bar nav{gap:12px}
+  .wisl-bar .wisl-link.hide-sm{display:none}
+  html.wisl-shop .product-gallery{transform:none;box-shadow:5px 5px 0 var(--w-ink)}
+  html.wisl-shop .product-title{font-size:clamp(38px,11vw,56px)!important}
+  html.wisl-shop .product-list-item:nth-child(n){transform:none}
+}

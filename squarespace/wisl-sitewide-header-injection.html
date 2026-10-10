@@ -1,0 +1,9 @@
+<script>
+(function(){
+  if(!/^\/(shop|cart)(\/|$)/.test(location.pathname)) return;
+  var B='https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@main/wisl-site/', v=Math.floor(Date.now()/36e5);
+  document.documentElement.classList.add('wisl-shop');
+  var l=document.createElement('link'); l.rel='stylesheet'; l.href=B+'shop.css?v='+v; document.head.appendChild(l);
+  var s=document.createElement('script'); s.src=B+'shop.js?v='+v; s.defer=true; document.head.appendChild(s);
+})();
+</script>
