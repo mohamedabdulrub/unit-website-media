@@ -17,7 +17,7 @@
     function sync(){ cnt.textContent=cartCount(); }
     sync(); setInterval(sync,1500);
 
-    var foot=el('<footer class="wisl-foot"><img src="'+A+'wordmark.svg" alt="WISL"><span>Made in the UK · Sheffield-based team · Stay fizzy</span>'+
+    var foot=el('<footer class="wisl-foot"><img src="'+A+'wordmark.svg" alt="WISL"><span>Made in the UK · A Sheffield brand · Stay fizzy</span>'+
       '<nav aria-label="Footer"><a href="/">Home</a><a href="/shop">Shop</a><a href="https://wa.me/447405361101">WhatsApp</a><span>info@wisl.uk</span></nav></footer>');
     document.body.appendChild(foot);
 
