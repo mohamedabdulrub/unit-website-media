@@ -254,6 +254,32 @@ model-viewer::part(default-progress-bar){display:none}
   .pour-lines{top:12vh;max-width:none;right:var(--gut)}
   .pour-lines p{font-size:clamp(34px,9vw,56px)}
 }
+/* mobile */
+.dock{transition:opacity .3s,transform .3s}
+@media (max-width:860px){ .dock.dock-away{opacity:0;pointer-events:none;transform:translate(-50%,24px)} }
+
+html{overflow-x:clip}
+@media (max-width:860px){
+  .nav{grid-template-columns:auto 1fr;padding-top:calc(12px + env(safe-area-inset-top,0px))}
+  .nav-brand img{height:38px}
+  .nav-right{gap:10px}
+  .hero{min-height:0;justify-content:flex-start;padding:76px var(--gut) 104px}
+  .hero-stage{position:relative;left:auto;top:auto;transform:none;width:100%;max-width:none;height:min(48vh,440px);margin:0 auto 6px}
+  .hero-stage model-viewer{width:100%;height:100%}
+  .hero h1{font-size:clamp(40px,11.5vw,60px);max-width:none}
+  .hero-lede{margin-top:14px;font-size:14px;max-width:34ch}
+  .hero-foot{flex-direction:column;align-items:stretch;gap:18px}
+  .hero-ctl{width:100%;gap:10px}
+  .flavours,.moves{display:flex;flex-wrap:nowrap;justify-content:flex-start!important;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 calc(-1 * var(--gut));padding:4px var(--gut) 8px;-webkit-overflow-scrolling:touch}
+  .flavours::-webkit-scrollbar,.moves::-webkit-scrollbar{display:none}
+  .flavours .chip,.moves .btn{flex:none}
+  .hint{display:none}
+  .marquee-track{font-size:24px;padding:12px 0}
+  .dock{bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+  .dock-btn{min-height:46px}.dock-btn img{height:34px}.dock-btn .chev{width:30px;height:30px}
+  .dock-menu{min-width:min(280px,calc(100vw - 32px))}
+  footer{padding-bottom:110px!important}
+}
 @media (prefers-reduced-motion:reduce){
   .marquee-track,.band::before,.crate img:hover{animation:none}
   .loader{display:none}
@@ -705,6 +731,7 @@ model-viewer::part(default-progress-bar){display:none}
   requestAnimationFrame(loop);
 })();
 </script>
+<script>(function(){var d=document.querySelector('.dock');if(!d)return;function u(){d.classList.toggle('dock-away',window.scrollY<window.innerHeight*0.55)}window.addEventListener('scroll',u,{passive:true});u();})();</script>
 <script>
 (function(){
   document.addEventListener('click',function(e){

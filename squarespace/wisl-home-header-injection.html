@@ -5,7 +5,7 @@ html.wisl-live,html.wisl-live body{overflow:hidden!important;background:#F99B3A!
 </style>
 <script>
 (function(){
-  var SRC='https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@851da04f49b886d8a116c219e09bf1b095ffa743/wisl-site/index.html';
+  var SRC='https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@main/wisl-site/index.html';
   if (window.top !== window) return; /* inside the Squarespace editor: leave the page editable */
   document.documentElement.classList.add('wisl-live');
   var html = fetch(SRC).then(function(r){ if(!r.ok) throw 0; return r.text(); });
