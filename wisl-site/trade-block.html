@@ -1,0 +1,145 @@
+<style>
+@font-face{font-family:'Motter Corpus';src:url(https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@03aed24/wisl-site/fonts/motter.ttf) format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Poppins';src:url(https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@03aed24/wisl-site/fonts/p400.ttf) format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Poppins';src:url(https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@03aed24/wisl-site/fonts/p700.ttf) format('truetype');font-weight:700;font-display:swap}
+.wt{--o:#F89D3A;--op:#FFE2BF;--p:#EF445D;--ink:#0A0A0A;--cr:#FFF6EA;--mu:#5b4a40;all:initial;display:block;width:100%;font-family:'Poppins',system-ui,sans-serif;color:var(--ink);background:var(--cr);line-height:1.55;font-size:17px}
+.wt *{box-sizing:border-box}
+.wt h1,.wt h2,.wt h3{font-family:'Motter Corpus','Poppins','Arial Black',sans-serif;font-weight:400;line-height:1.02;margin:0;letter-spacing:normal}
+.wt p,.wt ul,.wt ol,.wt dl,.wt dd{margin:0}
+.wt a{color:inherit}
+.wt .wrap{max-width:1200px;margin:0 auto;padding:0 clamp(16px,3vw,40px)}
+.wt .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:999px;border:3px solid var(--ink);font-weight:700;font-size:16px;text-decoration:none;background:var(--ink);color:#fff;white-space:nowrap}
+.wt .btn.alt{background:#fff;color:var(--ink)}
+.wt .eyebrow{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mu)}
+.wt .hero{background:var(--o);border-bottom:3px solid var(--ink);padding:clamp(48px,7vw,96px) 0}
+.wt .hero .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px;align-items:center}
+.wt .hero h1{font-size:clamp(44px,6.5vw,88px)}
+.wt .hero p.lede{font-size:clamp(18px,2vw,21px);margin-top:18px;max-width:34em}
+.wt .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.wt .hero img{display:block;width:100%;max-width:420px;margin:0 auto;aspect-ratio:400/560;object-fit:cover;border:3px solid var(--ink);border-radius:28px}
+.wt section.band{padding:clamp(56px,7vw,88px) 0}
+.wt h2{font-size:clamp(34px,4.6vw,58px)}
+.wt .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px;margin-top:32px}
+.wt .card{background:#fff;border:3px solid var(--ink);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:8px}
+.wt .card h3{font-size:26px}
+.wt .dark{background:var(--ink);color:#fff}
+.wt .dark .card{background:#1b1715;border-color:#fff;color:#fff}
+.wt .dark .eyebrow{color:var(--op)}
+.wt .steps{counter-reset:s;list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px;margin-top:32px}
+.wt .steps li{background:var(--op);border:3px solid var(--ink);border-radius:22px;padding:24px}
+.wt .steps li::before{counter-increment:s;content:counter(s,decimal-leading-zero);font-family:'Motter Corpus','Poppins',sans-serif;font-size:40px;display:block;line-height:1;margin-bottom:10px}
+.wt .split{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:40px;align-items:center}
+.wt .split img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border:3px solid var(--ink);border-radius:28px}
+.wt ul.ticks{list-style:none;padding:0;display:flex;flex-direction:column;gap:12px;margin-top:20px}
+.wt ul.ticks li{padding-left:34px;position:relative}
+.wt ul.ticks li::before{content:"";position:absolute;left:0;top:4px;width:22px;height:22px;border-radius:50%;background:var(--p);border:2px solid var(--ink)}
+.wt .stock{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.wt .stock a{border:2.5px solid var(--ink);border-radius:999px;padding:8px 18px;font-weight:700;text-decoration:none;background:#fff}
+.wt details{background:#fff;border:3px solid var(--ink);border-radius:18px;padding:18px 22px}
+.wt details+details{margin-top:12px}
+.wt summary{font-weight:700;cursor:pointer;font-size:18px}
+.wt details p{margin-top:10px}
+.wt .final{background:var(--p);border-top:3px solid var(--ink);color:var(--ink);text-align:center}
+.wt .final h2{color:#fff;-webkit-text-stroke:0}
+.wt .final p{max-width:36em;margin:16px auto 0}
+.wt .final .ctas{justify-content:center}
+</style>
+<div class="wt">
+<section class="hero">
+<div class="wrap">
+<div>
+<p class="eyebrow">Wisl for trade</p>
+<h1>Wholesale craft cola, made in the UK</h1>
+<p class="lede">Stock Wisl in your coffee shop, restaurant, garden centre or deli. An independent British cola in 330ml glass bottles, made by four people in Sheffield. Trade prices, a sample case to try, and no exclusivity contracts.</p>
+<div class="ctas"><a class="btn" href="https://wa.me/447405361101?text=Hi%20Wisl%2C%20I%27d%20like%20trade%20prices%20and%20a%20sample%20case">Get trade prices on WhatsApp</a><a class="btn alt" href="mailto:info@wisl.uk?subject=Wisl%20trade%20enquiry">Email info@wisl.uk</a></div>
+</div>
+<img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@03aed24/wisl-site/still-case.jpg" alt="Bottles of Wisl Cola, an independent UK craft cola in 330ml glass bottles" loading="eager" width="400" height="560">
+</div>
+</section>
+
+<section class="band">
+<div class="wrap">
+<p class="eyebrow">Who we supply</p>
+<h2>Built for independent counters and fridges</h2>
+<div class="grid">
+<div class="card"><h3>Coffee shops and cafés</h3><p>For customers who don't fancy another coffee but still want to sit down with something special. Glass bottles look the part on the counter and in the fridge.</p></div>
+<div class="card"><h3>Restaurants and burger bars</h3><p>A proper cola to pour ice cold next to the food, with a story your staff can tell. Already poured at Sheffield restaurants including Unit.</p></div>
+<div class="card"><h3>Garden centres and farm shops</h3><p>A British-made soft drink for your café, food hall or chiller, made by a small South Yorkshire business rather than a multinational.</p></div>
+<div class="card"><h3>Delis, bars and independent shops</h3><p>Sell by the bottle or in packs. Start with a single case of 24 and see how it moves before you commit to more.</p></div>
+<div class="card"><h3>Wholesalers and distributors</h3><p>We're building our UK distribution and want to talk to wholesalers and distributors who supply independent hospitality and retail. Get in touch for pricing and volumes.</p></div>
+</div>
+</div>
+</section>
+
+<section class="band dark">
+<div class="wrap split">
+<div>
+<p class="eyebrow">Why stock Wisl</p>
+<h2>A UK-made alternative to imported craft colas</h2>
+<ul class="ticks">
+<li><strong>Made in the UK, from UK suppliers.</strong> A British craft cola, so you're not relying on a drink shipped in from abroad.</li>
+<li><strong>No exclusivity contracts.</strong> Stock it alongside whatever you already sell. We never tie anyone in.</li>
+<li><strong>Start small.</strong> Order a single case of 24 to try it with your customers.</li>
+<li><strong>Tastes like a treat.</strong> Crisp, deep and not sickly. Best ice cold, or over ice with lime.</li>
+<li><strong>Independent and ethical.</strong> Four people in Sheffield, no investors, and money that stays with a small UK business.</li>
+<li><strong>Delivered.</strong> Free local delivery across Sheffield, done by us, and delivery across the UK.</li>
+</ul>
+</div>
+<img src="https://cdn.jsdelivr.net/gh/mohamedabdulrub/unit-website-media@03aed24/wisl-site/city-cafe.jpg" alt="Bottles of Wisl Cola on a Sheffield café counter under the drinks menu" loading="lazy" width="480" height="600">
+</div>
+</section>
+
+<section class="band">
+<div class="wrap">
+<p class="eyebrow">How it works</p>
+<h2>From first message to full fridge</h2>
+<ol class="steps">
+<li><h3 style="font-size:24px">Message us</h3><p style="margin-top:8px">WhatsApp +44 7405 361101 or email info@wisl.uk. You'll get a straight answer from an actual person in Sheffield.</p></li>
+<li><h3 style="font-size:24px">Try a sample case</h3><p style="margin-top:8px">We'll send our trade prices and get a sample case to you so you can taste it and test it on your customers.</p></li>
+<li><h3 style="font-size:24px">Order by the case</h3><p style="margin-top:8px">Cases of 24 x 330ml glass bottles, delivered. Reorder when you need to, with no contract.</p></li>
+</ol>
+</div>
+</section>
+
+<section class="band" style="padding-top:0">
+<div class="wrap">
+<p class="eyebrow">Already poured at</p>
+<h2>Trusted by Sheffield independents</h2>
+<div class="stock">
+<a href="https://www.pigeon.coffee/">TA</a><a href="https://www.marmadukes.co/">Marmadukes</a><a href="https://www.unitfood.co/">Unit</a><a href="http://steamyard.co.uk/">Steam Yard</a><a href="https://buildersbrewcafe.com/">Builder's Brew</a><a href="https://www.missdrippy.uk/">Miss Drippy</a><a href="https://neepsendsocial.com/">Neepsend Social</a><a href="https://www.partnersmenswear.com/">Partners Menswear</a>
+</div>
+</div>
+</section>
+
+<section class="band" style="padding-top:0">
+<div class="wrap" style="max-width:900px">
+<p class="eyebrow">Trade questions</p>
+<h2>Stocking Wisl: FAQs</h2>
+<div style="margin-top:28px">
+<details><summary>Is there a minimum order?</summary><p>No big minimum. You can start with a single case of 24 bottles to see how Wisl sells with your customers.</p></details>
+<details><summary>Do you deliver outside Sheffield?</summary><p>Yes. We deliver across the UK. Local delivery in Sheffield (S1 to S14, S17, S20, S35 and S36) is free and done by us.</p></details>
+<details><summary>Do I have to sign an exclusivity deal?</summary><p>Never. Stock Wisl alongside any other drinks you sell. We don't tie venues into exclusivity contracts.</p></details>
+<details><summary>What size and format is it?</summary><p>Wisl Cola comes in 330ml glass bottles, supplied in cases of 24. Cherry, Orange and Diet are on the way.</p></details>
+<details><summary>How do I get trade prices?</summary><p>Message us on WhatsApp on +44 7405 361101 or email info@wisl.uk and we'll send our trade prices and arrange a sample case.</p></details>
+<details><summary>Do you work with wholesalers and distributors?</summary><p>Yes. We want to work with UK wholesalers and distributors who supply independent cafés, restaurants, garden centres and shops. Email info@wisl.uk to talk volumes and pricing.</p></details>
+<details><summary>Can I buy a case without a trade account?</summary><p>Yes. Cases of 24 are also in our <a href="/shop/p/wisl-cola-case-of-24">online shop</a> for £21.</p></details>
+</div>
+</div>
+</section>
+
+<section class="band final">
+<div class="wrap">
+<h2>Put Wisl on your counter</h2>
+<p>Trade prices, a sample case and no exclusivity. Tell us about your venue and we'll take it from there.</p>
+<div class="ctas"><a class="btn" href="https://wa.me/447405361101?text=Hi%20Wisl%2C%20I%27d%20like%20trade%20prices%20and%20a%20sample%20case">WhatsApp +44 7405 361101</a><a class="btn alt" href="mailto:info@wisl.uk?subject=Wisl%20trade%20enquiry">Email info@wisl.uk</a></div>
+</div>
+</section>
+</div>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is there a minimum order for Wisl Cola trade?","acceptedAnswer":{"@type":"Answer","text":"No big minimum. You can start with a single case of 24 bottles to see how Wisl sells with your customers."}},
+{"@type":"Question","name":"Does Wisl deliver outside Sheffield?","acceptedAnswer":{"@type":"Answer","text":"Yes. Wisl delivers across the UK. Local delivery in Sheffield (S1 to S14, S17, S20, S35 and S36) is free."}},
+{"@type":"Question","name":"Does Wisl require an exclusivity deal?","acceptedAnswer":{"@type":"Answer","text":"No. Venues can stock Wisl alongside any other drinks. Wisl does not use exclusivity contracts."}},
+{"@type":"Question","name":"What size and format is Wisl Cola?","acceptedAnswer":{"@type":"Answer","text":"Wisl Cola comes in 330ml glass bottles, supplied in cases of 24. Cherry, Orange and Diet are on the way."}},
+{"@type":"Question","name":"How do I get Wisl trade prices?","acceptedAnswer":{"@type":"Answer","text":"Message Wisl on WhatsApp on +44 7405 361101 or email info@wisl.uk for trade prices and a sample case."}},
+{"@type":"Question","name":"Does Wisl work with wholesalers and distributors?","acceptedAnswer":{"@type":"Answer","text":"Yes. Wisl wants to work with UK wholesalers and distributors who supply independent cafés, restaurants, garden centres and shops. Email info@wisl.uk."}}
+]}</script>
